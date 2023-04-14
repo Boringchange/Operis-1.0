@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+header{
+    background-color: #0ca789;
+    color: white;
+}
+
+header h1{
+    font-size: 80px;
+    padding-left: 5%;
+}
+.Botones{
+    font-size: 30px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    height: 100%;
+    border: 0px;
+    width: 90%;
+    background: #0ca789;
+}
+.input{
+    font-size: 25px;
+    border-radius: 8px;
+    height: 100%;
+    width: 60%;
+    border: 5px solid gray;
+}
+.btn{
+    font-size: 100%;
+    width: 100%;
+}
+.combito{
+    border-radius: 8px;
+    font-size: 25px;
+    height: 100%;
+    width: 60%;
+    border: 5px solid gray;
+}

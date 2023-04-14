@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestion Usuario</title>
+        <link href="../CSS/GestionUsuario.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <h1>Registrar/Modificar usuario</h1>
+            </div>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-md-4">
+                    <img alt="silhuette of a person" src="../IMG/login.png" class="img-fluid">
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    <form action="AltasAdmin.jsp">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input placeholder="ID de usuario" class="ouiduser" disabled>
+                                <div class="col-md-12" style="margin-top: 3%">
+                                    <input placeholder="Nombre" class="ouiduser" disabled>
+                                </div>
+                                <div style="margin-top: 3%">
+                                    <input placeholder="Tipo" class="ouiduser" disabled>
+                                </div>
+                                <div style="margin-top: 3%">
+                                    <input placeholder="Numero de telefono" class="ouiduser" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input placeholder="de 6 digitos" type="number" class="iniduser" name="NewID">
+                                <div class="col-md-12" style="margin-top: 3%">
+                                    <input type="text" placeholder="Juan" class="iniduser" name="NewName">
+                                </div>
+                                <div style="margin-top: 3%">
+                                    <select class="select" name="NewType">
+                                        <option value="">(Admin, Empleado de piso, Repartidor)</option>
+                                        <option value="administrador">Admin</option>
+                                        <option value="empleado de piso">Empleado de piso</option>
+                                        <option value="repartidor">Repartidor</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 3%">
+                                    <input type="text" placeholder="0147471741" class="iniduser" name="NewNum">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-left: 22%; margin-top: 3%">
+                            <input  type="text" style="display: none" name="IDMaster" value="">
+                            <button id="btn_conf">Confirmar</button>
+                        </div>
+                    </form>
+                    <div id="space_1" class="row row-cols-1">
+                        <hr>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <p class="mx-auto" id="urs">Usuarios actuales</p>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div id="space_2" class="row">
+                        <table class="table">
+                            <thead class="table-black">
+                            <tr>
+                                <th>ID</th>
+                                <th>NOMBRE</th>
+                                <th>TIPO</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-secondary">
+                                <%
+                                for (let i in datos){
+                                    %>
+                                <tr>
+                                    <td><%= datos[i].idper%></td>
+                                    <td><%= datos[i].nom_per%></td>
+                                    <td><%= datos[i].tipo_per%></td>
+                                    <td><%= datos[i].sueldo_per%></td>
+                                    <td><%= datos[i].tel_per%></td>
+                                </tr>
+                                <%
+                                }
+                                %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form action="/Empleados/Menu/again" method="post">
+                    <button id="return" mclass="btn btn-outline-secondary"><i class='bx bx-arrow-back' ></i> Regresar</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    </body>
+</html>

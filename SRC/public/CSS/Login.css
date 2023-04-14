@@ -1,0 +1,28 @@
+.fondo{
+    background-color: #0CA789;
+}
+.col-md-6{
+    background-color: #ffffff;
+    align-items: center;
+}
+.divchild{
+    text-align: center;
+    margin-top: 15%;
+}
+.Bt_Login{
+    border-radius: 50px;
+    font-size:30px;
+    background-color: #414BB2;
+    color: #ffffff;
+    margin-top: 5%;
+}
+.input_login{
+    border-radius: 5px;
+    font-size: 30px;
+    height: 40px;
+}
+.bt_back{
+    margin-top: 10%;
+    border-radius: 35px;
+    border-color: white;
+}
