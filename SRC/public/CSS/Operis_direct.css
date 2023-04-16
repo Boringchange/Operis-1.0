@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-header{
-    min-height: 10vh;
-    background-color: #0ca789;
+
+a h2{
+    text-decoration: none;
+}
+
+icon{
+    height: 70px;
 }
 
 #headobject_img{
