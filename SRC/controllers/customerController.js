@@ -9,7 +9,7 @@ controller.operisDirect = (req, res) => {
     res.render('Operis_direct');
 }
 controller.empleados = (req, res) => {
-    res.render('Login_GestionUsuario.ejs', {alerta:false});
+    res.render('Login.ejs', {alerta:false});
 }
 controller.isAdmin = async (req, res) => {
     req.session.ID = req.body.idForm;
