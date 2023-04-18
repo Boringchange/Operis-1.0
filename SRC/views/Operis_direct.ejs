@@ -19,8 +19,13 @@
             height:100px;
         }
         table{
-            min-height: 100%;
+            height: 100%;
             width: 100%;
+            vertical-align: center;
+            text-align: center;
+        }
+        table, tr, td{
+            border-color: white;
         }
         .iconconfig{
             height: 5rem;
@@ -52,10 +57,14 @@
         #pazbaza{
             background-color: #575757;
         }
+        .cont{
+            height: 100vh;
+            /*margin-top: 20px;*/
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="cont">
         <table class="table table-bordered align-middle">
             <tr class="rowconfig">
                 <td style="background-color: #38B49C;">
