@@ -2,57 +2,50 @@
 
 a{
     text-decoration: none;
+}
+h2{
     color: white;
 }
-
-icon{
-    height: 70px;
+.boxiicon{
+    height:100px;
 }
-
-#headobject_img{
-    display: flex;
-    float: right;
-    width: 90px;
-    padding: 20px;
+table{
+    height: 100%;
+    width: 100%;
+    vertical-align: center;
+    text-align: center;
 }
-
-#headobject_log{
-    left: 0;
-    height: 20px;
-    font-size: 50px;
-    width: 10%;
-    color: white;
-    display: flex;
-    float: left;
-    padding: 20px;
+table, tr, td{
+    border-color: white;
 }
-
-
-main {
-    margin: 0;
-    background-color: white;
-    min-height: 90vh;
+td{
+    width: 30%;
+    height: 50%;
+    vertical-align: center;
     align-content: center;
-    font-family: 'Poppins', sans-serif;
-    padding: 3em;
 }
-
-
-.container .row .col-md img {
-    width: 200px;
-    background-color: #0ca789;
+div{
+    height: 100%;
 }
-
-
-.container .row .col-md a{
-    text-decoration: none;
-    color: white;
+#cyber{
+    background-color: #38B49C;
 }
-
-.container .row .col-md form{
-    display: flex;
+#paqueteria{
+    background-color: #22AE93;
 }
-
-.container {
- height: 200px;
+#papeleria{
+    background-color: #0CA789;
+}
+#ganancia{
+    background-color: #378777;
+}
+#empleados{
+    background-color: #0B6F5B;
+}
+#pazbaza{
+    background-color: #575757;
+}
+.cont{
+    height: 100vh;
+    /*margin-top: 20px;*/
 }
