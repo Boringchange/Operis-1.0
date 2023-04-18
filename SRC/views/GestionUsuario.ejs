@@ -74,8 +74,9 @@
                                 <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>TIPO</th>
-                                <th>MODIFICAR</th>
-                                <th>ELIMINAR</th>
+                                <th>TIPO DE SUELDO</th>
+                                <th>TELEFONO</th>
+                                <th>ACCIONES</th>
                             </tr>
                             </thead>
                             <tbody class="table-secondary">
@@ -88,6 +89,14 @@
                                     <td><%= datos[i].tipo_per%></td>
                                     <td><%= datos[i].sueldo_per%></td>
                                     <td><%= datos[i].tel_per%></td>
+                                    <td>
+                                        <form action="/Empleados/Menu/EditUserSection">
+                                            <button class="btn btn-warning" onclick="req.session.EditID = '<%= datos[i].idper%>';">MODIFICAR</button>
+                                        </form>
+                                        <form>
+                                            <button class="btn btn-danger">ELIMINAR</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 <%
                                 }

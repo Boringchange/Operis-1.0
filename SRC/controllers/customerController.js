@@ -25,14 +25,15 @@ controller.isAdmin = async (req, res) => {
                 }
             });
         }else{
-            res.render('Login_GestionUsuario',{alerta:true, tipo:"UserIsNotAdmin"});
+            res.render('Login',{alerta:true, tipo:"UserIsNotAdmin"});
         }
     }
     else{
-        res.render('Login_GestionUsuario',{alerta:true, tipo:"UserNoFound"});
+        res.render('Login',{alerta:true, tipo:"UserNoFound"});
     }
 }
-controller.LoginAgain = (req, res) => {
-    validar.Login_GestionUsuario(req, res);
+controller.EditUser = (req, res) => {
+    res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.session.EditID}`);
 }
+
 module.exports = controller;

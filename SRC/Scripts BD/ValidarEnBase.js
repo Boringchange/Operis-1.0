@@ -43,7 +43,7 @@ Controller.IsAlreadyAdmin = (req, res) => {
         const id = req.session.ID;
         console.log(id);
         conn.query(`SELECT * FROM Personal where idper = ${id}`, (err, personal) => {
-            if (!err){
+            if (!err){+
                 let datoaregresar = false;
                 if (personal[0].tipo_per == 'administrador'){
                     datoaregresar = true;
