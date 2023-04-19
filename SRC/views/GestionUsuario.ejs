@@ -1,117 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Gestion Usuario</title>
-        <link href="../CSS/GestionUsuario.css" rel="stylesheet" type="text/css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body>
-    <div class="container">
-        <header>
-            <div class="row">
-                <h1>Registrar/Modificar usuario</h1>
-            </div>
-        </header>
-        <main>
-            <div class="row">
-                <div class="col-md-4">
-                    <img alt="silhuette of a person" src="../IMG/login.png" class="img-fluid">
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-6">
-                    <form action="AltasAdmin.jsp">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input placeholder="ID de usuario" class="ouiduser" disabled>
-                                <div class="col-md-12" style="margin-top: 3%">
-                                    <input placeholder="Nombre" class="ouiduser" disabled>
-                                </div>
-                                <div style="margin-top: 3%">
-                                    <input placeholder="Tipo" class="ouiduser" disabled>
-                                </div>
-                                <div style="margin-top: 3%">
-                                    <input placeholder="Numero de telefono" class="ouiduser" disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <input placeholder="de 6 digitos" type="number" class="iniduser" name="NewID">
-                                <div class="col-md-12" style="margin-top: 3%">
-                                    <input type="text" placeholder="Juan" class="iniduser" name="NewName">
-                                </div>
-                                <div style="margin-top: 3%">
-                                    <select class="select" name="NewType">
-                                        <option value="">(Admin, Empleado de piso, Repartidor)</option>
-                                        <option value="administrador">Admin</option>
-                                        <option value="empleado de piso">Empleado de piso</option>
-                                        <option value="repartidor">Repartidor</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-12" style="margin-top: 3%">
-                                    <input type="text" placeholder="0147471741" class="iniduser" name="NewNum">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-left: 22%; margin-top: 3%">
-                            <input  type="text" style="display: none" name="IDMaster" value="">
-                            <button id="btn_conf">Confirmar</button>
-                        </div>
-                    </form>
-                    <div id="space_1" class="row row-cols-1">
-                        <hr>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <p class="mx-auto" id="urs">Usuarios actuales</p>
-                        </div>
-                        <div class="col-md-3"></div>
-                    </div>
-                    <div id="space_2" class="row">
-                        <table class="table">
-                            <thead class="table-black">
-                            <tr>
-                                <th>ID</th>
-                                <th>NOMBRE</th>
-                                <th>TIPO</th>
-                                <th>TIPO DE SUELDO</th>
-                                <th>TELEFONO</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                            </thead>
-                            <tbody class="table-secondary">
-                                <%
-                                for (let i in datos){
-                                    %>
-                                <tr>
-                                    <td><%= datos[i].idper%></td>
-                                    <td><%= datos[i].nom_per%></td>
-                                    <td><%= datos[i].tipo_per%></td>
-                                    <td><%= datos[i].sueldo_per%></td>
-                                    <td><%= datos[i].tel_per%></td>
-                                    <td>
-                                        <form action="/Empleados/Menu/EditUserSection">
-                                            <button class="btn btn-warning" onclick="req.session.EditID = '<%= datos[i].idper%>';">MODIFICAR</button>
-                                        </form>
-                                        <form>
-                                            <button class="btn btn-danger">ELIMINAR</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <%
-                                }
-                                %>
-                            </tbody>
-                        </table>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion Usuario</title>
+    <link href="../CSS/GestionUsuario.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<div class="container">
+    <div class="row"></div>
+    <main>
+        <div class="row">
+            <div class="col-md">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQCAYAAADnRuK4AAAAAXNSR0IArs4c6QAACF1JREFUeF7tnVeIJUUUhv/fBOYc0EVMiwoqIqyYs6IgJjAnMOCDYkRRFAMGFMX8oKIYcHUF45OCOSKKiizmVTGtuKKomNORA3dlXO/s7e7T1VV3+m8YZmDqnDr91Tf33umuriJ0iECAAAOxChUBSCBJECIggUL4FCyB5ECIgAQK4VOwBJIDIQISKIRPwRJIDoQISKAQPgVLIDkQIiCBQvgULIHkQIiABArhU7AEkgMhAhIohE/BEkgOhAhIoBA+BUsgORAiIIFC+BQsgeRAiIAECuFTsASSAyECEiiET8ESSA6ECEigED4FSyA5ECIggUL4FCyB5ECIgAQK4VPwWAlkZlsD2AbAtgBWWmD4vgXwIoDnSb6ioe2GQNECmdlGAPYDsBOAHQAsWRHLLwCeAfA0gAdJflgxTs1qEihSIDObBuBSAEfVPJ/Jmt8C4HySX7WUT2kGBIoTyMwuAHBhghH6AcBFJK9OkLu3KYsRyMzW8rcbAFsmHo2nABxE8pvE/fQifRECmdkMAI8CWLkj6p8C2J3k+x31N2W7yS6Qme0G4PEMhL8HsCPJNzP0PWW6zCqQmW0K4CUAy2Qi+iWAGSS/yNT/2HebTSAz8+s4swGsmZni6wC2IvlH5jrGsvucAj0CYJ9CqF1F8sxCahmrMrIIZGa7AniiIFJ/AdiI5JyCahqLUnIJ9AaAzQsjNJPkEYXVVHw5nQtkZtsDeK5AMn8CmKar1fVGJodA9wI4pF6ZnbU+l+RlnfU2BTrqVCAzWx7AdwVzm0NyesH1FVda1wLtP7hdURyICQWtQ/KTkgssqbauBboKwBklARhSy6EkZxVeYzHldS3QkwB2KebshxdyBcmzC6+xmPK6FshvGeS+8jwK/kMkDxjVKPXvzczq9EGy07GcX1unnZqZ3y5YrA6YDG3fILlFhn7/06UEGjICdaFkGsR5JFfP1Pe/3dZl1ZdXoFovy7kGMddgTDxfCTT8FcinlS6bS4yK/X5PcoWKbZM1k0DDBfocgE9dLfn4hOQ6uQuUQMMF8ntgfi+s5ONJkj5LMushgYYLdBOAE7KOzOjOryd5yuhmaVtIoOECHQvg1rTow9kPI+k3fLMeEmi4QBsCeDfryIzufG2Sn41ulraFBJqEr5m947P/0uJvnP1Fkts1jm4xUAJNLtDJAK5rkXWbqY4meVebCZvmkkCTC7QcAH+cZqmmcBPF+eoea5L8LVH+Wmkl0EJwmZk/n35aLaLpG59H0hd0KOKQQAsXaEUAvuSKfy/h8A/N00t59XEgEmiEFmZ2MIBSJm7tRtLnKhVzSKAKQ2FmNwI4sULTlE3OIXl5yg6a5JZAFaiZ2aIAHgOQ69bB3SSPrFBq500kUEXkZrY0gPsB7FkxpK1mt5M8pq1k8/PUHfi2+4/mqzuVpdMZiQs7uY7fzs4ieWUU9rB4CZSCasWcZnY4AF/PMNU1Ir/+dAjJZE/GSqCKg52qmZn5dFJ//Kft59T9idPLSP6UqvYm/36nrKVJ7rF9C1vwZM1ss8FKrXs3ATGI8RmQvu6iXyTsZBEpvQIFRitVqJn5OtE7Dyaj+ffJDn9s2t+e/OsZkq+lqmmyvBKoa+IN+jMzX8l1wc9JX5N8q0G6VkMkUKs4+5dMAvVvzFs9YwnUKs7+JZNA/RvzVs9YArWKs3/JJFCmMTeztQHsAWBjAKsOvlYDsMrg56pbPc0/A9/y6esJX/MGP7/tN3BJzs10qpW6rSti3QuAlYqo0CjrvTAz85Va/faFr1y2foV622zyHoAHANxZ4p4ZEmghQ21mvsD4xQD8anMJx8sAzib5bAnFeA0SaMhImJm/PV2fcf7PKD/8FemMEtZIlEAThsrM/KqxbyJ3KoDFR41i5t/7Z6dL/IYuyd9z1SKBBuTNzG+G3jwGS9st6IrvJXYMSd/It/Oj9wKZmT9x4eIc2Dn9djvMsthCrwUyM//32z+QlvoIc13FngewV+q5RBOL6q1Ag+s5Lk/2RZrqWjKi/auDbTJ9p8PkRy8FGrxtvQJgg+SE83Tgfxi+12ryzel6J5CZ+X9XPpFrqzxj21mv95D0i59Jjz4K5JPhj09KtZzkp5O8JmU5vRLIzA4DMDMl0MJy+95i25D0z0VJjt4IZGbrAvCppHVvdiYB32FS33t+Y5I/p+izTwI9NZjwnoJj6TkvJ3lOiiJ7IZCZ7Qvg4RQAxyjn+iQ/arveKS+QmS0C4AMA67UNb8zyzSJ5aNs190Ggvn1wnsyRvwFs2PaW4X0QaDaATdr+yxvTfLeRPG5Maw+V3WhGopn5flqdP/UZOtO0wT/6tFuSv6btprzsTQW6FkD27QAKw1nECvddM2kq0MdT8GZplH2SD9PRolLH1xbIzNYYrPOcurZxyz+XZOlbWbXOtIlARwO4o/VKpkZCXyp4ztQ4lWpn0USgGwCcVC1971r56mf39emsmwj0eMFPVeQeu/NJ+uNKvTmaCOSruk/rDaF6JzqTZNtL89WroOPWTQTyzUiW6LjOcenuBZKlb+nZKssmAv0FwO+D6fg/gTkkp/cJTBOBxmLv90yD+CPJ0rc1bxWNBGoVJ5BrlYyWT6NyOglUGVW1hhJoBKe60wyqYZ86rSSQBArZLIEkkASqQUCfgWrAqtJUr0BVKKmNCAwI1H4FEjkRmEhAAsmHEAEJFMKnYAkkB0IEJFAIn4IlkBwIEZBAIXwKlkByIERAAoXwKVgCyYEQAQkUwqdgCSQHQgQkUAifgiWQHAgRkEAhfAqWQHIgREAChfApWALJgRABCRTCp2AJJAdCBCRQCJ+CJZAcCBGQQCF8CpZAciBEQAKF8ClYAsmBEAEJFMKnYAkkB0IEJFAIn4L/AQuxcK/G+FjFAAAAAElFTkSuQmCC"/>
+                        <h2>Agregar usuario</h2>
+                        <h3 class="letra_cuadro1">ID de usuario</h3>
+                        <input class="form-control" type="text">
+                        <h3 class="letra_cuadro1">Contraseña</h3>
+                        <input class="form-control" type="text">
+                        <h3 class="letra_cuadro1">Tipo</h3>
+                        <input class="form-control" type="text">
+                        <h3 class="letra_cuadro1">No. de telefono</h3>
+                        <input class="form-control" type="text">
                     </div>
                 </div>
             </div>
-            <div>
-                <form action="/Empleados/Menu/again" method="post">
-                    <button id="return" mclass="btn btn-outline-secondary"><i class='bx bx-arrow-back' ></i> Regresar</button>
-                </form>
+            <div class="col-md">
+                <div class="card text-center">
+                    <div class="card-body"></div>
+                </div>
             </div>
-        </main>
+        </div>
+    </main>
+    <footer>
+    <div class="row mt-3">
+        <form action="/Empleados/Menu/again" method="post">
+            <button id="return" class="btn btn-secondary"><i class='bx bx-arrow-back' ></i> Regresar</button>
+        </form>
     </div>
-    </body>
+    </footer>
+    <!--<main>
+        <div class="row">
+            <div class="col-md-4">
+                <img alt="silhuette of a person" src="../IMG/login.png" class="img-fluid">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <form action="AltasAdmin.jsp">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input placeholder="ID de usuario" class="ouiduser" disabled>
+                            <div class="col-md-12" style="margin-top: 3%">
+                                <input placeholder="Nombre" class="ouiduser" disabled>
+                            </div>
+                            <div style="margin-top: 3%">
+                                <input placeholder="Tipo" class="ouiduser" disabled>
+                            </div>
+                            <div style="margin-top: 3%">
+                                <input placeholder="Numero de telefono" class="ouiduser" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input placeholder="de 6 digitos" type="number" class="iniduser" name="NewID">
+                            <div class="col-md-12" style="margin-top: 3%">
+                                <input type="text" placeholder="Juan" class="iniduser" name="NewName">
+                            </div>
+                            <div style="margin-top: 3%">
+                                <select class="select" name="NewType">
+                                    <option value="">(Admin, Empleado de piso, Repartidor)</option>
+                                    <option value="administrador">Admin</option>
+                                    <option value="empleado de piso">Empleado de piso</option>
+                                    <option value="repartidor">Repartidor</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 3%">
+                                <input type="text" placeholder="0147471741" class="iniduser" name="NewNum">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-left: 22%; margin-top: 3%">
+                        <input  type="text" style="display: none" name="IDMaster" value="">
+                        <button id="btn_conf">Confirmar</button>
+                    </div>
+                </form>
+                <div id="space_1" class="row row-cols-1">
+                    <hr>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <p class="mx-auto" id="urs">Usuarios actuales</p>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div id="space_2" class="row">
+                    <table class="table">
+                        <thead class="table-black">
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>TIPO</th>
+                            <th>TIPO DE SUELDO</th>
+                            <th>TELEFONO</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-secondary">
+                            <%
+                            for (let i in datos){
+                                %>
+                            <tr>
+                                <td><%= datos[i].idper%></td>
+                                <td><%= datos[i].nom_per%></td>
+                                <td><%= datos[i].tipo_per%></td>
+                                <td><%= datos[i].sueldo_per%></td>
+                                <td><%= datos[i].tel_per%></td>
+                                <td>
+                                    <form action="/Empleados/Menu/EditUserSection">
+                                        <button class="btn btn-warning" onclick="req.session.EditID = '<%= datos[i].idper%>';">MODIFICAR</button>
+                                    </form>
+                                    <form>
+                                        <button class="btn btn-danger">ELIMINAR</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%
+                            }
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
 </html>
