@@ -1,28 +1,40 @@
-.fondo{
+.container-fluid{
     background-color: #0CA789;
+    height: 100vh;
+    width: 100vw;
 }
-.col-md-6{
-    background-color: #ffffff;
-    align-items: center;
+.container-fluid h2{
+    color: white;
 }
-.divchild{
-    text-align: center;
-    margin-top: 10%;
+::placeholder{
+    color: white;
+    opacity: 1;
 }
-.Bt_Login{
-    border-radius: 50px;
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    opacity: 1;
+}
+#Bt_Login{
+    border-radius: 10px;
     font-size:30px;
-    background-color: #414BB2;
-    color: #ffffff;
-    margin-top: 5%;
+    background-color: #ffffff;
+    color: #63C0AE;
+    border: none;
+    width: 200px;
 }
-.input_login{
+
+.container-fluid input{
+    font-size:30px;
+    background-color: #63C0AE;
+    color: white;
+    border: none;
     border-radius: 5px;
-    font-size: 30px;
-    height: 40px;
 }
-.bt_back{
-    margin-top: 10%;
-    border-radius: 35px;
-    border-color: white;
+#bt_back{
+    border-radius: 10px;
+    font-size:30px;
+    background-color: #444444;
+    color: white;
+    border: none;
+    width: 200px;
 }

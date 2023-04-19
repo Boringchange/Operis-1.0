@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-a{
+.cont a{
     text-decoration: none;
 }
-h2{
+.cont h2{
     color: white;
 }
 .boxiicon{
@@ -47,5 +47,5 @@ div{
 }
 .cont{
     height: 100vh;
-    /*margin-top: 20px;*/
+    width: 100vw;
 }
