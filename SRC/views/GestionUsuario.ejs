@@ -90,8 +90,8 @@
                                     <td><%= datos[i].sueldo_per%></td>
                                     <td><%= datos[i].tel_per%></td>
                                     <td>
-                                        <form action="/Empleados/Menu/EditUserSection">
-                                            <button class="btn btn-warning" onclick="req.session.EditID = '<%= datos[i].idper%>';">MODIFICAR</button>
+                                        <form action="/Empleados/Menu/EditUserSection" method="post">
+                                            <button class="btn btn-warning" name="IdToEdit" value="<%=datos[i].idper%>">MODIFICAR</button>
                                         </form>
                                         <form>
                                             <button class="btn btn-danger">ELIMINAR</button>

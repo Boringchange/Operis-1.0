@@ -33,7 +33,7 @@ controller.isAdmin = async (req, res) => {
     }
 }
 controller.EditUser = (req, res) => {
-    res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.session.EditID}`);
+    res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.body.IdToEdit}`);
 }
 
 module.exports = controller;

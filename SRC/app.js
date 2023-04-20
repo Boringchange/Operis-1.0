@@ -4,8 +4,8 @@ const morgan = require('morgan');
 const mysql = require('mysql');
 const myconnection = require('express-myconnection');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const app = express();
-const passport = require('passport');
 
 //Importing routes
 const customerRout = require('./routes/customer');
@@ -26,13 +26,13 @@ app.use(myconnection(mysql, {
    port: 3306,
    database: 'NEGOCIO3'
 }, 'single'));
+app.use(cookieParser('culosnegros123456789'));
 app.use(express.urlencoded({extended: true}));
 app.use(session({
    secret: 'culosnegros123456789',
    resave: true,
    saveUninitialized: true
 }));
-
 app.use(express.urlencoded({ extended: true}));
 
 //Routers

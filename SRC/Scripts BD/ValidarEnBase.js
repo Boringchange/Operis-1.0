@@ -1,9 +1,7 @@
 const Controller = {};
 const session = require('express-session');
-const passport = require('passport');
 const {query} = require("express");
 const {HA_ERR_OLD_FILE} = require("mysql/lib/protocol/constants/errors");
-const passportLocal = require('passport-local').Strategy;
 
 //#Process
 
