@@ -51,7 +51,7 @@ controller.CreateUser = async (req, res) => {
     });
 }
 controller.EditUser = (req, res) => {
-    res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.body.IdToEdit}`);
+    res.render('CambioUser.ejs');
 }
 controller.DeleteUser = (req, res) => {
     const conn = validar.DataBaseConnection(req, res);
