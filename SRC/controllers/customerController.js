@@ -53,4 +53,8 @@ controller.CreateUser = async (req, res) => {
 controller.EditUser = (req, res) => {
     res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.body.IdToEdit}`);
 }
+controller.paqueteriaAlmac = (req, res) =>{
+    res.render('Paqueteria_Almacen.ejs');
+}
+
 module.exports = controller;
