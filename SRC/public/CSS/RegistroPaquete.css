@@ -1,0 +1,15 @@
+#rowup{
+    height: 5vh;
+}
+
+#rowmid{
+    height: 85vh;
+}
+
+#rowdown{
+    height: 10vh;
+}
+
+.container .card h3{
+    color: #024059;
+}
