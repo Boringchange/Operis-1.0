@@ -50,8 +50,18 @@ controller.CreateUser = async (req, res) => {
         }
     });
 }
-controller.EditUser = (req, res) => {
-    res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.body.IdToEdit}`);
+controller.EditUserSection = (req, res) => {
+    req.session.IdToEdit = req.body.IdToEdit;
+    res.render("CambioUser.ejs");
+}
+controller.EditUser = async (req, res) => {
+    const conn = await validar.DataBaseConnection(req, res);
+    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}', tipo_per = '${req,body.NewType}', sueldo_per = ${req.body.NewSalary}, tel_per = '${req.body.NewTel}' where idper = ${req.session.IdToEdit}`, err => {
+        if (err) {
+            res.send(err);
+        }
+        res.redirect("/Empleados/Menu");
+    });
 }
 controller.DeleteUser = (req, res) => {
     const conn = validar.DataBaseConnection(req, res);
