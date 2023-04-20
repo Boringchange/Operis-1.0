@@ -62,7 +62,7 @@ controller.EditUser = async (req, res) => {
         }
         res.redirect("/Empleados/Menu");
     });
-}
+
 controller.DeleteUser = (req, res) => {
     const conn = validar.DataBaseConnection(req, res);
     conn.query(`DELETE FROM Personal WHERE idper = ${req.body.IdToDelete}`, err => {
