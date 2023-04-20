@@ -29,10 +29,26 @@
         .container .card{
             border-radius: 70px;
             width: 35vw;
+            background-color: #d6dfe8;
         }
 
         .container input{
             width: 250px;
+            background-color: #95abc3;
+        }
+
+        .container textarea{
+            height: 75px;
+            width: 100%;
+            background-color: #95abc3;
+        }
+        #confirmar{
+            width: 200px;
+            background-color: #0ca789;
+            color: white;
+        }
+        .container h5{
+            color: ;
         }
     </style>
 </head>
@@ -63,21 +79,45 @@
                         <div class="col"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-1 text-wrap">
-                            <h5>Fecha de llegada</h5>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-1 text-wrap">
-                            <h5>Fecha de salida</h5>
-                            <input type="text" class="form-control">
-                        </div>
+                        <div class="col"><h5>Fecha de llegada</h5></div>
+                        <div class="col"><h5>Fecha de salida</h5></div>
                     </div>
+                    <div id="inputespecial" class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <input style="width: 120px" type="text" class="form-control">
+                        </div>
+                        <div class="col"></div>
+                        <div class="col">
+                            <input style="width: 120px" type="text" class="form-control">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <h5 class="mt-2">Descripcion</h5>
+                    </div>
+                    <div class="row">
+                        <textarea name="" id="" class="form-control"></textarea>
+                    </div>
+                    <di class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <form action="">
+                                <button id="confirmar" class="btn mt-2">Confirmar</button>
+                            </form>
+                        </div>
+                        <div class="col"></div>
+                    </di>
                 </div>
             </div>
         </div>
         <div class="col-md"></div>
     </div>
-    <div id="rowdown" class="row"></div>
+    <div id="rowdown" class="row">
+        <form action="">
+            <button class="btn btn-secondary">Regresar</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
