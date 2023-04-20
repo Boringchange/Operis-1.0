@@ -9,36 +9,99 @@
 </head>
 <body>
 <div class="container">
-    <div class="row"></div>
+    <div id="rowup" class="row"></div>
     <main>
-        <div class="row">
+        <div id="rowmid" class="row">
             <div class="col-md">
                 <div class="card text-center">
                     <div class="card-body">
-                        <img src="data:image/png;base64,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"/>
-                        <h2>Agregar usuario</h2>
-                        <h3 class="letra_cuadro1">ID de usuario</h3>
-                        <input class="form-control" type="text">
-                        <h3 class="letra_cuadro1">Contraseña</h3>
-                        <input class="form-control" type="text">
-                        <h3 class="letra_cuadro1">Tipo</h3>
-                        <input class="form-control" type="text">
-                        <h3 class="letra_cuadro1">No. de telefono</h3>
-                        <input class="form-control" type="text">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABN5JREFUeF7tnF9u00AQxmdSWUKkEr0B7Q3aEwAnaHlDdSXaE8Q9Ae0JWHMBglRXvBFOQHoCegPCCQhSjRDFGbTBQahq6mw84/Wm49dMv9n9frvr9f4pgj5eHUCv2TU5KADPjUABKADPDnhOrz1AAXh2wHN67QEKwLMDntNrD1AAnh3wnF57gALw7IDn9NoDFIBnBzyn1x6gADw74Dm99gAF4NkBz+m1B9wnABvJ4cb15HqXgDY7CNsEuGHrj0DjCcElAo6iTvRxbPpjz740lr6RHrCeHDwFmvQIcG+RmiHQALCTXpmz4SLxIceIApi2eLr+AABPlzRpGGH0fJV7hBiAbrK/DYSfAGA6zNR4xoD0LDfnlzU0WvunIgDskENE1ny+B2lnFSGwA3iQvNhco7XPDC3/JrxxgcXOT/N+xEfVvxI7gG4vti1/2TG/ypFhnmbPqoJC+p0VQDfZPwTCt5IGEOLzH+ZsIJmjSW1eAL34CwBsCldglKfZlnCOxuTZAJSzHjv2yz8r9EJmBBAnQPBa3v3pp/NxbjLTSC7hJIwADoZA9ES4vH/lES9ycyb1om+kCrMkfAB6sR1+thspvSCAbi+mu+qQpxmbZ9O2xGVYVcG58sx0uI2Y6VbVgzuvArjRMsIFkMQjIHjM3dJv1UP4mptMZLobMIDVeAkHDCDuA8HLhnrAu9xkhxK5ggXwMDnYQyK79i/+SC5HBAug3Hz5Ju8+fM/fZHX3GOYWM1gAtkbrycEJEb2ShICIp1fm7EQqR9AAyk33ESA8EjGI4HvUiTYltyiDBmBNF12SRjrKzXlfBG4pGjyAvxAEZkRIaW7OE0nzp2UPdSnipjGsEBCWnnZWGSoNtGrpgm0p4raKsAxHNYedew3AQplu0sPaifNHGsK7AoqTupvw9x7ArGeUIPbAno6bt2+AeAFAgwKKQV3jF13dXOkhqKpy021MAJA876M9oIqC8O8KQNjgKnkFUOWQ8O/3FoAd32kCu+U9ALt54rpffIlAI6LOEDqTC8n3xP9toApY1bzetT2xfgeU50J7AGDvAXDvWNkzoYMCi5RrhnTrt0uIX8LlUrRdBRVfKihNMxFGpxKLcsH1gHIjxp4HFVujn9Otx4R4xH1ONCgA3V5sT8I11ernDa8mT7Nj17F3XnwQAOyQ85t+vV30zheXOXfo9COMjjmGpCAArPf2P7TI/BmXfp5mR3Vhtx5AN9k3QGhnOu17GPYMWg2gyZMPy9Kte2KitQDKqaa9gNH0bMeVxTjCaGvZ90FrAbDucLla6hpfYyhqJYDyC9e2/mCeAoutZb6YWwmg1S/eOU1C+vwQV0tcaC2o28zlO646zXSCuMxXCaDRy3fcCAK4zFcJoInjhty+/9ML4DLfAgDiARHsipkkKIwIH69MttC/yBEsxp3SlQC6TV6+43fhMk+zHX5ZPsVFANx5a5CvKDJK3DtY3KVUANyOOuopAEfDuMMVALejjnoKwNEw7nAFwO2oo14lAEc9DXd0QAE4GsYdrgC4HXXUUwCOhnGHKwBuRx31FICjYdzhCoDbUUc9BeBoGHe4AuB21FFPATgaxh2uALgdddRTAI6GcYcrAG5HHfUUgKNh3OEKgNtRRz0F4GgYd7gC4HbUUU8BOBrGHa4AuB111FMAjoZxh/8B4C7/cARBLaYAAAAASUVORK5CYII="/>
+                        <h3>Agregar usuario</h3>
+                        <h4 class="letra_cuadro1">ID de usuario</h4>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <h4 class="letra_cuadro1">Contraseña</h4>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <h4 class="letra_cuadro1">Tipo</h4>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <h4 class="letra_cuadro1">No. de telefono</h4>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <form action="">
+                                    <button class="form-control botonAgregar mt-2">Agregar</button>
+                                </form>
+                            </div>
+                            <div class="col"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md">
                 <div class="card text-center">
-                    <div class="card-body"></div>
+                    <div class="card-body">
+                        <img src="data:image/png;base64,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"/>
+                        <h3>Usuarios actuales</h3>
+                        <table class="table">
+                            <tr>
+                                <td>ID</td>
+                                <td>Nombre</td>
+                                <td>Tipo</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <form action="">
+                                    <button class="btn btn-secondary">Modificar</button>
+                                </form>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col">
+                                <form action="">
+                                    <button class="btn btn-danger">Regresar</button>
+                                </form>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-    <div class="row mt-3">
+    <div id="rowdown" class="row">
         <form action="/Empleados/Menu/again" method="post">
-            <button id="return" class="btn btn-secondary"><i class='bx bx-arrow-back' ></i> Regresar</button>
+            <button id="return" class="btn btn-secondary mt-2">Regresar</button>
         </form>
     </div>
     </footer>
