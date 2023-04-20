@@ -8,6 +8,7 @@ router.get('/direct/', customerController.operisDirect);
 router.get('/Empleados', customerController.empleados);
 router.post('/Empleados/Menu', customerController.isAdmin);
 router.post('/Empleados/Menu/EditUserSection', customerController.EditUser);
+router.get('/PaqueteriaAlm', customerController.paqueteriaAlmac);
 
 
 module.exports = router;
