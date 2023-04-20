@@ -16,7 +16,7 @@ Controller.DataBaseConnection = (req, res) => {
 Controller.CheckIfExists =(req, res, tipo_per) => {
     return new Promise(resolve => {
         const conn = Controller.DataBaseConnection(req, res);
-        const id = req.body.idForm;
+        const id = req.session.ID;
         console.log(id);
         conn.query(`SELECT * FROM Personal`, (err, personal) => {
             if (err){

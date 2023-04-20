@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+body{
+    color: #e6e6e6;
+}
+
 .letra_cuadro1{
     color: #808080;
 }
@@ -8,6 +12,11 @@
     width: 300px;
     border-radius: 5px;
     align-content: center;
+}
+
+.container .card select{
+    width: 300px;
+    border-radius: 5px;
 }
 
 .container .botonAgregar{
@@ -34,10 +43,14 @@
     border-radius: 75px;
 }
 
-.container .table{
-    height: 60%;
+.container table{
     background-color: #EDEDED;
 }
+
+#space_2{
+    max-height: 300px;
+}
+
 
 .container .card .table button{
     font-size: 10px;

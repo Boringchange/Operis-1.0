@@ -30,8 +30,14 @@ app.use(cookieParser('culosnegros123456789'));
 app.use(express.urlencoded({extended: true}));
 app.use(session({
    secret: 'culosnegros123456789',
-   resave: true,
-   saveUninitialized: true
+   resave: false,
+   saveUninitialized: true,
+   cookie: {
+      secure: false,
+      httpOnly: true,
+      maxAge: 3600000,
+      sameSite:'strict'
+   }
 }));
 app.use(express.urlencoded({ extended: true}));
 
