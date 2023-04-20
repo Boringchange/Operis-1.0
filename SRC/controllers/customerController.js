@@ -51,37 +51,36 @@ controller.CreateUser = async (req, res) => {
     });
 }
 controller.EditUserSection = (req, res) => {
-    req.session.IdToEdit = req.body.IdToEdit;
-    res.render("CambioUser.ejs");
+    res.render("CambioUser.ejs",{idtoedit: req.body.IdToEdit});
 }
 controller.EditUser = async (req, res) => {
     const conn = await validar.DataBaseConnection(req, res);
-    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}', tipo_per = '${req,body.NewType}', sueldo_per = ${req.body.NewSalary}, tel_per = '${req.body.NewTel}' where idper = ${req.session.IdToEdit}`, err => {
+    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}', tipo_per = '${req.body.NewType}', sueldo_per = ${req.body.NewSalary} where idper = ${req.body.IdEdit}`, err => {
         if (err) {
             res.send(err);
         }
         res.redirect("/Empleados/Menu");
     });
-
-controller.DeleteUser = (req, res) => {
-    const conn = validar.DataBaseConnection(req, res);
-    conn.query(`DELETE FROM Personal WHERE idper = ${req.body.IdToDelete}`, err => {
-        if (err){
-            res.send(err);
-        } else{
-            res.redirect("/Empleados/Menu");
-        }
-    });
-
-}
-controller.paqueteriaAlmac = async (req, res) =>{
-    const conn = await validar.DataBaseConnection(req, res);
-    conn.query(`SELECT * FROM Paquete`, (err, Paquetes) => {
-        if (err){
-            res.send(err);
-        }
-        res.render('Paqueteria_Almacen.ejs',{paquetes: Paquetes});
-    });
 }
 
+    controller.DeleteUser = (req, res) => {
+        const conn = validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Personal WHERE idper = ${req.body.IdToDelete}`, err => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.redirect("/Empleados/Menu");
+            }
+        });
+
+    }
+    controller.paqueteriaAlmac = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Paquete`, (err, Paquetes) => {
+            if (err) {
+                res.send(err);
+            }
+            res.render('Paqueteria_Almacen.ejs', {paquetes: Paquetes});
+        });
+    }
 module.exports = controller;

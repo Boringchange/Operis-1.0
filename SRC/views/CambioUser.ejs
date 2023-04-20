@@ -40,6 +40,10 @@
                 color: white;
                 width: 250px;
             }
+            .container .card select{
+                width: 250px;
+                border-radius: 5px;
+            }
         </style>
     </head>
     <body>
@@ -50,42 +54,52 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-body text-center">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABWCAYAAABVVmH3AAAAAXNSR0IArs4c6QAABHtJREFUeF7tm19uE0kQxqsmHoGYSBtOQDgB4QQkJ9jwttiWEg6wuDkByQkY7wXWkexo33BOgDkB4QRkT7BGyqyQcFyorWQ3JPb8ydRnj0215Kfu+dz962/a3dVlJisQAgxRNVEysCATGFgDCyIAkjXHGlgQAZCsOdbAggiAZM2xBhZEACRrjjWwIAIgWXOsgQURAMmaYw0siABI1hy7rGDXf3/xTIJgl4i2iGjz8uOHM2CSoUgwuAhGJ1/jv85AY1yILMyx0avGHjEdXAOZNcDOBV8crgpgdbAbbn/jm3x7f+nQLJi364Vd8ke3XfzBaj2hCjZy9S0SflfApbNodJJ272W1UBXrjRrY0k690W9mPjyPu34pWcqiBjZqNfzrv61JQZif/xt3+5qa89JSAbvumtsi4sFql7Ok3XusLToPPRWwCLf+N3iWl0l83MmCEbn6PgnvZbVTrWd5ncTHp9M0S4O9737bXJO1z6odvibGTCfncc/vg1PLumseiMibrHaa9cy8cx53BxCwkWs4Enqr2eGbWkm7l2mAFQRbj0m4hQSb5oyr711BsM0BiTwzsD8SyHzFsoBFDg+WcvyAmWOzZmpK/U+6FDQ6JATd5uQE6w8nqgeULA+MaNSZFTRSWArwu4KQw4fDuDPMGmiV6hXATgIvH2GDYv6QxN25OlFjLKXB+k5ErnFGQo80OnRLg+l1EvdiiDZQVAns5Dj5p3o/hb6EQbi5bMuA56AC9tK1pyT0RBXukrpVGWx9i8Y8IKZfVOAyHSVxb19FawEiao71fZ+ED8fSLw2X6VNI4XaZJeDBqzo8IDMOxkew7dZNM0yuZ8o4l+kopNCVgTpZmloNQRsVGt2a1nl/TTOikSsUxmP6m0gO8sRe8wBbSbBXA5/Eamltl4h3pwZqhL5QQH0h7mtfwaw02GnO8uvwiEZn6PyBnw5sntdYo42B1aA4RWPlwfp1tnbBqcfd2tq9T2V3Abd3J82pd1G68zh2sMvE6x31Wy0Z06/MfNcQ3pBJBiLcD4PwRBu2LtR0NZUDwh0S4HKNkUn6wnQ4yxW5RBbUqBTYB665yyL+htanZyLL0mUi3hls1Gr4aNY8z/JDZn4+6x4fOat30S4MVjv5rXCnc1wsFtYEPFAI7MKhXgFYgnBiIbDrrfo78cfTCpSqZyLmBhs5fMZLwfkaEstOnh0DKuegdHQLnfhWEOj15oOk3dvJer6yYKu0BNyEmDPnAJKJWMqxwKTiLKPlrT9N2r2naY0r6djI4TNd8hKc2Y7ladpaW02wrcY/RLRRevBIAZZ2Eh+7WV9RObCXfy/CZbnowU5dDioHFtUhPZ7/K6VlfU9Cl1RTj2fUqHY6KwKXuo9dJrB5dgeICZ2lmQp2LknFSqM1sEogb8lULDizSo6t1F9EDSzoDTKwiwFb32cK1LcpoLEMqnS7kDtsCIKxsrIGFjS1BtbAggiAZM2xBhZEACRrjjWwIAIgWXOsgQURAMmaYw0siABI1hxrYEEEQLLmWAMLIgCSNceCwH4Hrs8SdY85fKIAAAAASUVORK5CYII="/>
-                            <h3>Modificar usuario</h3>
-                            <h5 class="mt-1">ID de usuario</h5>
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col">
-                                    <input type="text" class="form-control">
+                            <form action="/Empleados/Menu/EditUser" method="post">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABWCAYAAABVVmH3AAAAAXNSR0IArs4c6QAABHtJREFUeF7tm19uE0kQxqsmHoGYSBtOQDgB4QQkJ9jwttiWEg6wuDkByQkY7wXWkexo33BOgDkB4QRkT7BGyqyQcFyorWQ3JPb8ydRnj0215Kfu+dz962/a3dVlJisQAgxRNVEysCATGFgDCyIAkjXHGlgQAZCsOdbAggiAZM2xBhZEACRrjjWwIAIgWXOsgQURAMmaYw0siABI1hy7rGDXf3/xTIJgl4i2iGjz8uOHM2CSoUgwuAhGJ1/jv85AY1yILMyx0avGHjEdXAOZNcDOBV8crgpgdbAbbn/jm3x7f+nQLJi364Vd8ke3XfzBaj2hCjZy9S0SflfApbNodJJ272W1UBXrjRrY0k690W9mPjyPu34pWcqiBjZqNfzrv61JQZif/xt3+5qa89JSAbvumtsi4sFql7Ok3XusLToPPRWwCLf+N3iWl0l83MmCEbn6PgnvZbVTrWd5ncTHp9M0S4O9737bXJO1z6odvibGTCfncc/vg1PLumseiMibrHaa9cy8cx53BxCwkWs4Enqr2eGbWkm7l2mAFQRbj0m4hQSb5oyr711BsM0BiTwzsD8SyHzFsoBFDg+WcvyAmWOzZmpK/U+6FDQ6JATd5uQE6w8nqgeULA+MaNSZFTRSWArwu4KQw4fDuDPMGmiV6hXATgIvH2GDYv6QxN25OlFjLKXB+k5ErnFGQo80OnRLg+l1EvdiiDZQVAns5Dj5p3o/hb6EQbi5bMuA56AC9tK1pyT0RBXukrpVGWx9i8Y8IKZfVOAyHSVxb19FawEiao71fZ+ED8fSLw2X6VNI4XaZJeDBqzo8IDMOxkew7dZNM0yuZ8o4l+kopNCVgTpZmloNQRsVGt2a1nl/TTOikSsUxmP6m0gO8sRe8wBbSbBXA5/Eamltl4h3pwZqhL5QQH0h7mtfwaw02GnO8uvwiEZn6PyBnw5sntdYo42B1aA4RWPlwfp1tnbBqcfd2tq9T2V3Abd3J82pd1G68zh2sMvE6x31Wy0Z06/MfNcQ3pBJBiLcD4PwRBu2LtR0NZUDwh0S4HKNkUn6wnQ4yxW5RBbUqBTYB665yyL+htanZyLL0mUi3hls1Gr4aNY8z/JDZn4+6x4fOat30S4MVjv5rXCnc1wsFtYEPFAI7MKhXgFYgnBiIbDrrfo78cfTCpSqZyLmBhs5fMZLwfkaEstOnh0DKuegdHQLnfhWEOj15oOk3dvJer6yYKu0BNyEmDPnAJKJWMqxwKTiLKPlrT9N2r2naY0r6djI4TNd8hKc2Y7ladpaW02wrcY/RLRRevBIAZZ2Eh+7WV9RObCXfy/CZbnowU5dDioHFtUhPZ7/K6VlfU9Cl1RTj2fUqHY6KwKXuo9dJrB5dgeICZ2lmQp2LknFSqM1sEogb8lULDizSo6t1F9EDSzoDTKwiwFb32cK1LcpoLEMqnS7kDtsCIKxsrIGFjS1BtbAggiAZM2xBhZEACRrjjWwIAIgWXOsgQURAMmaYw0siABI1hxrYEEEQLLmWAMLIgCSNceCwH4Hrs8SdY85fKIAAAAASUVORK5CYII="/>
+                                <h3>Modificar usuario</h3>
+                                <h5 class="mt-1">Nombre de usuario</h5>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <input type="text" name="NewName" class="form-control">
+                                    </div>
+                                    <div class="col"></div>
                                 </div>
-                                <div class="col"></div>
-                            </div>
-                            <h5 class="mt-1">Contraseña</h5>
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col">
-                                    <input type="text" class="form-control">
+                                <h5 class="mt-1">Tipo de personal</h5>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <select name="NewType" class="form-select">
+                                            <option value="">Seleccione una opcion</option>
+                                            <option value="administrador">Administrador</option>
+                                            <option value="empleado de piso">Empleado de piso</option>
+                                            <option value="repartidor">Repartidor</option>
+                                        </select>
+                                    </div>
+                                    <div class="col"></div>
                                 </div>
-                                <div class="col"></div>
-                            </div>
-                            <h5 class="mt-1">Tipo</h5>
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col">
-                                    <input type="text" class="form-control">
+                                <h5 class="mt-1">Tipo de Sueldo</h5>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <select name="NewSalary" class="form-select">
+                                            <option value="">Seleccione una opcion</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col"></div>
                                 </div>
-                                <div class="col"></div>
-                            </div>
-                            <h5 class="mt-1">No. de telefono</h5>
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col">
-                                    <input type="text" class="form-control">
+                                <h5 class="mt-1">No. de telefono</h5>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <input type="text" name="NewTel" class="form-control">
+                                    </div>
+                                    <div class="col"></div>
                                 </div>
-                                <div class="col"></div>
-                            </div>
-                            <form action="">
-                                <button id="btnguardar" class="btn mt-3">Guardar cambios</button>
+                                <button id="btnguardar" name="IdEdit" value="<%=idtoedit%>" class="btn mt-3">Guardar cambios</button>
                             </form>
                         </div>
                     </div>
