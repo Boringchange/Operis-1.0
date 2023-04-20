@@ -13,5 +13,7 @@ router.post('/Empleados/Menu/EditUserSection', customerController.EditUserSectio
 router.post('/Empleados/Menu/EditUser', customerController.EditUser);
 router.post('/Empleados/Menu/DeleteUser', customerController.DeleteUser);
 router.get('/PaqueteriaAlm', customerController.paqueteriaAlmac);
+router.get('/PaqueteriaAlm/AddSection', customerController.AddPaqSection);
+router.post('/PaqueteriaAlm/AddPaq', customerController.AddPaq);
 
 module.exports = router;

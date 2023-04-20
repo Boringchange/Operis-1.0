@@ -83,4 +83,23 @@ controller.EditUser = async (req, res) => {
             res.render('Paqueteria_Almacen.ejs', {paquetes: Paquetes});
         });
     }
+    controller.AddPaqSection = (req, res) => {
+        res.render("RegistroPaquete.ejs");
+    }
+    controller.AddPaq = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Paquete VALUES (${req.body.IdPaquete}, '1','${req.body.FechaLlegada}','${req.body.FechaSalida}','1','1','${req.body.Descripcion}')`, err =>{
+            if (err){
+                res.send(err);
+            }
+            conn.query(`INSERT INTO Paq_cli VALUES (${req.body.IdPaquete},'${req.body.IdDelDestinatario}')`, err => {
+                if (err){
+                    res.send(err);
+                } else {
+                    res.redirect("/PaqueteriaAlm");
+                }
+            });
+        });
+
+    }
 module.exports = controller;
