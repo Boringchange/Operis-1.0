@@ -74,23 +74,23 @@
                 <table class="table table-bordered align-middle text-center">
                     <thead>
                         <tr id="theader">
-                            <th>ID_paquete</th>
-                            <th>ID_destinatario</th>
-                            <th>Fecha_de_llegada</th>
-                            <th>Fecha_de_salida</th>
+                            <th>ID paquete</th>
+                            <th>ID destinatario</th>
+                            <th>Fecha de llegada</th>
+                            <th>Fecha de salida</th>
                             <th>Descripcion</th>
-                            <th>ID_de_quien_lo_recibio</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
+                    <%
+                    for (let i in paquetes){%>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%= paquetes[i].idpaq%></td>
+                            <td><%= paquetes[i].tipo_paq%></td>
+                            <td><%= paquetes[i].indate%></td>
+                            <td><%= paquetes[i].outdate%></td>
+                            <td><%= paquetes[i].desc_paq%></td>
                             <td>
                                 <div class="row">
                                     <div class="col mb-2">
@@ -106,6 +106,9 @@
                                 </div>
                             </td>
                         </tr>
+                    <%
+                    }
+                    %>
                     </tbody>
                 </table>
             </div>

@@ -10,6 +10,7 @@ router.post('/Empleados/Menu', customerController.isAdmin);
 router.get('/Empleados/Menu', customerController.isAdmin);
 router.post('/Empleados/Menu/Create', customerController.CreateUser);
 router.post('/Empleados/Menu/EditUserSection', customerController.EditUser);
+router.post('/Empleados/Menu/DeleteUser', customerController.DeleteUser);
 router.get('/PaqueteriaAlm', customerController.paqueteriaAlmac);
 
 module.exports = router;

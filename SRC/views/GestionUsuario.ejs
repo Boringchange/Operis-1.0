@@ -106,8 +106,8 @@
                                                     </form>
                                                 </div>
                                                 <div class="col">
-                                                    <form>
-                                                        <button class="btn btn-danger">ELIMINAR</button>
+                                                    <form action="/Empleados/Menu/DeleteUser" method="post">
+                                                        <button class="btn btn-danger" name="IdToDelete" value="<%=datos[i].idper%>">ELIMINAR</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -127,7 +127,7 @@
     </main>
     <footer>
     <div id="rowdown" class="row">
-        <form action="/Empleados/Menu/again" method="post">
+        <form action="/Empleados" method="get">
             <button id="return" class="btn btn-secondary mt-2">Regresar</button>
         </form>
     </div>

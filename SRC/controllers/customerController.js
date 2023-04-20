@@ -53,8 +53,25 @@ controller.CreateUser = async (req, res) => {
 controller.EditUser = (req, res) => {
     res.send(`Hola que tal, aqui sera nuestra pagina para editar usuario, espero y salga el dato ${req.body.IdToEdit}`);
 }
-controller.paqueteriaAlmac = (req, res) =>{
-    res.render('Paqueteria_Almacen.ejs');
+controller.DeleteUser = (req, res) => {
+    const conn = validar.DataBaseConnection(req, res);
+    conn.query(`DELETE FROM Personal WHERE idper = ${req.body.IdToDelete}`, err => {
+        if (err){
+            res.send(err);
+        } else{
+            res.redirect("/Empleados/Menu");
+        }
+    });
+
+}
+controller.paqueteriaAlmac = async (req, res) =>{
+    const conn = await validar.DataBaseConnection(req, res);
+    conn.query(`SELECT * FROM Paquete`, (err, Paquetes) => {
+        if (err){
+            res.send(err);
+        }
+        res.render('Paqueteria_Almacen.ejs',{paquetes: Paquetes});
+    });
 }
 
 module.exports = controller;
