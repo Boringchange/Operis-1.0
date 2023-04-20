@@ -31,11 +31,15 @@
 
 .container .card{
     height: 100%;
-
+    border-radius: 75px;
 }
 
 .container .table{
     height: 60%;
     background-color: #EDEDED;
+}
+
+.container .card .table button{
+    font-size: 10px;
 }
 
