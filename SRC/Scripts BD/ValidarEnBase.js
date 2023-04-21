@@ -13,24 +13,30 @@ Controller.DataBaseConnection = (req, res) => {
         return connect;
 };
 
-Controller.CheckIfExists =(req, res, tipo_per) => {
+Controller.CheckIfExists =(req, res) => {
     return new Promise(resolve => {
         const conn = Controller.DataBaseConnection(req, res);
         const id = req.session.ID;
-        console.log(id);
+        const passw = req.session.Password;
         conn.query(`SELECT * FROM Personal`, (err, personal) => {
             if (err){
-                console.log("No esta jalando la base de datos, checalo");
+                console.log("No esta jalando la base de datos, te falta manos pa");
             }
             else{
-                let exist = false;
+                const valores = {};
+                valores.existe = false;
+                valores.correcta = false;
                 for (let i in personal){
                     if (personal[i].idper == id){
                         console.log("Existe");
-                        exist = true;
+                        valores.existe = true;
+                        if (personal[i].pass == passw){
+                            console.log("Contra correcta");
+                            valores.correcta = true;
+                        }
                     }
                 }
-                resolve(exist);
+                resolve(valores);
             }
         });
     });
