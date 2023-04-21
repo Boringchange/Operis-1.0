@@ -15,6 +15,7 @@ desc_paq varchar(100)
 create table Personal(
 idper int primary key not null auto_increment ,
 nom_per varchar(40),
+pass varchar(40),
 tipo_per varchar(50),
 sueldo_per int,
 tel_per varchar(15)

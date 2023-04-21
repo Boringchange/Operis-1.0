@@ -5,33 +5,34 @@ const e = require("express");
 controller.inicio = (req, res) => {
     res.render('index');
 };
-controller.operisDirect = (req, res) => {
-    res.render('Operis_direct');
-}
-controller.empleados = (req, res) => {
-    req.session.ID = undefined;
-    res.render('Login.ejs', {alerta:false});
-}
-controller.isAdmin = async (req, res) => {
-    console.log(`Hola chavales, ${req.session.ID}`);
+controller.operisDirect =async (req, res) => {
     if (req.session.ID === undefined){
         req.session.ID = req.body.idForm;
+        req.session.Password = req.body.password;
     } else{
     }
-    const exist = await validar.CheckIfExists(req, res);
-    if (exist){
-        const IsTheBoss = await validar.IsAlreadyAdmin(req, res);
-        console.log(IsTheBoss);
-        if (IsTheBoss){
-            const conn = validar.DataBaseConnection(req, res);
-            conn.query(`SELECT * FROM Personal`, (err, personal) => {
-                if (!err){
-                    res.render('GestionUsuario',{datos:personal});
-                }
-            });
-        }else{
+    const valores = await validar.CheckIfExists(req, res);
+    console.log(`ID: ${valores.existe}, Contraseña: ${valores.correcta}`);
+    if (valores.existe){
+        if (valores.correcta){
+            const IsTheBoss = await validar.IsAlreadyAdmin(req, res);
+            console.log(IsTheBoss);
+            if (IsTheBoss){
+                req.session.tipo = "administrador";
+                res.render('Operis_direct', {tipo: req.session.tipo});
+            }else{
+                const conn = validar.DataBaseConnection(req, res);
+                conn.query(`SELECT * FROM Personal where${req.session.ID}`, (err, personal) => {
+                    if (!err){
+                        req.session.tipo = personal[0].tipo_per;
+                        res.render('Operis_direct',{tipo: req.session.tipo});
+                    }
+                });
+            }
+        }
+        else{
             req.session.ID = undefined;
-            res.render('Login',{alerta:true, tipo:"UserIsNotAdmin"});
+            res.render('Login',{alerta:true, tipo:"PasswordIncorrect"});
         }
     }
     else{
@@ -39,19 +40,41 @@ controller.isAdmin = async (req, res) => {
         res.render('Login',{alerta:true, tipo:"UserNoFound"});
     }
 }
+controller.empleados = (req, res) => {
+    req.session.ID = undefined;
+    res.render('Login.ejs', {alerta:false});
+}
+controller.isAdmin = async (req, res) => {
+    if (req.session.tipo == "administrador"){
+        const conn = validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Personal`, (err, personal) => {
+            if (!err){
+                res.render('GestionUsuario',{datos:personal});
+            }
+        });
+    } else {
+        res.redirect('/direct');
+    }
+
+}
 controller.CreateUser = async (req, res) => {
-    const conn = await validar.DataBaseConnection(req, res);
-    conn.query(`INSERT INTO Personal VALUES (DEFAULT, '${req.body.NewUser}', '${req.body.NewTypeUser}', ${req.body.NewTypeSalary}, '${req.body.NewTelUser}')`, (err) => {
-        if (!err){
-            res.redirect("/Empleados/Menu");
-        }
-        else{
-            res.send(err);
-        }
-    });
+    if (req.session.tipo == "administrador"){
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Personal VALUES (DEFAULT, '${req.body.NewUser}', '${req.body.NewTypeUser}', ${req.body.NewTypeSalary}, '${req.body.NewTelUser}')`, (err) => {
+            if (!err){
+                res.redirect("/Empleados/Menu");
+            }
+            else{
+                res.send(err);
+            }
+        });
+    }
+
 }
 controller.EditUserSection = (req, res) => {
-    res.render("CambioUser.ejs",{idtoedit: req.body.IdToEdit});
+    if (req.session.tipo == "administrador") {
+        res.render("CambioUser.ejs", {idtoedit: req.body.IdToEdit});
+    }
 }
 controller.EditUser = async (req, res) => {
     const conn = await validar.DataBaseConnection(req, res);
@@ -59,7 +82,7 @@ controller.EditUser = async (req, res) => {
         if (err) {
             res.send(err);
         }
-        res.redirect("/Empleados/Menu");
+        res.redirect("/Empleados");
     });
 }
 

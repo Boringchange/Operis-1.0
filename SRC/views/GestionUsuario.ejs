@@ -23,7 +23,7 @@
             <div class="col-md">
                 <div class="card text-center">
                     <div class="card-body">
-                        <form action="/Empleados/Menu/Create" method="post">
+                        <form action="/Empleados/Create" method="post">
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABN5JREFUeF7tnF9u00AQxmdSWUKkEr0B7Q3aEwAnaHlDdSXaE8Q9Ae0JWHMBglRXvBFOQHoCegPCCQhSjRDFGbTBQahq6mw84/Wm49dMv9n9frvr9f4pgj5eHUCv2TU5KADPjUABKADPDnhOrz1AAXh2wHN67QEKwLMDntNrD1AAnh3wnF57gALw7IDn9NoDFIBnBzyn1x6gADw74Dm99gAF4NkBz+m1B9wnABvJ4cb15HqXgDY7CNsEuGHrj0DjCcElAo6iTvRxbPpjz740lr6RHrCeHDwFmvQIcG+RmiHQALCTXpmz4SLxIceIApi2eLr+AABPlzRpGGH0fJV7hBiAbrK/DYSfAGA6zNR4xoD0LDfnlzU0WvunIgDskENE1ny+B2lnFSGwA3iQvNhco7XPDC3/JrxxgcXOT/N+xEfVvxI7gG4vti1/2TG/ypFhnmbPqoJC+p0VQDfZPwTCt5IGEOLzH+ZsIJmjSW1eAL34CwBsCldglKfZlnCOxuTZAJSzHjv2yz8r9EJmBBAnQPBa3v3pp/NxbjLTSC7hJIwADoZA9ES4vH/lES9ycyb1om+kCrMkfAB6sR1+thspvSCAbi+mu+qQpxmbZ9O2xGVYVcG58sx0uI2Y6VbVgzuvArjRMsIFkMQjIHjM3dJv1UP4mptMZLobMIDVeAkHDCDuA8HLhnrAu9xkhxK5ggXwMDnYQyK79i/+SC5HBAug3Hz5Ju8+fM/fZHX3GOYWM1gAtkbrycEJEb2ShICIp1fm7EQqR9AAyk33ESA8EjGI4HvUiTYltyiDBmBNF12SRjrKzXlfBG4pGjyAvxAEZkRIaW7OE0nzp2UPdSnipjGsEBCWnnZWGSoNtGrpgm0p4raKsAxHNYedew3AQplu0sPaifNHGsK7AoqTupvw9x7ArGeUIPbAno6bt2+AeAFAgwKKQV3jF13dXOkhqKpy021MAJA876M9oIqC8O8KQNjgKnkFUOWQ8O/3FoAd32kCu+U9ALt54rpffIlAI6LOEDqTC8n3xP9toApY1bzetT2xfgeU50J7AGDvAXDvWNkzoYMCi5RrhnTrt0uIX8LlUrRdBRVfKihNMxFGpxKLcsH1gHIjxp4HFVujn9Otx4R4xH1ONCgA3V5sT8I11ernDa8mT7Nj17F3XnwQAOyQ85t+vV30zheXOXfo9COMjjmGpCAArPf2P7TI/BmXfp5mR3Vhtx5AN9k3QGhnOu17GPYMWg2gyZMPy9Kte2KitQDKqaa9gNH0bMeVxTjCaGvZ90FrAbDucLla6hpfYyhqJYDyC9e2/mCeAoutZb6YWwmg1S/eOU1C+vwQV0tcaC2o28zlO646zXSCuMxXCaDRy3fcCAK4zFcJoInjhty+/9ML4DLfAgDiARHsipkkKIwIH69MttC/yBEsxp3SlQC6TV6+43fhMk+zHX5ZPsVFANx5a5CvKDJK3DtY3KVUANyOOuopAEfDuMMVALejjnoKwNEw7nAFwO2oo14lAEc9DXd0QAE4GsYdrgC4HXXUUwCOhnGHKwBuRx31FICjYdzhCoDbUUc9BeBoGHe4AuB21FFPATgaxh2uALgdddRTAI6GcYcrAG5HHfUUgKNh3OEKgNtRRz0F4GgYd7gC4HbUUU8BOBrGHa4AuB111FMAjoZxh/8B4C7/cARBLaYAAAAASUVORK5CYII="/>
                             <h3>Agregar usuario</h3>
                             <h4 class="letra_cuadro1">Nombre del usuario</h4>
@@ -106,12 +106,12 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <form action="/Empleados/Menu/EditUserSection" method="post">
+                                                    <form action="/Empleados/EditUserSection" method="post">
                                                         <button class="btn btn-secondary" name="IdToEdit" value="<%=datos[i].idper%>">MODIFICAR</button>
                                                     </form>
                                                 </div>
                                                 <div class="col">
-                                                    <form action="/Empleados/Menu/DeleteUser" method="post">
+                                                    <form action="/Empleados/DeleteUser" method="post">
                                                         <button class="btn btn-danger" name="IdToDelete" value="<%=datos[i].idper%>">ELIMINAR</button>
                                                     </form>
                                                 </div>
@@ -132,7 +132,7 @@
     </main>
     <footer>
     <div id="rowdown" class="row">
-        <form action="/Empleados" method="get">
+        <form action="/direct" method="get">
             <button id="return" class="btn btn-secondary mt-2">Regresar</button>
         </form>
     </div>
