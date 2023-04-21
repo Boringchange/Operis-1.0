@@ -102,4 +102,14 @@ controller.EditUser = async (req, res) => {
         });
 
     }
+    controller.DeletePaq = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Paquete WHERE idpaq = ${req.body.PaqToDelete}`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect('/PaqueteriaAlm');
+            }
+        });
+    }
 module.exports = controller;

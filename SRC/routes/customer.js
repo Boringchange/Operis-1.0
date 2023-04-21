@@ -15,5 +15,5 @@ router.post('/Empleados/Menu/DeleteUser', customerController.DeleteUser);
 router.get('/PaqueteriaAlm', customerController.paqueteriaAlmac);
 router.get('/PaqueteriaAlm/AddSection', customerController.AddPaqSection);
 router.post('/PaqueteriaAlm/AddPaq', customerController.AddPaq);
-
+router.post('/PaqueteriaAlm/DeletePaq', customerController.DeletePaq);
 module.exports = router;

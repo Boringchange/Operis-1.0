@@ -99,8 +99,8 @@
                                         </form>
                                     </div>
                                     <div class="col mt-2">
-                                        <form action="">
-                                            <button class="btn btn-danger">Eliminar</button>
+                                        <form action="/PaqueteriaAlm/DeletePaq" method="post">
+                                            <button name="PaqToDelete" value="<%= paquetes[i].idpaq%>" class="btn btn-danger">Eliminar</button>
                                         </form>
                                     </div>
                                 </div>
