@@ -135,4 +135,24 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
+    controller.EditPaqSection = async (req, res) => {
+        console.log(req.body.PaqToEdit);
+        res.render('ModificacionPaquete', {IdEditPaq : req.body.PaqToEdit});
+    }
+    controller.EditPaq = async (req, res) => {
+        const conn = validar.DataBaseConnection(req, res);
+        conn.query(`UPDATE Paquete SET indate = '${req.body.NewComeDay}', outdate = '${req.body.NewExitDay}', desc_paq = '${req.body.des}' where idpaq = ${req.body.IdPaq}`, err => {
+            if (err){
+                res.send(err);
+            } else{
+                conn.query(`UPDATE Paq_cli SET usuario=${req.body.NewIdClient} where idpaq = ${req.body.IdPaq}`, err => {
+                    if (err){
+                        res.send(err);
+                    } else{
+                        res.redirect('/PaqueteriaAlm');
+                    }
+                });
+            }
+        });
+    }
 module.exports = controller;

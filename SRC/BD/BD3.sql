@@ -126,6 +126,8 @@ insert into Personal values (123356, 'Omar','123', 'administrador',2,'5555555555
 insert into Personal values (123556, 'Aaron','123', 'administrador',3,'5555555555');
 
 insert into Cliente values (1, 'Pablo');
+insert into Cliente values (2, 'Pedro');
+insert into Cliente values (3, 'Teresa');
 
 select tipo_per from Personal where idper = 123456;
 

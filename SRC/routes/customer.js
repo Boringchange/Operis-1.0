@@ -17,4 +17,7 @@ router.get('/PaqueteriaAlm', customerController.paqueteriaAlmac);
 router.get('/PaqueteriaAlm/AddSection', customerController.AddPaqSection);
 router.post('/PaqueteriaAlm/AddPaq', customerController.AddPaq);
 router.post('/PaqueteriaAlm/DeletePaq', customerController.DeletePaq);
+router.post('/PaqueteriaAlm/EditPaqSection', customerController.EditPaqSection);
+router.post('/PaqueteriaAlm/EditPaq', customerController.EditPaq);
+
 module.exports = router;
