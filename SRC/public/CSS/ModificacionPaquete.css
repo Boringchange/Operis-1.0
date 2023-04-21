@@ -27,14 +27,11 @@
 
 .container textarea{
     height: 75px;
-    width: 350px;
+    width: 100%;
     background-color: #95abc3;
 }
 #confirmar{
     width: 200px;
     background-color: #0ca789;
     color: white;
-}
-.container .rowmid .card h5{
-    color: #808080;
 }

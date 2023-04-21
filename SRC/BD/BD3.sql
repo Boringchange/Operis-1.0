@@ -124,11 +124,13 @@ insert into Personal values (123356, 'Omar','administrador',2,'5555555555');
 
 insert into Personal values (123556, 'Aaron','administrador',3,'5555555555');
 
+insert into Cliente values (1, 'Pablo');
 
 select tipo_per from Personal where idper = 123456;
 
 select * from Personal;
 select * from Paq_cli;
-select * from Personal;
+select * from Paquete;
+select * from Cliente;
 
 ALTER USER 'root'@'localhost' identified WITH mysql_native_password BY 'n0m3l0';

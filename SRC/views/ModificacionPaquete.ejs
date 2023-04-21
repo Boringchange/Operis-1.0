@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modificacion paquete</title>
+    <link rel="stylesheet" href="../CSS/ModificacionPaquete.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <style>
+        #rowup{
+            height: 5vh;
+        }
+
+        #rowmid{
+            height: 85vh;
+        }
+
+        #rowdown{
+            height: 10vh;
+        }
+
+        .container .card h3{
+            color: #024059;
+        }
+
+        .container .card{
+            border-radius: 70px;
+            width: 35vw;
+            background-color: #d6dfe8;
+        }
+
+        .container input{
+            width: 250px;
+            background-color: #95abc3;
+        }
+
+        .container textarea{
+            height: 75px;
+            width: 100%;
+            background-color: #95abc3;
+        }
+        #confirmar{
+            width: 200px;
+            background-color: #0ca789;
+            color: white;
+        }
+        .container h5{
+            color: ;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="rowup" class="row"></div>
+    <div id="rowmid" class="row">
+        <div class="col-md"></div>
+        <div class="col-md">
+            <div class="card text-center">
+                <div class="card-body">
+                    <img src="data:image/png;base64,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"/>
+                    <h3>Modificacion de paquete</h3>
+                    <h5>ID del paquete</h5>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <h5>ID del destinatario</h5>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h5>Fecha de llegada</h5></div>
+                        <div class="col"><h5>Fecha de salida</h5></div>
+                    </div>
+                    <div id="inputespecial" class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <input style="width: 120px" type="text" class="form-control">
+                        </div>
+                        <div class="col"></div>
+                        <div class="col">
+                            <input style="width: 120px" type="text" class="form-control">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <h5 class="mt-2">Descripcion</h5>
+                    </div>
+                    <div class="row">
+                        <textarea name="" id="" class="form-control"></textarea>
+                    </div>
+                    <di class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <form action="">
+                                <button id="confirmar" class="btn mt-2">Confirmar</button>
+                            </form>
+                        </div>
+                        <div class="col"></div>
+                    </di>
+                </div>
+            </div>
+        </div>
+        <div class="col-md"></div>
+    </div>
+    <div id="rowdown" class="row">
+        <form action="">
+            <button class="btn btn-secondary">Regresar</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
