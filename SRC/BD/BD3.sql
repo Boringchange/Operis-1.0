@@ -117,13 +117,13 @@ foreign key(idper) references Personal (idper) on update cascade on delete casca
 foreign key(idprodu) references Producto (idprodu) on update cascade on delete cascade
 );
 
-insert into Personal values (123456, 'Joshua','administrador',1,'5555555555');
+insert into Personal values (123456, 'Joshua','123', 'administrador',1,'5555555555');
 
-insert into Personal values (121212, 'Angel','Ingeniero de mantenimiento',1,'5555555555');
+insert into Personal values (121212, 'Angel','123', 'Ingeniero de mantenimiento',1,'5555555555');
 
-insert into Personal values (123356, 'Omar','administrador',2,'5555555555');
+insert into Personal values (123356, 'Omar','123', 'administrador',2,'5555555555');
 
-insert into Personal values (123556, 'Aaron','administrador',3,'5555555555');
+insert into Personal values (123556, 'Aaron','123', 'administrador',3,'5555555555');
 
 insert into Cliente values (1, 'Pablo');
 

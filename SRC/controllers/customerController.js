@@ -60,9 +60,9 @@ controller.isAdmin = async (req, res) => {
 controller.CreateUser = async (req, res) => {
     if (req.session.tipo == "administrador"){
         const conn = await validar.DataBaseConnection(req, res);
-        conn.query(`INSERT INTO Personal VALUES (DEFAULT, '${req.body.NewUser}', '${req.body.NewTypeUser}', ${req.body.NewTypeSalary}, '${req.body.NewTelUser}')`, (err) => {
+        conn.query(`INSERT INTO Personal VALUES (DEFAULT,'${req.body.NewPass}','${req.body.NewUser}', '${req.body.NewTypeUser}', ${req.body.NewTypeSalary}, '${req.body.NewTelUser}')`, (err) => {
             if (!err){
-                res.redirect("/Empleados/Menu");
+                res.redirect("/Empleados");
             }
             else{
                 res.send(err);
@@ -92,7 +92,7 @@ controller.EditUser = async (req, res) => {
             if (err) {
                 res.send(err);
             } else {
-                res.redirect("/Empleados/Menu");
+                res.redirect("/Empleados");
             }
         });
 
