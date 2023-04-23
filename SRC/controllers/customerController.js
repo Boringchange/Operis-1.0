@@ -78,7 +78,8 @@ controller.EditUserSection = (req, res) => {
 }
 controller.EditUser = async (req, res) => {
     const conn = await validar.DataBaseConnection(req, res);
-    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}', tipo_per = '${req.body.NewType}', sueldo_per = ${req.body.NewSalary} where idper = ${req.body.IdEdit}`, err => {
+
+    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}',pass = , tipo_per = '${req.body.NewType}', sueldo_per = ${req.body.NewSalary} where idper = ${req.body.IdEdit}`, err => {
         if (err) {
             res.send(err);
         }
