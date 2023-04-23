@@ -156,4 +156,7 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
+    controller.SendPaq = (req, res) =>{
+        res.render('EntregaPaquete.ejs')
+    }
 module.exports = controller;
