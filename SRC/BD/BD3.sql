@@ -7,7 +7,7 @@ idpaq int primary key not null,
 tipo_paq varchar(15),
 indate varchar(10),
 outdate varchar(10),
-dest_pac varchar(40),
+estado_paq varchar(40),
 direc_paq varchar(100),
 desc_paq varchar(100)
 );
