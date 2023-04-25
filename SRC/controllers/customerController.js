@@ -71,15 +71,25 @@ controller.CreateUser = async (req, res) => {
     }
 
 }
-controller.EditUserSection = (req, res) => {
-    if (req.session.tipo == "administrador") {
-        res.render("CambioUser.ejs", {idtoedit: req.body.IdToEdit});
+controller.EditUserSection = async (req, res) => {
+    if (req.session.tipo == "administrador"){
+        const conn = validar.DataBaseConnection(req, res);
+        let PerEdits;
+        conn.query(`SELECT FROM Personal where id = ${req.body.IdToEdit}`, (err, PerEdit) => {
+            if (err){
+                res.send(err);
+            }
+            else{
+                PerEdits = PerEdit;
+            }
+        });
+        res.render("CambioUser.ejs", {Personal: PerEdits});
     }
 }
 controller.EditUser = async (req, res) => {
     const conn = await validar.DataBaseConnection(req, res);
 
-    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}',pass = , tipo_per = '${req.body.NewType}', sueldo_per = ${req.body.NewSalary} where idper = ${req.body.IdEdit}`, err => {
+    conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}',pass = '${req.body.NewPassword}', tipo_per = '${req.body.NewType}', sueldo_per = ${req.body.NewSalary}, tel_per = '${req.body.NewTel}' where idper = ${req.body.IdEdit}`, err => {
         if (err) {
             res.send(err);
         }
