@@ -71,8 +71,8 @@
         </div>
         <div class="row">
             <div class="table-responsive">
-                <table class="table table-bordered align-middle text-center">
-                    <thead>
+                <table class="table text-center">
+                    <thead class="align-middle">
                         <tr id="theader">
                             <th>ID paquete</th>
                             <th>ID destinatario</th>
@@ -82,7 +82,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider">
+                    <tbody id="tbody" class="align-middle">
                     <%
                     for (let i in paquetes){%>
                         <tr>

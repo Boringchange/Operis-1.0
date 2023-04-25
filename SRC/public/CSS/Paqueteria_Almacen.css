@@ -160,6 +160,11 @@ body{
 
 #theader{
     height: 5%;
+    background-color: #9daec0;
+}
+
+#tbody{
+    background-color: #d6dfe8;
 }
 
 #btnmod{

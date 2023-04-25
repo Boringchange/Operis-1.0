@@ -39,3 +39,8 @@
 .container .rowmid .card h5{
     color: #808080;
 }
+
+#btnregresar{
+    max-width: 130px;
+    max-height: 50px;
+}
