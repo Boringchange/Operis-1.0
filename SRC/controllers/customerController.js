@@ -173,6 +173,9 @@ controller.EditUser = async (req, res) => {
         });
     }
     controller.SendPaq = (req, res) =>{
-        res.render('EntregaPaquete.ejs')
+        res.render('EntregaPaquete.ejs');
+    }
+    controller.DispCyber = (req, res) =>{
+        res.render('DisponibilidadCyber.ejs');
     }
 module.exports = controller;

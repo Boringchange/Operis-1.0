@@ -20,5 +20,6 @@ router.post('/PaqueteriaAlm/DeletePaq', customerController.DeletePaq);
 router.post('/PaqueteriaAlm/EditPaqSection', customerController.EditPaqSection);
 router.post('/PaqueteriaAlm/EditPaq', customerController.EditPaq);
 router.get('/PaqueteriaAlm/EnviarPaq', customerController.SendPaq);
+router.get('/CyberDisp', customerController.DispCyber);
 
 module.exports = router;
