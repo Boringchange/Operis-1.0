@@ -145,6 +145,10 @@ body{
     color: #026671;
 }
 
-.container-fluid .table{
+#headers{
+    background-color: #96a8a9;
+}
 
+#datostabla{
+    background-color: #c2d6d8;
 }
