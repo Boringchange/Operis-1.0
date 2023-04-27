@@ -6,6 +6,7 @@ controller.inicio = (req, res) => {
     res.render('index');
 };
 controller.operisDirect =async (req, res) => {
+
     if (req.session.ID === undefined){
         req.session.ID = req.body.idForm;
         req.session.Password = req.body.password;
@@ -18,6 +19,7 @@ controller.operisDirect =async (req, res) => {
             const IsTheBoss = await validar.IsAlreadyAdmin(req, res);
             console.log(IsTheBoss);
             if (IsTheBoss){
+                console.log("Es el jefazo");
                 req.session.tipo = "administrador";
                 res.render('Operis_direct', {tipo: req.session.tipo});
             }else{
@@ -72,18 +74,22 @@ controller.CreateUser = async (req, res) => {
 
 }
 controller.EditUserSection = async (req, res) => {
+    console.log(req.session.tipo);
     if (req.session.tipo == "administrador"){
-        const conn = validar.DataBaseConnection(req, res);
-        let PerEdits;
-        conn.query(`SELECT FROM Personal where id = ${req.body.IdToEdit}`, (err, PerEdit) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Personal where idper = ${req.body.IdToEdit}`, (err, PerEdit) => {
             if (err){
+                console.log(err);
                 res.send(err);
             }
             else{
-                PerEdits = PerEdit;
+                console.log(PerEdit);
+                res.render("CambioUser.ejs", {Personal: PerEdit});
             }
         });
-        res.render("CambioUser.ejs", {Personal: PerEdits});
+    }
+    else{
+        res.send("No es admin");
     }
 }
 controller.EditUser = async (req, res) => {
