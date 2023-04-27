@@ -175,7 +175,14 @@ controller.EditUser = async (req, res) => {
     controller.SendPaq = (req, res) =>{
         res.render('EntregaPaquete.ejs');
     }
-    controller.DispCyber = (req, res) =>{
-        res.render('DisponibilidadCyber.ejs');
+    controller.DispCyber = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Computador`, (err, computadoras) => {
+            if (err){
+                res.send(err);
+            } else {
+                res.render('DisponibilidadCyber.ejs', {comp:computadoras});
+            }
+        });
     }
 module.exports = controller;

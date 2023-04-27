@@ -72,7 +72,7 @@ foreign key(idabast) references Abastecedor (idabast) on update cascade on delet
 
 create table Computadora(
 idcomp int primary key not null,
-medhr_compu int
+hr_compu varchar(1000) default "sin hora"
 );
 
 create table Renta(
@@ -128,6 +128,8 @@ insert into Personal values (123556, 'Aaron','123', 'administrador',3,'555555555
 insert into Cliente values (1, 'Pablo');
 insert into Cliente values (2, 'Pedro');
 insert into Cliente values (3, 'Teresa');
+insert into Computadora values (3, 'Teresa');
+
 
 select tipo_per from Personal where idper = 123456;
 
@@ -135,5 +137,6 @@ select * from Personal;
 select * from Paq_cli;
 select * from Paquete;
 select * from Cliente;
+select * from Computadora;
 
 ALTER USER 'root'@'localhost' identified WITH mysql_native_password BY 'n0m3l0';
