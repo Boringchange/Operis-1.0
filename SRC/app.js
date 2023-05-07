@@ -23,7 +23,7 @@ app.use(myconnection(mysql, {
    host: 'localhost',
    user: 'root',
    password: 'n0m3l0',
-   port: 3308,
+   port: 3306,
    database: 'NEGOCIO3'
 }, 'single'));
 app.use(cookieParser('culosnegros123456789'));
