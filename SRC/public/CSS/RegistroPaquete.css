@@ -22,7 +22,12 @@
 }
 
 .container input{
-    width: 250px;
+    width: 350px;
+    background-color: #95abc3;
+}
+
+.container select{
+    width: 350px;
     background-color: #95abc3;
 }
 
@@ -40,7 +45,31 @@
     color: #808080;
 }
 
+.container .datebox{
+    width: 120px;
+}
+
 #btnregresar{
     max-width: 130px;
     max-height: 50px;
+}
+
+.container textarea{
+    resize: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

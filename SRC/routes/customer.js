@@ -21,5 +21,6 @@ router.post('/PaqueteriaAlm/EditPaqSection', customerController.EditPaqSection);
 router.post('/PaqueteriaAlm/EditPaq', customerController.EditPaq);
 router.get('/PaqueteriaAlm/EnviarPaq', customerController.SendPaq);
 router.get('/CyberDisp', customerController.DispCyber);
+router.get('/CyberDisp/GestionEquipos', customerController.EquiposCyber);
 
 module.exports = router;

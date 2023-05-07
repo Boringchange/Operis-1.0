@@ -45,8 +45,8 @@ create table Presupuesto(
 idpres int primary key not null,
 dia_pres varchar(10),
 gan_pres int,
-inv_pres int,
-consu_pres int
+ingreso_pres int,
+gastos_pres int
 );
 
 create table Abastecedor(

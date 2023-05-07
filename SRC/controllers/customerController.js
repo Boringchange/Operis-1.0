@@ -185,4 +185,7 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
+    controller.EquiposCyber = (req, res)=>{
+        res.render('EquiposCyber.ejs');
+    }
 module.exports = controller;
