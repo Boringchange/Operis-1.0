@@ -21,13 +21,22 @@
 }
 
 .container input{
-    width: 250px;
+    width: 350px;
     background-color: #95abc3;
+}
+
+.container select{
+    width: 350px;
+    background-color: #95abc3;
+}
+
+.container .datebox{
+    width: 120px;
 }
 
 .container textarea{
     height: 75px;
-    width: 100%;
+    width: 350px;
     background-color: #95abc3;
 }
 #confirmar{
