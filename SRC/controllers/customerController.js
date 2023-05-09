@@ -2,6 +2,9 @@ const controller = {};
 const validar = require('../Scripts BD/ValidarEnBase');
 const e = require("express");
 
+controller.RedOperis = (req, res) => {
+    res.redirect(`/Operis`);
+}
 controller.inicio = (req, res) => {
     res.render('index');
 };
@@ -55,7 +58,7 @@ controller.isAdmin = async (req, res) => {
             }
         });
     } else {
-        res.redirect('/direct');
+        res.redirect('/Operis/direct');
     }
 
 }
@@ -64,7 +67,7 @@ controller.CreateUser = async (req, res) => {
         const conn = await validar.DataBaseConnection(req, res);
         conn.query(`INSERT INTO Personal VALUES (DEFAULT,'${req.body.NewPass}','${req.body.NewUser}', '${req.body.NewTypeUser}', ${req.body.NewTypeSalary}, '${req.body.NewTelUser}')`, (err) => {
             if (!err){
-                res.redirect("/Empleados");
+                res.redirect("/Operis/Empleados");
             }
             else{
                 res.send(err);
@@ -95,11 +98,13 @@ controller.EditUserSection = async (req, res) => {
 controller.EditUser = async (req, res) => {
     const conn = await validar.DataBaseConnection(req, res);
 
+    console.log(req.body);
+
     conn.query(`UPDATE Personal SET nom_per = '${req.body.NewName}',pass = '${req.body.NewPassword}', tipo_per = '${req.body.NewType}', sueldo_per = ${req.body.NewSalary}, tel_per = '${req.body.NewTel}' where idper = ${req.body.IdEdit}`, err => {
         if (err) {
             res.send(err);
         }
-        res.redirect("/Empleados");
+        res.redirect("/Operis/Empleados");
     });
 }
 
@@ -109,7 +114,7 @@ controller.EditUser = async (req, res) => {
             if (err) {
                 res.send(err);
             } else {
-                res.redirect("/Empleados");
+                res.redirect("/Operis/Empleados");
             }
         });
 
@@ -177,7 +182,7 @@ controller.EditUser = async (req, res) => {
     }
     controller.DispCyber = async (req, res) =>{
         const conn = await validar.DataBaseConnection(req, res);
-        conn.query(`SELECT * FROM Computador`, (err, computadoras) => {
+        conn.query(`SELECT * FROM Computadora`, (err, computadoras) => {
             if (err){
                 res.send(err);
             } else {
