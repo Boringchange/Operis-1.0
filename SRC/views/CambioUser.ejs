@@ -54,7 +54,7 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form action="/Empleados/EditUser" method="post">
+                            <form action="/Operis/Empleados/EditUser" method="post">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABWCAYAAABVVmH3AAAAAXNSR0IArs4c6QAABHtJREFUeF7tm19uE0kQxqsmHoGYSBtOQDgB4QQkJ9jwttiWEg6wuDkByQkY7wXWkexo33BOgDkB4QRkT7BGyqyQcFyorWQ3JPb8ydRnj0215Kfu+dz962/a3dVlJisQAgxRNVEysCATGFgDCyIAkjXHGlgQAZCsOdbAggiAZM2xBhZEACRrjjWwIAIgWXOsgQURAMmaYw0siABI1hy7rGDXf3/xTIJgl4i2iGjz8uOHM2CSoUgwuAhGJ1/jv85AY1yILMyx0avGHjEdXAOZNcDOBV8crgpgdbAbbn/jm3x7f+nQLJi364Vd8ke3XfzBaj2hCjZy9S0SflfApbNodJJ272W1UBXrjRrY0k690W9mPjyPu34pWcqiBjZqNfzrv61JQZif/xt3+5qa89JSAbvumtsi4sFql7Ok3XusLToPPRWwCLf+N3iWl0l83MmCEbn6PgnvZbVTrWd5ncTHp9M0S4O9737bXJO1z6odvibGTCfncc/vg1PLumseiMibrHaa9cy8cx53BxCwkWs4Enqr2eGbWkm7l2mAFQRbj0m4hQSb5oyr711BsM0BiTwzsD8SyHzFsoBFDg+WcvyAmWOzZmpK/U+6FDQ6JATd5uQE6w8nqgeULA+MaNSZFTRSWArwu4KQw4fDuDPMGmiV6hXATgIvH2GDYv6QxN25OlFjLKXB+k5ErnFGQo80OnRLg+l1EvdiiDZQVAns5Dj5p3o/hb6EQbi5bMuA56AC9tK1pyT0RBXukrpVGWx9i8Y8IKZfVOAyHSVxb19FawEiao71fZ+ED8fSLw2X6VNI4XaZJeDBqzo8IDMOxkew7dZNM0yuZ8o4l+kopNCVgTpZmloNQRsVGt2a1nl/TTOikSsUxmP6m0gO8sRe8wBbSbBXA5/Eamltl4h3pwZqhL5QQH0h7mtfwaw02GnO8uvwiEZn6PyBnw5sntdYo42B1aA4RWPlwfp1tnbBqcfd2tq9T2V3Abd3J82pd1G68zh2sMvE6x31Wy0Z06/MfNcQ3pBJBiLcD4PwRBu2LtR0NZUDwh0S4HKNkUn6wnQ4yxW5RBbUqBTYB665yyL+htanZyLL0mUi3hls1Gr4aNY8z/JDZn4+6x4fOat30S4MVjv5rXCnc1wsFtYEPFAI7MKhXgFYgnBiIbDrrfo78cfTCpSqZyLmBhs5fMZLwfkaEstOnh0DKuegdHQLnfhWEOj15oOk3dvJer6yYKu0BNyEmDPnAJKJWMqxwKTiLKPlrT9N2r2naY0r6djI4TNd8hKc2Y7ladpaW02wrcY/RLRRevBIAZZ2Eh+7WV9RObCXfy/CZbnowU5dDioHFtUhPZ7/K6VlfU9Cl1RTj2fUqHY6KwKXuo9dJrB5dgeICZ2lmQp2LknFSqM1sEogb8lULDizSo6t1F9EDSzoDTKwiwFb32cK1LcpoLEMqnS7kDtsCIKxsrIGFjS1BtbAggiAZM2xBhZEACRrjjWwIAIgWXOsgQURAMmaYw0siABI1hxrYEEEQLLmWAMLIgCSNceCwH4Hrs8SdY85fKIAAAAASUVORK5CYII="/>
                                 <h3>Modificar usuario</h3>
                                 <h5 class="mt-1">Nombre de usuario</h5>
@@ -148,7 +148,7 @@
                                     </div>
                                     <div class="col"></div>
                                 </div>
-                                <button id="btnguardar" name="IdEdit" value="" class="btn mt-3">Guardar cambios</button>
+                                <button id="btnguardar" name="IdEdit" value="<%=Personal[0].idper%>" class="btn mt-3">Guardar cambios</button>
                             </form>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                 <div class="col-md"></div>
             </div>
             <div class="row" id="rowdown">
-                <form action="/Empleados">
+                <form action="/Operis/Empleados">
                     <button class="btn btn-light">Regresar</button>
                 </form>
             </div>
