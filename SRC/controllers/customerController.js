@@ -193,4 +193,7 @@ controller.EditUser = async (req, res) => {
     controller.EquiposCyber = (req, res)=>{
         res.render('EquiposCyber.ejs');
     }
+    controller.VentaPape = (req, res) =>{
+        res.render('VentaPapeleria.ejs');
+    }
 module.exports = controller;

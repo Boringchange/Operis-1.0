@@ -68,7 +68,7 @@
                         <tr>
                             <th>Equipo</th>
                             <th>Estado</th>
-                            <th>Tiempo restante</th>
+                            <th>Tiempo de inicio</th>
                             <th>Tarifa</th>
                             <th>Accion</th>
                         </tr>
@@ -79,7 +79,7 @@
                             %>
                         <tr>
                             <td></td>
-                            <td></td>
+                            <td>Disponible/rentada</td>
                             <td>
                                 <div id="timer">
                                     No esta en uso.
@@ -112,8 +112,9 @@
                             <td>$15/30min</td>
                             <td>
                                 <form action="">
-                                    <button class="btn btn-secondary">Asignar renta/modificar renta</button>
+                                    <button class="btn btn-secondary mb-2" style="">Empezar renta</button>
                                 </form>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal">Finalizar renta</button>
                             </td>
                         </tr>
                         <%
@@ -125,6 +126,75 @@
             </div>
         </div>
         <div class="col-md-1"></div>
+    </div>
+    <div class="modal fade"  id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header" id="popupHeader">
+                    <h4>Finalizar renta</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row text-center">
+                            <i class="bi bi-pc-display icon"></i>
+                            <h5>ID</h5>
+                            <div class="row mt-2">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="id de compu" disabled>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <h5>Hora de inicio de renta</h5>
+                            <div class="row mt-2">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <input type="time" class="form-control" disabled>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <h5>Hora de finalizacion de renta</h5>
+                            <div class="row mt-2">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <input type="time" class="form-control" disabled>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <h5>Tarifa</h5>
+                            <div class="row mt-2">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="tarifa" disabled>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <h5>Total a pagar</h5>
+                            <div class="row mt-2">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="dinerito">
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</button>
+                                </div>
+                                <div class="col"></div>
+                                <div class="col">
+                                    <form action="">
+                                        <button class="btn btn-outline-secondary">Finalizar</button>
+                                    </form>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
