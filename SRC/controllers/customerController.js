@@ -186,7 +186,19 @@ controller.EditUser = async (req, res) => {
             if (err){
                 res.send(err);
             } else {
-                res.render('DisponibilidadCyber.ejs', {comp:computadoras});
+                conn.query(`SELECT * FROM Renta_comp`, (err, renta_comp) => {
+                    if (err){
+                        res.send(err);
+                    } else {
+                        conn.query(`SELECT * FROM Renta`, (err, renta) => {
+                            if (err){
+                                res.send(err);
+                            } else {
+                                res.render("DisponibilidadCyber", {comp:computadoras, rentcomp: renta_comp, rent:renta});
+                            }
+                        });
+                    }
+                });
             }
         });
     }

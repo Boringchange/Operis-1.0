@@ -74,9 +74,6 @@
                         </tr>
                         </thead>
                         <tbody id="datostabla" class="align-middle text-center">
-                        <%
-                        for (let i in comp){
-                            %>
                         <tr>
                             <td></td>
                             <td>Disponible/rentada</td>
@@ -84,30 +81,6 @@
                                 <div id="timer">
                                     No esta en uso.
                                 </div>
-                                <%
-                                if (!comp[i].hr_compu == "sin hora"){
-                                    %>
-                                    <script>
-                                        var countdowndate = new Date ("<%comp[i].hr_compu%>").getTime();
-                                        var x = setInterval(function () {
-                                        var now = new Date().getTime();
-                                        var distance = countdowndate - now;
-
-                                        var hours =  Math.floor((distance % (1000 * 60 * 24)) / (1000 * 60 * 60));
-                                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                                        document.getElementById("timer").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
-
-                                        if (distance < 0){
-                                            clearInterval(x);
-                                            document.getElementById("timer").innerHTML = "Tiempo expirado";
-                                        }
-                                        }, 1000);
-                                    </script>
-                                <%
-                                }
-                                %>
                             </td>
                             <td>$15/30min</td>
                             <td>
@@ -117,9 +90,6 @@
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal">Finalizar renta</button>
                             </td>
                         </tr>
-                        <%
-                        }
-                        %>
                         </tbody>
                     </table>
                 </div>
