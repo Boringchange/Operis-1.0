@@ -78,7 +78,7 @@ hr_compu varchar(1000) default "sin hora"
 create table Renta(
 id_rent int primary key not null,
 hr_ingr varchar(9),
-hr_sal varchar(9),
+hr_sal varchar(9) default "",
 cost_tot int,
 dia_rent varchar(10)
 );
@@ -138,5 +138,7 @@ select * from Paq_cli;
 select * from Paquete;
 select * from Cliente;
 select * from Computadora;
+select * from renta_comp;
+select * from renta;
 
 ALTER USER 'root'@'localhost' identified WITH mysql_native_password BY 'n0m3l0';

@@ -74,52 +74,85 @@
                         </tr>
                         </thead>
                         <tbody id="datostabla" class="align-middle text-center">
-                        <%
-                        for (let i in comp){
-                            %>
-                        <tr>
-                            <td></td>
-                            <td>Disponible/rentada</td>
-                            <td>
-                                <div id="timer">
-                                    No esta en uso.
-                                </div>
-                                <%
-                                if (!comp[i].hr_compu == "sin hora"){
+                            <%
+                                for (let i in comp){
                                     %>
-                                    <script>
-                                        var countdowndate = new Date ("<%comp[i].hr_compu%>").getTime();
-                                        var x = setInterval(function () {
-                                        var now = new Date().getTime();
-                                        var distance = countdowndate - now;
+                                <tr>
+                                    <td>
+                                        <%=comp[i].idcomp%>
+                                    </td>
+                                    <%
+                                    var lastrent = "";
+                                    for (let x in rentcomp){
+                                        if (rentcomp[x].idcomp === comp[i].idcomp){
+                                            lastrent = rentcomp[x].id_rent;
+                                        }else{}
+                                    }
+                                    if (lastrent === "")
+                                    {
+                                        %>
+                                    <td>
+                                        Disponible
+                                    </td>
+                                    <td>
+                                        No esta en uso.
+                                    </td>
+                                    <td>
+                                        <%= comp[i].hr_compu%>
+                                    </td>
+                                    <td>
+                                        <form action="">
+                                            <button class="btn btn-secondary mb-2" style="">Empezar renta</button>
+                                        </form>
+                                    </td>
 
-                                        var hours =  Math.floor((distance % (1000 * 60 * 24)) / (1000 * 60 * 60));
-                                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                                        document.getElementById("timer").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
-
-                                        if (distance < 0){
-                                            clearInterval(x);
-                                            document.getElementById("timer").innerHTML = "Tiempo expirado";
+                            <%
+                                    } else{
+                                        for (let z in rent){
+                                            if (rent[z].idrent === lastrent){
+                                                if (rent[z].hr_sal === ""){
+                                                    %>
+                                <td>
+                                    Rentada
+                                </td>
+                                <td>
+                                    <%=rent[z].hr_ingr%>S
+                                </td>
+                                <td>
+                                    <%= comp[i].hr_compu%>
+                                </td>
+                                <td>
+                                    <form action="">
+                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal">Finalizar renta</button>
+                                    </form>
+                                </td>
+                                                    <%
+                                                } else{
+                                                    %>
+                                <td>
+                                    Disponible
+                                </td>
+                                <td>
+                                    No esta en uso.
+                                </td>
+                                <td>
+                                    <%= comp[i].hr_compu%>
+                                </td>
+                                <td>
+                                    <form action="">
+                                        <button class="btn btn-secondary mb-2" style="">Empezar renta</button>
+                                    </form>
+                                </td>
+                            <%
+                                                }
+                                            }
                                         }
-                                        }, 1000);
-                                    </script>
+                                    }
+                                    %>
+                                </tr>
                                 <%
                                 }
                                 %>
-                            </td>
-                            <td>$15/30min</td>
-                            <td>
-                                <form action="">
-                                    <button class="btn btn-secondary mb-2" style="">Empezar renta</button>
-                                </form>
-                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal">Finalizar renta</button>
-                            </td>
-                        </tr>
-                        <%
-                        }
-                        %>
                         </tbody>
                     </table>
                 </div>
@@ -141,7 +174,7 @@
                             <div class="row mt-2">
                                 <div class="col"></div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="id de compu" disabled>
+                                    <input type="text" class="form-control" placeholder="id de comp u" disabled>
                                 </div>
                                 <div class="col"></div>
                             </div>
