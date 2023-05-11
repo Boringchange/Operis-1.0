@@ -98,7 +98,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-sm- col-md- col-lg-6 col-xl-6 text-start">
-                    <button class="btn btn-success">Agregar producto</button>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalForm">Agregar producto</button>
                 </div>
                 <div class="col-sm- col-md- col-lg-6 col-xl-6 text-end">
                     <div class="row">
@@ -131,6 +131,52 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade"  id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header" id="popupHeader">
+                        <h4>Agregar producto</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row text-center">
+                                <i class="bi bi-clipboard-plus-fill icon"></i>
+                                <h5>Producto</h5>
+                                <div class="row my-2">
+                                    <div class="col-md"></div>
+                                    <div class="col-md">
+                                        <select name="" id="" class="form-control">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md"></div>
+                                </div>
+                                <h5>Cantidad</h5>
+                                <div class="row my-2">
+                                    <div class="col-md"></div>
+                                    <div class="col-md">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="col-md"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md"></div>
+                                    <div class="col-md me-2">
+                                        <button id="closemodal" class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</button>
+                                    </div>
+                                    <div class="col-md ms-2">
+                                        <form action="">
+                                            <button class="btn btn-outline-secondary">Guardar</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -140,6 +186,7 @@
     btn.onclick = function (){
         sidebar.classList.toggle("active");
     }
+
 </script>
 </body>
 </html>

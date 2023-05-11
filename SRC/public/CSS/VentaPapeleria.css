@@ -189,3 +189,31 @@ body{
     color: white;
     border-radius: 20px;
 }
+
+#popupHeader{
+    background-color: #0b6e5a;
+    color: white;
+}
+
+.modal input{
+    width: 200px;
+    background-color: #EDEDED;
+    border-color: #c9c9c9;
+}
+
+.modal select{
+    width: 200px;
+    background-color: #EDEDED;
+    border-color: #c9c9c9;
+}
+
+.modal .icon{
+    color: #0b6e5a;
+    font-size: 40px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
