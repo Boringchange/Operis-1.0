@@ -152,3 +152,19 @@ body{
 #datostabla{
     background-color: #c2d6d8;
 }
+
+#popupHeader{
+    background-color: #026873;
+    color: white;
+}
+
+.container-fluid .modal input{
+    width: 200px;
+    background-color: #EDEDED;
+    border-color: #c9c9c9;
+}
+
+ .container-fluid .modal .icon{
+    color: #026671;
+    font-size: 40px;
+}

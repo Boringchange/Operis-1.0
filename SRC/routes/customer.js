@@ -23,5 +23,6 @@ router.post('/Operis/PaqueteriaAlm/EditPaq', customerController.EditPaq);
 router.get('/Operis/PaqueteriaAlm/EnviarPaq', customerController.SendPaq);
 router.get('/Operis/CyberDisp', customerController.DispCyber);
 router.get('/Operis/CyberDisp/GestionEquipos', customerController.EquiposCyber);
+router.get('/Operis/VentaPape', customerController.VentaPape);
 
 module.exports = router;

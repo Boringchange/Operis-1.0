@@ -1,22 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-main {
-    margin: 0;
-    background-color: #0ca789;
-    min-height: 100vh;
-    align-content: center;
+body {
+
     font-family: 'Poppins', sans-serif;
+}
+
+.container-fluid{
+    background-color: #0ca789;
     padding: 3em;
+    align-content: center;
+    margin: 0;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 h1{
     text-align: center;
     color: white;
     padding-bottom: 1em;
+    font-size: 70px;
 }
 
 #logo{
-    width: 600px;
-    align-items: center;
+    height: 40vh;
+    width: 80vw;
 }
 
 .flex{
