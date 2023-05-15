@@ -144,7 +144,7 @@ body{
     pointer-events: auto;
 }
 
-.container-fluid .principal{
+.principal{
     min-width: 100vw;
     min-height: 100vh;
     background-color: #e6e6e6;
@@ -215,4 +215,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+#tableProduct{
+    max-height: 30%;
+    width: 100%;
 }

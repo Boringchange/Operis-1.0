@@ -211,4 +211,7 @@ controller.EditUser = async (req, res) => {
     controller.InventPape = (req, res) =>{
         res.render('InventarioPapeleria.ejs');
     }
+    controller.ReabastPape = (req, res)=>{
+        res.render('ReabastecimientoPapeleria.ejs');
+    }
 module.exports = controller;

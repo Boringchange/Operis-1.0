@@ -64,13 +64,13 @@
         </div>
         <div class="col-md-10">
             <div class="row">
-                <div class="col-sm- col-md- col-lg-5 col-xl-"></div>
-                <div class="col-sm- col-md- col-lg-2 col-xl- text-center mt-5">
-                    <div id="titulo" class="bg-light">
-                        <h2 class="mb-3">Almacenamiento</h2>
+                <div class="col-sm-12 col-md-1 col-lg-4 col-xl-4-"></div>
+                <div class="col-sm-12 col-md-9 col-lg-4 col-xl-4 text-center mt-5">
+                    <div id="titulo" class="fs-2 mb-2 bg-light">
+                        Reabastecimiento
                     </div>
                 </div>
-                <div class="col-sm- col-md- col-lg-5 col-xl- text-end">
+                <div class="col-sm-12 col-md-2 col-lg-4 col-xl-4 text-end">
                     <i id="iconusr" class='bx bx-user-circle bx-lg mt-2'></i>
                 </div>
             </div>
@@ -80,10 +80,9 @@
                         <thead class="align-middle">
                         <tr id="theader">
                             <th>ID</th>
-                            <th>Nombre del producto</th>
-                            <th>Unidades disponibles</th>
-                            <th>Precio Base</th>
-                            <th>Precio de venta</th>
+                            <th>Nombre del abastecedor</th>
+                            <th>Telefono</th>
+                            <th>Productos</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -92,8 +91,9 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalFormProd">Productos</button>
+                            </td>
                             <td>
                                 <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFormMod">Modificar</button>
                                 <form action="">
@@ -122,7 +122,7 @@
                             <div class="row text-center">
                                 <i class="bi bi-clipboard-plus-fill icon"></i>
                                 <form action="">
-                                    <h5>Nombre del producto</h5>
+                                    <h5 class="mt-2">Nombre del abastecedor</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
@@ -130,7 +130,7 @@
                                         </div>
                                         <div class="col"></div>
                                     </div>
-                                    <h5 class="mt-2">Unidades disponibles</h5>
+                                    <h5 class="mt-2">Telefono</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
@@ -138,21 +138,6 @@
                                         </div>
                                         <div class="col"></div>
                                     </div>
-                                    <h5 class="mt-2">Precio base</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Precio de venta</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col"></div>
@@ -191,7 +176,7 @@
                                         </div>
                                         <div class="col"></div>
                                     </div>
-                                    <h5 class="mt-2">Nombre del producto</h5>
+                                    <h5 class="mt-2">Nombre del abastecedor</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
@@ -199,27 +184,11 @@
                                         </div>
                                         <div class="col"></div>
                                     </div>
-                                    <h5 class="mt-2">Unidades disponibles</h5>
+                                    <h5 class="mt-2">Telefono</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
                                             <input type="number" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Precio base</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Precio de venta</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -235,6 +204,59 @@
                                         <div class="col"></div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade"  id="modalFormProd" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header" id="popupHeader">
+                        <h4>Modificar producto</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row text-center">
+                                <i class="bi bi-clipboard-plus-fill icon"></i>
+                                <h5>Productos</h5>
+                                <table class="table text-center" id="tableProduct">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Producto</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="table-secondary">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <div class="vstack gap-2">
+                                            <h5>Asignar otro producto:</h5>
+                                            <select name="" id="" class="form-select">
+                                                <option value=""></option>
+                                            </select>
+                                            <button class="btn btn-outline-success">Asignar</button>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
+                                    </div>
+                                    <div class="col"></div>
+                                    </div>
                             </div>
                         </div>
                     </div>

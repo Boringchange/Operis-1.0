@@ -25,5 +25,6 @@ router.get('/Operis/CyberDisp', customerController.DispCyber);
 router.get('/Operis/CyberDisp/GestionEquipos', customerController.EquiposCyber);
 router.get('/Operis/VentaPape', customerController.VentaPape);
 router.get('/Operis/InventPape', customerController.InventPape);
+router.get('/Operis/ReabastPape', customerController.ReabastPape);
 
 module.exports = router;
