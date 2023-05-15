@@ -208,4 +208,7 @@ controller.EditUser = async (req, res) => {
     controller.VentaPape = (req, res) =>{
         res.render('VentaPapeleria.ejs');
     }
+    controller.InventPape = (req, res) =>{
+        res.render('InventarioPapeleria.ejs');
+    }
 module.exports = controller;

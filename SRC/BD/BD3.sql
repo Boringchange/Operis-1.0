@@ -29,18 +29,6 @@ foreign key(idpaq) references Paquete (idpaq) on update cascade on delete cascad
 foreign key(idper) references Personal (idper) on update cascade on delete cascade
 );
 
-create table Cliente(
-usuario varchar(30) primary key not null,
-nom_user varchar(40)
-);
-
-create table Paq_cli(
-idpaq int,
-usuario varchar(30),
-foreign key(idpaq) references Paquete(idpaq) on update cascade on delete cascade,
-foreign key(usuario) references Cliente(usuario) on update cascade on delete cascade
-);
-
 create table Presupuesto(
 idpres int primary key not null,
 dia_pres varchar(10),
@@ -78,7 +66,7 @@ hr_compu varchar(1000) default "sin hora"
 create table Renta(
 id_rent int primary key not null,
 hr_ingr varchar(9),
-hr_sal varchar(9) default "",
+hr_sal varchar(9),
 cost_tot int,
 dia_rent varchar(10)
 );
@@ -125,9 +113,6 @@ insert into Personal values (123356, 'Omar','123', 'administrador',2,'5555555555
 
 insert into Personal values (123556, 'Aaron','123', 'administrador',3,'5555555555');
 
-insert into Cliente values (1, 'Pablo');
-insert into Cliente values (2, 'Pedro');
-insert into Cliente values (3, 'Teresa');
 insert into Computadora values (3, 'Teresa');
 
 
@@ -138,7 +123,5 @@ select * from Paq_cli;
 select * from Paquete;
 select * from Cliente;
 select * from Computadora;
-select * from renta_comp;
-select * from renta;
 
 ALTER USER 'root'@'localhost' identified WITH mysql_native_password BY 'n0m3l0';

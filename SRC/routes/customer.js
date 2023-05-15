@@ -24,5 +24,6 @@ router.get('/Operis/PaqueteriaAlm/EnviarPaq', customerController.SendPaq);
 router.get('/Operis/CyberDisp', customerController.DispCyber);
 router.get('/Operis/CyberDisp/GestionEquipos', customerController.EquiposCyber);
 router.get('/Operis/VentaPape', customerController.VentaPape);
+router.get('/Operis/InventPape', customerController.InventPape);
 
 module.exports = router;
