@@ -14,14 +14,7 @@
     color: white;
     opacity: 1;
 }
-#Bt_Login{
-    border-radius: 10px;
-    font-size:30px;
-    background-color: #ffffff;
-    color: #63C0AE;
-    border: none;
-    width: 200px;
-}
+
 
 .container-fluid input{
     font-size:30px;
@@ -29,17 +22,26 @@
     color: white;
     border: none;
     border-radius: 5px;
-    width: 350px;
+    width: 100%;
 }
-#bt_back{
-    border-radius: 10px;
+
+.container-fluid button{
+    width: 100%;
     font-size:30px;
+}
+
+#bt_back{
+    font-size:20px;
     background-color: #444444;
     color: white;
     border: none;
-    width: 200px;
 }
 
+#Bt_Login{
+    color: black;
+    border: none;
+    font-size: 20px;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
