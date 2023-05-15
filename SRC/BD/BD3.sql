@@ -13,7 +13,7 @@ desc_paq varchar(100)
 );
 
 create table Personal(
-idper int primary key not null auto_increment ,
+idper int primary key not null auto_increment,
 nom_per varchar(40),
 pass varchar(40),
 tipo_per varchar(50),
@@ -76,11 +76,11 @@ hr_compu varchar(1000) default "sin hora"
 );
 
 create table Renta(
-id_rent int primary key not null,
+id_rent int primary key not null auto_increment,
 hr_ingr varchar(9),
 hr_sal varchar(9) default "",
-cost_tot int,
-dia_rent varchar(10)
+cost_tot float default 0,
+dia_rent varchar(20	)
 );
 
 create table Renta_comp(
@@ -128,7 +128,7 @@ insert into Personal values (123556, 'Aaron','123', 'administrador',3,'555555555
 insert into Cliente values (1, 'Pablo');
 insert into Cliente values (2, 'Pedro');
 insert into Cliente values (3, 'Teresa');
-insert into Computadora values (3, 'Teresa');
+insert into Computadora values (3, '$35/30min');
 
 
 select tipo_per from Personal where idper = 123456;

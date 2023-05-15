@@ -22,6 +22,8 @@ router.post('/Operis/PaqueteriaAlm/EditPaqSection', customerController.EditPaqSe
 router.post('/Operis/PaqueteriaAlm/EditPaq', customerController.EditPaq);
 router.get('/Operis/PaqueteriaAlm/EnviarPaq', customerController.SendPaq);
 router.get('/Operis/CyberDisp', customerController.DispCyber);
+router.post('/Operis/CyberDisp/StartRent', customerController.startRent);
+router.post('/Operis/CyberDisp/EndRent', customerController.EndRent);
 router.get('/Operis/CyberDisp/GestionEquipos', customerController.EquiposCyber);
 router.get('/Operis/VentaPape', customerController.VentaPape);
 
