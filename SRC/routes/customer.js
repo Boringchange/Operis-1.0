@@ -26,5 +26,7 @@ router.post('/Operis/CyberDisp/StartRent', customerController.startRent);
 router.post('/Operis/CyberDisp/EndRent', customerController.EndRent);
 router.get('/Operis/CyberDisp/GestionEquipos', customerController.EquiposCyber);
 router.get('/Operis/VentaPape', customerController.VentaPape);
+router.get('/Operis/InventPape', customerController.InventPape);
+router.get('/Operis/ReabastPape', customerController.ReabastPape);
 
 module.exports = router;
