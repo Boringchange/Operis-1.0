@@ -144,7 +144,7 @@ body{
     pointer-events: auto;
 }
 
-.principal{
+.container-fluid .principal{
     min-width: 100vw;
     min-height: 100vh;
     background-color: #e6e6e6;
