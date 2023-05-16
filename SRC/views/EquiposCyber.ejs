@@ -69,23 +69,29 @@
                             <thead class="table-black">
                             <tr>
                                 <th>ID</th>
-                                <th>Nombre del equipo</th>
                                 <th>Tarifa</th>
                                 <th>Accion</th>
                             </tr>
                             </thead>
                             <tbody class="table-secondary">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal" class="btn btn-secondary mb-1">Modificar</button>
-                                    <form action="">
-                                        <button class="btn btn-danger">Eliminar</button>
-                                    </form>
-                                </td>
-                            </tr>
+                            <%
+                            for (let i in comp){
+                                %>
+                                <tr>
+                                    <td><%=comp[i].idcomp%></td>
+                                    <td><%=comp[i].hr_compu%></td>
+                                    <td>
+                                        <form >
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal" class="btn btn-secondary mb-1">Modificar</button>
+                                        </form>
+                                        <form action="">
+                                            <button class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <%
+                            }
+                            %>
                             </tbody>
                         </table>
                     </div>

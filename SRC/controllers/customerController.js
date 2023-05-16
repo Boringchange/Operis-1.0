@@ -203,8 +203,15 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
-    controller.EquiposCyber = (req, res)=>{
-        res.render('EquiposCyber.ejs');
+    controller.EquiposCyber = async (req, res)=>{
+        const conn = validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM COMPUTADORA`, (err, computadoras) => {
+            if (err){
+                res.send(err);
+            } else{
+            res.render('EquiposCyber.ejs', {comp:computadoras});
+            }
+        });
     }
     controller.startRent = async (req, res) => {
         const conn = validar.DataBaseConnection(req, res);
