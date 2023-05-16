@@ -86,6 +86,13 @@ foreign key(idper) references Personal (idper) on update cascade on delete casca
 foreign key(idpaq) references Paquete (idpaq) on update cascade on delete cascade
 );
 
+create table Renta_comp(
+id_rent int,
+idcomp int,
+foreign key(id_rent) references Renta (id_rent) on update cascade on delete cascade,
+foreign key(idcomp) references Computadora (idcomp) on update cascade on delete cascade
+);
+
 create table Administrar(
 idadmin int primary key not null,
 idper int,
