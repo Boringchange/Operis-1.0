@@ -64,10 +64,10 @@ hr_compu varchar(1000) default "sin hora"
 );
 
 create table Renta(
-id_rent int primary key not null,
+id_rent int primary key not null auto_increment,
 hr_ingr varchar(9),
-hr_sal varchar(9),
-cost_tot int,
+hr_sal varchar(9) default "",
+cost_tot float default 0.0,
 dia_rent varchar(10)
 );
 
@@ -77,20 +77,12 @@ idcomp int,
 foreign key(id_rent) references Renta (id_rent) on update cascade on delete cascade,
 foreign key(idcomp) references Computadora (idcomp) on update cascade on delete cascade
 );
-
 create table Registrar(
 idregis int primary key not null,
 idper int,
 idpaq int,
 foreign key(idper) references Personal (idper) on update cascade on delete cascade,
 foreign key(idpaq) references Paquete (idpaq) on update cascade on delete cascade
-);
-
-create table Renta_comp(
-id_rent int,
-idcomp int,
-foreign key(id_rent) references Renta (id_rent) on update cascade on delete cascade,
-foreign key(idcomp) references Computadora (idcomp) on update cascade on delete cascade
 );
 
 create table Administrar(
@@ -126,9 +118,9 @@ insert into Computadora values (3, 'Teresa');
 select tipo_per from Personal where idper = 123456;
 
 select * from Personal;
-select * from Paq_cli;
 select * from Paquete;
-select * from Cliente;
 select * from Computadora;
+select * from Renta;
+select * from Renta_comp;
 
 ALTER USER 'root'@'localhost' identified WITH mysql_native_password BY 'n0m3l0';
