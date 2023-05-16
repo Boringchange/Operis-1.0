@@ -214,4 +214,10 @@ controller.EditUser = async (req, res) => {
     controller.ReabastPape = (req, res)=>{
         res.render('ReabastecimientoPapeleria.ejs');
     }
+    controller.PresDia = (req, res) =>{
+        res.render('PresupuestoDia.ejs');
+    }
+    controller.ConsPres = (req, res) =>{
+        res.render('ConsultaPresupuestos.ejs');
+    }
 module.exports = controller;
