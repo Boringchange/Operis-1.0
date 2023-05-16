@@ -59,7 +59,7 @@ foreign key(idabast) references Abastecedor (idabast) on update cascade on delet
 );
 
 create table Computadora(
-idcomp int primary key not null,
+idcomp int primary key not null auto_increment,
 hr_compu varchar(1000) default "sin hora"
 );
 
@@ -112,7 +112,7 @@ insert into Personal values (123356, 'Omar','123', 'administrador',2,'5555555555
 
 insert into Personal values (123556, 'Aaron','123', 'administrador',3,'5555555555');
 
-insert into Computadora values (3, 'Teresa');
+insert into Computadora values (default, '$30/30min');
 
 
 select tipo_per from Personal where idper = 123456;

@@ -241,6 +241,22 @@ controller.EditUser = async (req, res) => {
         conn.query(`UPDATE Renta SET hr_sal='${req.body.hr1}', cost_tot=${req.body.ToPagar} where id_rent=${req.body.RentID}`);
         res.redirect("/Operis/CyberDisp");
     }
+    controller.DelEquipo = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Computadora WHERE idcomp = ${req.body.iddel}`);
+        res.redirect(`/Operis/CyberDisp/GestionEquipos`);
+    }
+    controller.EditEquipo = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`UPDATE Computadora SET hr_compu = '${req.body.hrnew}' where idcomp = ${req.body.idmod}`);
+        res.redirect(`/Operis/CyberDisp/GestionEquipos`);
+    }
+    controller.AddEqui = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        const hora = `$${req.body.hrnew}/30min`;
+        conn.query(`INSERT INTO Computadora VALUES (default, '${hora}')`);
+        res.redirect(`/Operis/CyberDisp/GestionEquipos`);
+    }
     controller.VentaPape = (req, res) =>{
         res.render('VentaPapeleria.ejs');
     }
