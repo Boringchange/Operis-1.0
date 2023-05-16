@@ -24,9 +24,26 @@ td{
     vertical-align: center;
     align-content: center;
 }
-div{
-    height: 100%;
+
+.container-fluid .row{
+    height: 100vh;
 }
+
+.container-fluid .colAdjust{
+    height: 50vh;
+    border-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-fluid a{
+    text-decoration: none;
+}
+.container-fluid h2{
+    color: white;
+}
+
 #cyber{
     background-color: #38B49C;
 }
