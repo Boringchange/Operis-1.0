@@ -194,6 +194,7 @@ controller.EditUser = async (req, res) => {
                             if (err){
                                 res.send(err);
                             } else {
+                                console.log(renta);
                                 res.render("DisponibilidadCyber", {comp:computadoras, rentcomp: renta_comp, rent:renta});
                             }
                         });
@@ -202,8 +203,59 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
-    controller.EquiposCyber = (req, res)=>{
-        res.render('EquiposCyber.ejs');
+    controller.EquiposCyber = async (req, res)=>{
+        const conn = validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM COMPUTADORA`, (err, computadoras) => {
+            if (err){
+                res.send(err);
+            } else{
+            res.render('EquiposCyber.ejs', {comp:computadoras});
+            }
+        });
+    }
+    controller.startRent = async (req, res) => {
+        const conn = validar.DataBaseConnection(req, res);
+        var currentTime = new Date();
+        console.log(req.body);
+        let horif = `${currentTime.getHours()}`;
+        let minif = `${currentTime.getMinutes()}`;
+        if (parseInt(horif)<10){
+            horif = `0`+`${horif}`;
+        } else{}
+        if (parseInt(minif)<10){
+            minif = `0`+`${minif}`;
+        }
+        conn.query(`INSERT INTO Renta VALUES (default, '${horif}:${minif}', DEFAULT, DEFAULT, '${currentTime.getDate()}/${currentTime.getMonth()}/${currentTime.getFullYear()}')`);
+        await conn.query(`SELECT * FROM Renta`, (err, renta) => {
+            let idrenta;
+            for (let i in renta){
+                idrenta = renta[i].id_rent;
+            }
+            conn.query(`INSERT INTO Renta_comp VALUES (${idrenta}, ${req.body.IdSaveComp})`);
+        });
+        res.redirect(`/Operis/CyberDisp`);
+    }
+    controller.EndRent = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        console.log(req.body.hr1);
+        conn.query(`UPDATE Renta SET hr_sal='${req.body.hr1}', cost_tot=${req.body.ToPagar} where id_rent=${req.body.RentID}`);
+        res.redirect("/Operis/CyberDisp");
+    }
+    controller.DelEquipo = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Computadora WHERE idcomp = ${req.body.iddel}`);
+        res.redirect(`/Operis/CyberDisp/GestionEquipos`);
+    }
+    controller.EditEquipo = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`UPDATE Computadora SET hr_compu = '${req.body.hrnew}' where idcomp = ${req.body.idmod}`);
+        res.redirect(`/Operis/CyberDisp/GestionEquipos`);
+    }
+    controller.AddEqui = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        const hora = `$${req.body.hrnew}/30min`;
+        conn.query(`INSERT INTO Computadora VALUES (default, '${hora}')`);
+        res.redirect(`/Operis/CyberDisp/GestionEquipos`);
     }
     controller.VentaPape = (req, res) =>{
         res.render('VentaPapeleria.ejs');
