@@ -81,8 +81,8 @@
                                     <td><%=comp[i].idcomp%></td>
                                     <td><%=comp[i].hr_compu%></td>
                                     <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal" class="btn btn-secondary mb-1">Modificar</button>
-                                        <div class="modal fade"  id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#modalForm<%=i%>" id="openmodal" class="btn btn-secondary mb-1">Modificar</button>
+                                        <div class="modal fade"  id="modalForm<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content rounded-4">
                                                     <div class="modal-header" id="popupHeader">
@@ -96,6 +96,7 @@
                                                                 <div class="row my-2">
                                                                     <div class="col-md"></div>
                                                                     <div class="col-md">
+                                                                        <% console.log(comp[i].idcomp);%>
                                                                         <input name="idmod" value="<%=comp[i].idcomp%>" type="text" class="form-control" disabled><!--Aqui va ir el id para que lo puedan visualizar-->
                                                                     </div>
                                                                     <div class="col-md"></div>
@@ -166,7 +167,6 @@
                 </div>
             </div>
             <div class="col">
-
             </div>
         </div>
     </div>
