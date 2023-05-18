@@ -7,9 +7,10 @@ controller.RedOperis = (req, res) => {
 }
 controller.inicio = (req, res) => {
     res.render('index');
+    console.log("Hola");
+    console.log(req.body.session);
 };
 controller.operisDirect =async (req, res) => {
-
     if (req.session.ID === undefined){
         req.session.ID = req.body.idForm;
         req.session.Password = req.body.password;
@@ -209,7 +210,8 @@ controller.EditUser = async (req, res) => {
             if (err){
                 res.send(err);
             } else{
-            res.render('EquiposCyber.ejs', {comp:computadoras});
+                console.log(computadoras);
+                res.render('EquiposCyber.ejs', {comp:computadoras});
             }
         });
     }

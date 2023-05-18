@@ -123,9 +123,9 @@
                                     <%=comp[i].hr_compu%>
                                 </td>
                                 <td>
-                                    <button value="<%=comp[i].idcomp%>" name="IdDeleteComp" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalForm" id="openmodal">Finalizar renta</button>
+                                    <button value="<%=comp[i].idcomp%>" name="IdDeleteComp" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalForm<%=i%>" id="openmodal">Finalizar renta</button>
                                 </td>
-                                    <div class="modal fade"  id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                    <div class="modal fade"  id="modalForm<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content rounded-4">
                                                 <div class="modal-header" id="popupHeader">
@@ -147,9 +147,6 @@
                                                             <div class="row mt-2">
                                                                 <div class="col"></div>
                                                                 <div class="col">
-                                                                    <%
-                                                                    console.log('Hola '+rent[z].hr_ingr);
-                                                                    %>
                                                                     <input value="<%=rent[z].hr_ingr%>" type="time" class="form-control" disabled>
                                                                 </div>
                                                                 <div class="col"></div>
@@ -159,8 +156,8 @@
                                                             <div class="row mt-2">
                                                                 <div class="col"></div>
                                                                 <div class="col">
-                                                                    <input id="horafin" type="time" class="form-control" disabled>
-                                                                    <input name="hr1" id="horafin1" type="time" class="form-control" style="display: none">
+                                                                    <input id="horafin<%=i%>" type="time" class="form-control" disabled>
+                                                                    <input name="hr1" id="horafin1<%=i%>" type="time" class="form-control" style="display: none">
                                                                 </div>
                                                                 <script>
                                                                     function actualizaHora (){
@@ -174,8 +171,8 @@
                                                                             minif = `0`+`${minif}`;
                                                                         }
                                                                         var horafin = `${horif}:${minif}`;
-                                                                        document.getElementById("horafin").value = horafin;
-                                                                        document.getElementById("horafin1").value = horafin;
+                                                                        document.getElementById("horafin<%=i%>").value = horafin;
+                                                                        document.getElementById("horafin1<%=i%>").value = horafin;
                                                                     }
                                                                     setInterval(actualizaHora,1000);
                                                                 </script>
@@ -193,7 +190,7 @@
                                                             <div class="row mt-2">
                                                                 <div class="col"></div>
                                                                 <div class="col">
-                                                                    <input name="ToPagar" id="TotPagar" type="text" class="form-control" placeholder="dinerito">
+                                                                    <input name="ToPagar" id="TotPagar<%=i%>" type="text" class="form-control" placeholder="dinerito">
                                                                 </div>
                                                                 <script>
                                                                     function actualizarTotal (){
@@ -214,7 +211,7 @@
                                                                         var tot = (resultadomin * parseInt(tar[1]))/ 30;
                                                                         var totlimitado = tot.toFixed(2);
 
-                                                                        document.getElementById("TotPagar").value = totlimitado;
+                                                                        document.getElementById("TotPagar<%=i%>").value = totlimitado;
                                                                     }
                                                                     setInterval(actualizarTotal,1000);
                                                                 </script>
