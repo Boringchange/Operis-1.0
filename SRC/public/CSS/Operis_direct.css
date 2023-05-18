@@ -9,21 +9,6 @@
 .boxiicon{
     height:100px;
 }
-table{
-    height: 100%;
-    width: 100%;
-    vertical-align: center;
-    text-align: center;
-}
-table, tr, td{
-    border-color: white;
-}
-td{
-    width: 30%;
-    height: 50%;
-    vertical-align: center;
-    align-content: center;
-}
 
 .container-fluid .row{
     height: 100vh;
@@ -35,6 +20,12 @@ td{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 576px){
+    .container-fluid .colAdjust{
+        height: 33.33vh;
+    }
 }
 
 .container-fluid a{
