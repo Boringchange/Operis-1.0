@@ -22,6 +22,24 @@ body{
     background: #026671;
     padding: 6px 14px;
     transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 576px){
+    .sidebar{
+        height: 10vh;
+        top: 0;
+        display: inline;
+    }
+
+    .sidebar ul{
+        display: inline;
+    }
+    .sidebar li{
+        display: inline;
+    }
+
 }
 
 .sidebar.active{
