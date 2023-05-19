@@ -134,17 +134,12 @@ controller.EditUser = async (req, res) => {
     }
     controller.AddPaq = async (req, res) => {
         const conn = await validar.DataBaseConnection(req, res);
-        conn.query(`INSERT INTO Paquete VALUES (${req.body.IdPaquete}, '1','${req.body.FechaLlegada}','${req.body.FechaSalida}','1','1','${req.body.Descripcion}')`, err =>{
+        conn.query(`INSERT INTO Paquete VALUES (${req.body.IdPaquete}, '${req.body.TipoPaq}','${req.body.FechaLlegada}','${req.body.FechaSalida}','1','${req.body.DicEnt}','${req.body.Descripcion}')`, err =>{
             if (err){
                 res.send(err);
+            } else {
+                res.redirect("/Operis/PaqueteriaAlm");
             }
-            conn.query(`INSERT INTO Paq_cli VALUES (${req.body.IdPaquete},'${req.body.IdDelDestinatario}')`, err => {
-                if (err){
-                    res.send(err);
-                } else {
-                    res.redirect("/PaqueteriaAlm");
-                }
-            });
         });
 
     }
@@ -159,8 +154,15 @@ controller.EditUser = async (req, res) => {
         });
     }
     controller.EditPaqSection = async (req, res) => {
-        console.log(req.body.PaqToEdit);
-        res.render('ModificacionPaquete', {IdEditPaq : req.body.PaqToEdit});
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Paquete where idpaq = ${req.body.PaqToEdit}`, (err, paquete) => {
+            if (err){
+                res.send(err);
+            }
+            else {
+                res.render('ModificacionPaquete', {paq:paquete});
+            }
+        });
     }
     controller.EditPaq = async (req, res) => {
         const conn = validar.DataBaseConnection(req, res);

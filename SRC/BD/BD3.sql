@@ -4,10 +4,10 @@ use NEGOCIO3;
 
 create table Paquete(
 idpaq int primary key not null,
-tipo_paq varchar(15),
+tipo_paq varchar(100),
 indate varchar(10),
 outdate varchar(10),
-estado_paq varchar(40),
+estado_paq varchar(100),
 direc_paq varchar(100),
 desc_paq varchar(100)
 );
