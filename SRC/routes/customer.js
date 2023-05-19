@@ -20,7 +20,7 @@ router.post('/Operis/PaqueteriaAlm/AddPaq', customerController.AddPaq);
 router.post('/Operis/PaqueteriaAlm/DeletePaq', customerController.DeletePaq);
 router.post('/Operis/PaqueteriaAlm/EditPaqSection', customerController.EditPaqSection);
 router.post('/Operis/PaqueteriaAlm/EditPaq', customerController.EditPaq);
-router.get('/Operis/PaqueteriaAlm/EnviarPaq', customerController.SendPaq);
+router.get('/Operis/PaqueteriaAlm/ConsultPaq', customerController.ConsultPaq);
 router.get('/Operis/CyberDisp', customerController.DispCyber);
 router.post('/Operis/CyberDisp/StartRent', customerController.startRent);
 router.post('/Operis/CyberDisp/EndRent', customerController.EndRent);

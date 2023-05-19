@@ -180,8 +180,8 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
-    controller.SendPaq = (req, res) =>{
-        res.render('EntregaPaquete.ejs');
+    controller.ConsultPaq = (req, res) =>{
+        res.render('ConsultaPaquetes.ejs');
     }
     controller.DispCyber = async (req, res) =>{
         const conn = await validar.DataBaseConnection(req, res);

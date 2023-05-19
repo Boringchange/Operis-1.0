@@ -47,7 +47,7 @@
                     <span class="tooltip">Registrar paquete</span>
                 </li>
                 <li class="my-1">
-                    <a href="/Operis/PaqueteriaAlm/EnviarPaq">
+                    <a href="/Operis/PaqueteriaAlm/ConsultPaq">
                         <i class="bi bi-truck"></i>
                         <span class="links-name">Entrega de paquetes</span>
                     </a>
@@ -94,14 +94,19 @@
                             <td><%= paquetes[i].desc_paq%></td>
                             <td>
                                 <div class="row">
-                                    <div class="col mb-2">
+                                    <div class="col-12 mb-1">
                                         <form action="/Operis/PaqueteriaAlm/EditPaqSection" method="post">
                                             <button name="PaqToEdit" value="<%= paquetes[i].idpaq%>" id="btnmod" class="btn">Modificar</button>
                                         </form>
                                     </div>
-                                    <div class="col mt-2">
+                                    <div class="col-12 mb-1">
                                         <form action="/Operis/PaqueteriaAlm/DeletePaq" method="post">
                                             <button name="PaqToDelete" value="<%= paquetes[i].idpaq%>" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-12">
+                                        <form action="">
+                                            <button class="btn" id="entregar">Marcar salida</button>
                                         </form>
                                     </div>
                                 </div>
