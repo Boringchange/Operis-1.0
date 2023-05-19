@@ -150,9 +150,14 @@ body{
     background-color: #e6e6e6;
 }
 
+.container-fluid .card{
+    border-radius: 100px;
+}
+
 .container-fluid .card-header, .container-fluid .card-footer{
-    background-color: #8bc0b6;
+    background-color: #6ca299;
     color: #024059;
+    border-radius: 75px;
 }
 
 .container-fluid .card-body{
@@ -204,7 +209,7 @@ body{
 }
 
 #popupHeader{
-    background-color: #0b6e5a;
+    background-color: #025d53;
     color: white;
 }
 
@@ -221,7 +226,7 @@ body{
 }
 
 .modal .icon{
-    color: #0b6e5a;
+    color: #025d53;
     font-size: 40px;
 }
 
