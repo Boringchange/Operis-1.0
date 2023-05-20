@@ -57,85 +57,67 @@
         </div>
         <div class="col-md-10">
             <div class="row mt-3">
-                <div class="col-6">
+                <div class="col-1"></div>
+                <div class="col-10">
                     <div class="card">
-                        <div class="card-header text-center">
-                            <i class="bi bi-pencil-square icon"></i>
-                            <h2>Papeleria</h2>
-                        </div>
-                        <div class="card-body text-center">
-                            <h2>Ingreso</h2><h1>$$</h1>
-                            <h2>Ganancias</h2><h1>$$</h1>
-                            <h2>Gastos</h2><h1>$$</h1>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <i class="bi bi-pencil-square icon"></i>
+                                    <h4>Papeleria</h4>
+                                    <h5>Ingresos</h5>
+                                    <h6>$$</h6>
+                                    <h5>Gastos</h5>
+                                    <h6>$<input class="form-control" type="number" min="1"></h6>
+                                </div>
+                                <div class="col-6">
+                                    <i class="bi bi-pc-display icon"></i>
+                                    <h4>Cyber</h4>
+                                    <h5>Ingresos</h5>
+                                    <h6>$$</h6>
+                                    <h5>Gastos</h5>
+                                    <h6>$<input class="form-control" type="number" min="1"></h6>
+                                </div>
+                            </div>
+                            <div class="row text-center">
                                 <div class="col"></div>
                                 <div class="col">
-                                    <button class="btn">Registrar/modificar gastos</button>
+                                    <i class="bi bi-cash-stack"></i>
+                                    <h4>Presupuesto</h4>
+                                    <h5>Día</h5>
+                                    <input type="date" class="form-control" disabled>
+                                    <h5>Gastos adicionales</h5>
+                                    <input class="form-control" type="number" min="1">
+                                    <h5>Gastos totales</h5>
+                                    <input class="form-control" type="number" disabled>
+                                    <h5>Ganancias</h5>
+                                    <input class="form-control" type="number" min="1" disabled>
                                 </div>
                                 <div class="col"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <i class="bi bi-pc-display icon"></i>
-                            <h2>Cyber</h2>
-                        </div>
-                        <div class="card-body text-center">
-                            <h2>Ingreso</h2><h1>$$</h1>
-                            <h2>Ganancias</h2><h1>$$</h1>
-                            <h2>Gastos</h2><h1>$$</h1>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col">
-                                    <button class="btn">Registrar/modificar gastos</button>
-                                </div>
-                                <div class="col"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-1"></div>
             </div>
         </div>
     </div>
-    <div class="modal fade"  id="modalFormMod" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal fade"  id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4">
                 <div class="modal-header" id="popupHeader">
-                    <h4>Modificar producto</h4>
+                    <h4>Asignar/modificar gastos</h4>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row text-center">
-                            <i class="bi bi-clipboard-plus-fill icon"></i>
+                            <i class="bi bi-cash-coin icon"></i>
                             <form action="">
-                                <h5>ID</h5>
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" disabled>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <h5 class="mt-2">Nombre del abastecedor</h5>
+                                <h5>Gastos</h5>
                                 <div class="row">
                                     <div class="col"></div>
                                     <div class="col">
                                         <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <h5 class="mt-2">Telefono</h5>
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col">
-                                        <input type="number" class="form-control">
                                     </div>
                                     <div class="col"></div>
                                 </div>
