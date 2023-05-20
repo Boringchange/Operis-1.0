@@ -214,7 +214,7 @@ body{
 }
 
 .modal input{
-    width: 200px;
+    width: 10px;
     background-color: #EDEDED;
     border-color: #c9c9c9;
 }
@@ -228,6 +228,10 @@ body{
 .modal .icon{
     color: #025d53;
     font-size: 40px;
+}
+
+.container-fluid .card h6{
+    color: #0b6e5a;
 }
 
 input::-webkit-outer-spin-button,
