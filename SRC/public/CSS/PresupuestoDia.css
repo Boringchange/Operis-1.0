@@ -151,17 +151,18 @@ body{
 }
 
 .container-fluid .card{
-    border-radius: 100px;
+    height: 95vh;
+    border-color: #4f4f4f;
+    border-width: 3px;
 }
 
-.container-fluid .card-header, .container-fluid .card-footer{
-    background-color: #6ca299;
-    color: #024059;
-    border-radius: 75px;
-}
 
 .container-fluid .card-body{
-    background-color: #ccdfdd;
+    background-color: #92a4a1;
+}
+
+.container-fluid .card-body input{
+    width: 12rem;
 }
 
 .container-fluid .card-body h1{
@@ -170,13 +171,22 @@ body{
 
 .container-fluid .icon{
     color: #024059;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .container-fluid .card-footer button{
     background-color: #024059;
     color: white;
     border: none;
+}
+
+#rowNon{
+    height: 100%;
+}
+
+#closePres{
+    background-color: #0a3622;
+    color: white;
 }
 
 #theader{
@@ -213,11 +223,12 @@ body{
     color: white;
 }
 
-.modal input{
-    width: 10px;
+.container-fluid .modal input{
+    width: 30%;
     background-color: #EDEDED;
     border-color: #c9c9c9;
 }
+
 
 .modal select{
     width: 200px;
@@ -230,7 +241,7 @@ body{
     font-size: 40px;
 }
 
-.container-fluid .card h6{
+.container-fluid .card h5{
     color: #0b6e5a;
 }
 
