@@ -200,7 +200,7 @@
                                                 <div class="container-fluid">
                                                     <div class="row text-center">
                                                         <i class="bi bi-clipboard-plus-fill icon"></i>
-                                                        <form action="">
+                                                        <form action="/Operis/ReabastPape/EditAbast" method="post">
                                                             <h5>ID</h5>
                                                             <div class="row">
                                                                 <div class="col"></div>
@@ -213,7 +213,7 @@
                                                             <div class="row">
                                                                 <div class="col"></div>
                                                                 <div class="col">
-                                                                    <input type="text" value="<%=abas[i].nom_abast%>" class="form-control">
+                                                                    <input type="text" value="<%=abas[i].nom_abast%>" name="name" class="form-control">
                                                                 </div>
                                                                 <div class="col"></div>
                                                             </div>
@@ -221,30 +221,30 @@
                                                             <div class="row">
                                                                 <div class="col"></div>
                                                                 <div class="col">
-                                                                    <input type="number" value="<%=abas[i].tel_abast%>" class="form-control">
+                                                                    <input type="number" value="<%=abas[i].tel_abast%>" name="tel" class="form-control">
                                                                 </div>
                                                                 <div class="col"></div>
                                                             </div>
                                                             <div class="row mt-3">
                                                                 <div class="col"></div>
                                                                 <div class="col">
+                                                                    <button name="id" value="<%=abas[i].idabast%>" class="btn btn-outline-secondary">Registrar</button>
+                                                                </div>
+                                                        </form>
+                                                                <div class="col"></div>
+                                                                <div class="col">
                                                                     <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
                                                                 </div>
                                                                 <div class="col"></div>
-                                                                <div class="col">
-                                                                    <button class="btn btn-outline-secondary">Registrar</button>
-                                                                </div>
-                                                                <div class="col"></div>
                                                             </div>
-                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="">
-                                    <button class="btn btn-danger">Eliminar</button>
+                                <form action="/Operis/ReabastPape/DeleteAbast" method="post">
+                                    <button name="id" value="<%=abas[i].idabast%>" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

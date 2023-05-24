@@ -346,11 +346,31 @@ controller.EditUser = async (req, res) => {
         });
     }
     controller.AddAbast = async (req, res) => {
-        const conn = validar.DataBaseConnection(req, res);
+        const conn = await validar.DataBaseConnection(req, res);
         conn.query(`INSERT INTO Abastecedor VALUES (DEFAULT, '${req.body.nom}', '${req.body.tel}')`, err => {
             if (err){
                 res.send(err);
             } else {
+                res.redirect("/Operis/ReabastPape");
+            }
+        });
+    }
+    controller.EditAbast = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`UPDATE Abastecedor SET nom_abast = '${req.body.name}', tel_abast = '${req.body.tel}' WHERE idabast = ${req.body.id}`, err => {
+            if (err){
+                res.send(err);
+            } else{
+                res.redirect("/Operis/ReabastPape");
+            }
+        });
+    }
+    controller.DelteAbast = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Abastecedor WHERE idabast = ${req.body.id}`, err => {
+            if (err){
+                res.send(err);
+            } else{
                 res.redirect("/Operis/ReabastPape");
             }
         });
