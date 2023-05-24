@@ -122,7 +122,7 @@ controller.EditUser = async (req, res) => {
     }
     controller.paqueteriaAlmac = async (req, res) => {
         const conn = await validar.DataBaseConnection(req, res);
-        conn.query(`SELECT * FROM Paquete`, (err, Paquetes) => {
+        conn.query(`SELECT * FROM Paquete where estado_paq = 'Dentro_centro'`, (err, Paquetes) => {
             if (err) {
                 res.send(err);
             }
@@ -134,7 +134,7 @@ controller.EditUser = async (req, res) => {
     }
     controller.AddPaq = async (req, res) => {
         const conn = await validar.DataBaseConnection(req, res);
-        conn.query(`INSERT INTO Paquete VALUES (${req.body.IdPaquete}, '${req.body.TipoPaq}','${req.body.FechaLlegada}','${req.body.FechaSalida}','1','${req.body.DicEnt}','${req.body.Descripcion}')`, err =>{
+        conn.query(`INSERT INTO Paquete VALUES (${req.body.IdPaquete}, '${req.body.TipoPaq}','${req.body.FechaLlegada}','${req.body.FechaSalida}','Dentro_centro','${req.body.DicEnt}','${req.body.Descripcion}')`, err =>{
             if (err){
                 res.send(err);
             } else {
@@ -149,7 +149,25 @@ controller.EditUser = async (req, res) => {
             if (err){
                 res.send(err);
             } else {
-                res.redirect('/PaqueteriaAlm');
+                res.redirect('/Operis/PaqueteriaAlm');
+            }
+        });
+    }
+    controller.DeletePaq2 = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Paquete WHERE idpaq = ${req.body.PaqToDelete}`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect('/Operis/PaqueteriaAlm/ConsultPaq');
+            }
+        });
+    }
+    controller.MarkExit = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`UPDATE Paquete SET estado_paq = 'Fuera_centro' WHERE ${req.body.IdExit}`, err =>{
+            if (err){} else{
+                res.redirect(`/Operis/PaqueteriaAlm`);
             }
         });
     }
@@ -170,18 +188,15 @@ controller.EditUser = async (req, res) => {
             if (err){
                 res.send(err);
             } else{
-                conn.query(`UPDATE Paq_cli SET usuario=${req.body.NewIdClient} where idpaq = ${req.body.IdPaq}`, err => {
-                    if (err){
-                        res.send(err);
-                    } else{
-                        res.redirect('/PaqueteriaAlm');
-                    }
-                });
+                res.redirect('/Operis/PaqueteriaAlm');
             }
         });
     }
-    controller.ConsultPaq = (req, res) =>{
-        res.render('ConsultaPaquetes.ejs');
+    controller.ConsultPaq = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Paquete`, (err, paquete) => {
+            res.render('ConsultaPaquetes.ejs',{paq:paquete});
+        });
     }
     controller.DispCyber = async (req, res) =>{
         const conn = await validar.DataBaseConnection(req, res);
@@ -261,14 +276,127 @@ controller.EditUser = async (req, res) => {
         conn.query(`INSERT INTO Computadora VALUES (default, '${hora}')`);
         res.redirect(`/Operis/CyberDisp/GestionEquipos`);
     }
-    controller.VentaPape = (req, res) =>{
-        res.render('VentaPapeleria.ejs');
+    controller.VentaPape = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Producto`, (err, producto) => {
+            if (err){
+                res.send(err);
+            } else{
+                res.render('VentaPapeleria.ejs',{product:producto});
+            }
+        });
     }
-    controller.InventPape = (req, res) =>{
-        res.render('InventarioPapeleria.ejs');
+    controller.CompleteSell = async (req, res) => {
+        var conn = await validar.DataBaseConnection(req, res);
+        const date = new Date();
+        conn.query(`SELECT * FROM Vender`, async (err, ventas) => {
+            console.log(ventas.length);
+            var num = ventas.length;
+            var Prodcutos = req.body.confirmar.split("|");
+            console.log(Prodcutos);
+            for (let i in Prodcutos){
+                num = num + 1;
+                var Producto = Prodcutos[i].split("/");
+                console.log(Producto);
+                console.log(`${Producto[0]}, el otro dato ,${Producto[1]}`);
+                console.log(num);
+                const a = await validar.AddVenta(req, res, num, req.session.ID, Producto[0], Producto[1], `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
+            }
+            res.redirect("/Operis/VentaPape");
+        });
     }
-    controller.ReabastPape = (req, res)=>{
-        res.render('ReabastecimientoPapeleria.ejs');
+    controller.InventPape = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Producto`, (err, producto) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.render('InventarioPapeleria.ejs', {product: producto});
+            }
+        });
+    }
+    controller.AddProduct = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Producto VALUES (DEFAULT, '${req.body.ProductName}', ${req.body.ProductStack}, ${req.body.BasePrize}, ${req.body.SellPrize})`, err => {
+            if (err){
+                res.send(err);
+            } else{
+                res.redirect("/Operis/InventPape");
+            }
+        });
+    }
+    controller.EditProduct = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`UPDATE Producto SET nom_produ = '${req.body.EditName}', unidades_disp = ${req.body.EditStack} , padq_produ = ${req.body.EditBasePrize}, pvent_produ = ${req.body.EditSellPrize} WHERE idprodu = ${req.body.EditID}`, err => {
+            if (err){
+                console.log(err)
+            } else {
+                res.redirect("/Operis/InventPape");
+            }
+        });
+    }
+    controller.DeleteProduct = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Producto WHERE idprodu = ${req.body.DeleteId}`, err => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.redirect("/Operis/InventPape");
+            }
+        });
+    }
+    controller.AddAbast = async (req, res) => {
+        const conn = validar.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Abastecedor VALUES (DEFAULT, '${req.body.nom}', '${req.body.tel}')`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/ReabastPape");
+            }
+        });
+    }
+    controller.ReabastPape = async (req, res)=>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Abastecedor`, (err, abastecedor) => {
+            if (err){
+                res.send(err);
+            } else {
+                conn.query(`SELECT * FROM Producto`, (err, producto) => {
+                    if (err){
+                        res.send(err);
+                    } else {
+                        conn.query(`SELECT * FROM Prod_Abast`, (err, proabs) => {
+                            if (err){
+                                console.log(err);
+                            } else {
+                                res.render('ReabastecimientoPapeleria.ejs', {abas:abastecedor, pro:producto, proab:proabs});
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+    controller.AltaAbasPro = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Prod_abast VALUES (${req.body.idpro}, ${req.body.idaba})`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/ReabastPape");
+            }
+        });
+    }
+    controller.BajaAbasPro = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        const datos = req.body.data.split("|");
+        conn.query(`DELETE FROM Prod_Abast WHERE idprodu = ${datos[0]} AND idabast = ${datos[1]}`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/ReabastPape");
+            }
+        });
     }
     controller.PresDia = (req, res) =>{
         res.render('PresupuestoDia.ejs');

@@ -38,14 +38,14 @@ gastos_pres int
 );
 
 create table Abastecedor(
-idabast int primary key not null,
+idabast int primary key not null auto_increment,
 nom_abast varchar(40),
 tel_abast varchar(15)
 );
 
 create table Producto(
-idprodu int primary key not null,
-nom_produ varchar(15),
+idprodu int primary key not null auto_increment,
+nom_produ varchar(30),
 unidades_disp int,
 padq_produ int,
 pvent_produ int
@@ -99,7 +99,7 @@ idvent int primary key not null,
 idper int,
 idprodu int,
 nopiezas_vent int,
-dia_vent varchar(10),
+dia_vent varchar(15),
 foreign key(idper) references Personal (idper) on update cascade on delete cascade,
 foreign key(idprodu) references Producto (idprodu) on update cascade on delete cascade
 );
@@ -122,5 +122,9 @@ select * from Paquete;
 select * from Computadora;
 select * from Renta;
 select * from Renta_comp;
+select * from Producto;
+select * from Vender;
+select * from Abastecedor;
+select * from Prod_abast;
 
 ALTER USER 'root'@'localhost' identified WITH mysql_native_password BY 'n0m3l0';

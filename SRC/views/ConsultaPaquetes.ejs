@@ -86,27 +86,28 @@
                         </tr>
                         </thead>
                         <tbody id="datostabla" class="align-middle text-center">
+                        <%
+                        for (let i in paq){
+                            %>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%=paq[i].idpaq%></td>
+                            <td><%=paq[i].tipo_paq%></td>
+                            <td><%=paq[i].estado_paq%></td>
+                            <td><%=paq[i].outdate%></td>
+                            <td><%=paq[i].indate%></td>
+                            <td><%=paq[i].direc_paq%></td>
+                            <td><%=paq[i].desc_paq%></td>
                             <td>
                                 <div class="col-12 mb-1">
-                                    <form action="/Operis/PaqueteriaAlm/EditPaqSection" method="post">
-                                        <button name="PaqToEdit" value="" id="btnmod" class="btn btn-secondary">Modificar</button>
-                                    </form>
-                                </div>
-                                <div class="col-12 mb-1">
-                                    <form action="/Operis/PaqueteriaAlm/DeletePaq" method="post">
-                                        <button name="PaqToDelete" value="" class="btn btn-danger">Eliminar</button>
+                                    <form action="/Operis/PaqueteriaAlm/DeletePaq2" method="post">
+                                        <button name="PaqToDelete" value="<%=paq[i].idpaq%>" class="btn btn-danger">Eliminar</button>
                                     </form>
                                 </div>
                             </td>
                         </tr>
+                        <%
+                        }
+                        %>
                         </tbody>
                     </table>
                 </div>

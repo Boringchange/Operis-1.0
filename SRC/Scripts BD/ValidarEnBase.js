@@ -66,4 +66,32 @@ Controller.session = async (req, res) => {
     console.log(condicion);
 }
 
+Controller.AddVenta = (req, res, idv, idper, idprodu, nopi, dia) => {
+    return new Promise( resolve => {
+        const conn = Controller.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Vender VALUES (${idv}, ${idper}, ${idprodu}, ${nopi}, '${dia}')`, err => {
+            if (err){
+                console.log(err);
+            } else {
+                conn.query(`SELECT * FROM Producto WHERE idprodu = ${idprodu}`, (err, pro) => {
+                    if (err){
+                        res.send(err);
+                    } else {
+                        var canttot = parseInt(pro[0].unidades_disp);
+                        var cantRes = canttot - parseInt(nopi);
+                        console.log(cantRes);
+                        conn.query(`UPDATE Producto SET unidades_disp = ${cantRes} WHERE idprodu = ${idprodu}`, err => {
+                            if (err){
+                                res.send(err);
+                            } else {
+                                console.log(`${nopi} dado de alta`);
+                                return resolve("Hola");
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+}
 module.exports = Controller;

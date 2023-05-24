@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -87,20 +87,170 @@
                         </tr>
                         </thead>
                         <tbody id="tbody" class="align-middle">
+                        <%
+                        for (let i in abas){
+                            %>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%=abas[i].idabast%></td>
+                            <td><%=abas[i].nom_abast%></td>
+                            <td><%=abas[i].tel_abast%></td>
                             <td>
-                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalFormProd">Productos</button>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalFormProd<%=i%>">Productos</button>
+                                <div class="modal fade"  id="modalFormProd<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content rounded-4">
+                                            <div class="modal-header" id="popupHeader">
+                                                <h4>Modificar producto</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row text-center">
+                                                        <i class="bi bi-clipboard-plus-fill icon"></i>
+                                                        <h5>Productos</h5>
+                                                        <table class="table text-center" id="tableProduct">
+                                                            <thead class="table-dark">
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Producto</th>
+                                                                <th>Eliminar</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody class="table-secondary">
+                                                            <%
+                                                            for (let y in proab){
+                                                                if (abas[i].idabast == proab[y].idabast){
+                                                                    for (let u in pro){
+                                                                        if (proab[y].idprodu == pro[u].idprodu){
+                                                                            %>
+                                                                <tr>
+                                                                    <form action="/Operis/ReabastPape/DelAbaPro" method="post">
+                                                                        <td><%=pro[u].idprodu%></td>
+                                                                        <td><%=pro[u].nom_produ%></td>
+                                                                        <td>
+                                                                            <button value="<%=pro[u].idprodu%>|<%=abas[i].idabast%>" name="data" class="btn btn-danger">Eliminar</button>
+                                                                        </td>
+                                                                    </form>
+                                                                </tr>
+                                                            <%
+                                                                        }
+                                                                    }
+                                                                 }
+                                                            }
+                                                            %>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="row">
+                                                            <div class="col"></div>
+                                                            <div class="col">
+                                                                <div class="vstack gap-2">
+                                                                    <h5>Asignar otro producto:</h5>
+                                                                    <form action="/Operis/ReabastPape/AddAbaPro" method="post">
+                                                                        <select name="idpro" class="form-select">
+                                                                            <option value=""></option>
+                                                                            <%
+                                                                                var bul = true;
+                                                                                for (let r in pro){
+                                                                                    for (let s in proab){
+                                                                                        if (proab[s].idabast == abas[i].idabast){
+                                                                                            if (pro[r].idprodu == proab[s].idprodu){
+                                                                                                bul = false;
+                                                                                                break;
+                                                                                            } else {
+                                                                                                bul = true;
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                    if (bul) {
+                                                                            %>
+                                                                            <option value="<%=pro[r].idprodu%>"><%=pro[r].nom_produ%></option>
+                                                                            <%
+                                                                                    }
+                                                                                }
+                                                                            %>
+                                                                        </select>
+                                                                        <button class="btn btn-outline-success" name="idaba" value="<%=abas[i].idabast%>">Asignar</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col"></div>
+                                                        </div>
+                                                        <div class="row mt-3">
+                                                            <div class="col"></div>
+                                                            <div class="col">
+                                                                <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
+                                                            </div>
+                                                            <div class="col"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFormMod">Modificar</button>
+                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFormMod<%=i%>">Modificar</button>
+                                <div class="modal fade"  id="modalFormMod<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content rounded-4">
+                                            <div class="modal-header" id="popupHeader">
+                                                <h4>Modificar producto</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row text-center">
+                                                        <i class="bi bi-clipboard-plus-fill icon"></i>
+                                                        <form action="">
+                                                            <h5>ID</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input type="text" value="<%=abas[i].idabast%>" class="form-control" disabled>
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <h5 class="mt-2">Nombre del abastecedor</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input type="text" value="<%=abas[i].nom_abast%>" class="form-control">
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <h5 class="mt-2">Telefono</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input type="number" value="<%=abas[i].tel_abast%>" class="form-control">
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
+                                                                </div>
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <button class="btn btn-outline-secondary">Registrar</button>
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <form action="">
                                     <button class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
+                        <%
+                        }
+                        %>
                         </tbody>
                     </table>
                 </div>
@@ -121,12 +271,12 @@
                         <div class="container-fluid">
                             <div class="row text-center">
                                 <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <form action="">
+                                <form action="/Operis/ReabastPape/AddAbast" method="post">
                                     <h5 class="mt-2">Nombre del abastecedor</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control">
+                                            <input name="nom" type="text" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -134,131 +284,22 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="number" class="form-control">
+                                            <input name="tel" type="number" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
+                                    </div>
                                     <div class="row mt-3">
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <button class="btn btn-outline-secondary">Registrar</button>
+                                        </div>
+                                </form>
                                         <div class="col"></div>
                                         <div class="col">
                                             <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
                                         </div>
                                         <div class="col"></div>
-                                        <div class="col">
-                                            <button class="btn btn-outline-secondary">Registrar</button>
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade"  id="modalFormMod" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-4">
-                    <div class="modal-header" id="popupHeader">
-                        <h4>Modificar producto</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row text-center">
-                                <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <form action="">
-                                    <h5>ID</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" disabled>
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Nombre del abastecedor</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Telefono</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="number" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <button class="btn btn-outline-secondary">Registrar</button>
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade"  id="modalFormProd" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-4">
-                    <div class="modal-header" id="popupHeader">
-                        <h4>Modificar producto</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row text-center">
-                                <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <h5>Productos</h5>
-                                <table class="table text-center" id="tableProduct">
-                                    <thead class="table-dark">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Producto</th>
-                                        <th>Eliminar</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="table-secondary">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <form action="">
-                                                <button class="btn btn-danger">Eliminar</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col">
-                                        <div class="vstack gap-2">
-                                            <h5>Asignar otro producto:</h5>
-                                            <select name="" id="" class="form-select">
-                                                <option value=""></option>
-                                            </select>
-                                            <button class="btn btn-outline-success">Asignar</button>
-                                        </div>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col"></div>
-                                    <div class="col">
-                                        <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
-                                    </div>
-                                    <div class="col"></div>
                                     </div>
                             </div>
                         </div>
