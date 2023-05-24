@@ -2,7 +2,7 @@ body{
     position: relative;
     min-height: 100vh;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .container-fluid{
@@ -24,7 +24,7 @@ body{
     transition: all 0.5s ease;
 }
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 768px){
     .sidebar{
         background: white;
 
@@ -45,13 +45,18 @@ body{
     .sidebar .active{
         background: #026671;
     }
+
+    .sidebar ul li a {
+        color: #026671;
+    }
 }
 
 .sidebar.active{
     width: 260px;
+    z-index: 10;
 }
 
-@media only screen and (min-width: 576px){
+@media only screen and (min-width: 768px){
     .sidebar .logo_content .logo{
         color: white;
     }
@@ -60,10 +65,13 @@ body{
         color: white;
     }
 
+    .sidebar ul li a {
+        color: white;
+    }
+
 }
 
 .sidebar .logo_content .logo{
-
     display: flex;
     height: 50px;
     width: 100%;
@@ -151,7 +159,6 @@ body{
 }
 
 .sidebar ul li a{
-    color: white;
     display: flex;
     align-items: center;
     text-decoration: none;
