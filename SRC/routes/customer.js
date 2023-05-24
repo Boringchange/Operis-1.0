@@ -18,6 +18,8 @@ router.get('/Operis/PaqueteriaAlm', customerController.paqueteriaAlmac);
 router.get('/Operis/PaqueteriaAlm/AddSection', customerController.AddPaqSection);
 router.post('/Operis/PaqueteriaAlm/AddPaq', customerController.AddPaq);
 router.post('/Operis/PaqueteriaAlm/DeletePaq', customerController.DeletePaq);
+router.post('/Operis/PaqueteriaAlm/MarkExit', customerController.MarkExit);
+router.post('/Operis/PaqueteriaAlm/DeletePaq2', customerController.DeletePaq2);
 router.post('/Operis/PaqueteriaAlm/EditPaqSection', customerController.EditPaqSection);
 router.post('/Operis/PaqueteriaAlm/EditPaq', customerController.EditPaq);
 router.get('/Operis/PaqueteriaAlm/ConsultPaq', customerController.ConsultPaq);
@@ -29,8 +31,15 @@ router.post('/Operis/CyberDisp/GestionEquipos/DelEqui', customerController.DelEq
 router.post('/Operis/CyberDisp/GestionEquipos/ModEqui', customerController.EditEquipo);
 router.post('/Operis/CyberDisp/GestionEquipos/AddEqui', customerController.AddEqui);
 router.get('/Operis/VentaPape', customerController.VentaPape);
+router.post('/Operis/VentaPape/SellComplete', customerController.CompleteSell);
 router.get('/Operis/InventPape', customerController.InventPape);
+router.post('/Operis/InventPape/AddProduct', customerController.AddProduct);
+router.post('/Operis/InventPape/EditProduct', customerController.EditProduct);
+router.post('/Operis/InventPape/DeleteProduct', customerController.DeleteProduct);
 router.get('/Operis/ReabastPape', customerController.ReabastPape);
+router.post('/Operis/ReabastPape/AddAbast', customerController.AddAbast);
+router.post('/Operis/ReabastPape/AddAbaPro', customerController.AltaAbasPro);
+router.post('/Operis/ReabastPape/DelAbaPro', customerController.BajaAbasPro);
 router.get('/Operis/PresupuestoDiario', customerController.PresDia);
 router.get('/Operis/ConsultaPresupuesto', customerController.ConsPres);
 

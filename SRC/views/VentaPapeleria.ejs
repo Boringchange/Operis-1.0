@@ -74,7 +74,7 @@
             </div>
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table text-center">
+                    <table class="table text-center" id="tablapro">
                         <thead class="align-middle">
                         <tr id="theader">
                             <th>Producto</th>
@@ -84,14 +84,7 @@
                         </tr>
                         </thead>
                         <tbody id="tbody" class="align-middle">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-danger">Eliminar</button>
-                                </td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -109,7 +102,7 @@
                                     <h5>Total:</h5>
                                 </div>
                                 <div class="col-12 text-end">
-                                    <h5>$177.00</h5>
+                                    <h5 id="Total">$0.00</h5>
                                 </div>
                                 <div class="col-1"></div>
                                 <div class="col-10">
@@ -120,8 +113,8 @@
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col-7">
-                                    <form action="">
-                                        <button class="btn btn-secondary mt-2">Confirmar venta</button>
+                                    <form action="/Operis/VentaPape/SellComplete" method="post">
+                                        <button id="confirmar" name="confirmar" value="|" class="btn btn-secondary mt-2" disabled>Confirmar venta</button>
                                     </form>
                                 </div>
                                 <div class="col-4"></div>
@@ -145,8 +138,15 @@
                                 <div class="row my-2">
                                     <div class="col-md"></div>
                                     <div class="col-md">
-                                        <select name="" id="" class="form-control">
-                                            <option value=""></option>
+                                        <select name="" id="Productos" class="form-control">
+                                            <option value="">Seleccione una producto</option>
+                                            <%
+                                            for (let i in product){
+                                                %>
+                                            <option value="<%=product[i].idprodu%>|<%=product[i].nom_produ%>|<%=product[i].pvent_produ%>|<%=product[i].unidades_disp%>"><%=product[i].nom_produ%></option>
+                                            <%
+                                            }
+                                            %>
                                         </select>
                                     </div>
                                     <div class="col-md"></div>
@@ -155,7 +155,7 @@
                                 <div class="row my-2">
                                     <div class="col-md"></div>
                                     <div class="col-md">
-                                        <input type="number" class="form-control">
+                                        <input type="number" id="cantidad" class="form-control">
                                     </div>
                                     <div class="col-md"></div>
                                 </div>
@@ -165,9 +165,121 @@
                                         <button id="closemodal" class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</button>
                                     </div>
                                     <div class="col-md ms-2">
-                                        <form action="">
-                                            <button class="btn btn-outline-secondary">Guardar</button>
-                                        </form>
+                                        <button class="btn btn-outline-secondary" onclick="AddDataTable();">Guardar</button>
+                                        <script>
+
+                                            function Validate (){
+                                                const optselect = document.getElementById("Productos").selectedIndex;
+                                                const txtselect = document.getElementById("cantidad").value;
+                                                console.log(txtselect);
+                                                var bool = false;
+                                                if (optselect === 0){
+                                                    document.getElementById("Productos").style.borderColor = "red";
+                                                    alert("Selecciona un producto");
+                                                } else {
+                                                    if (txtselect == ""){
+                                                        document.getElementById("cantidad").style.borderColor = "red";
+                                                        alert("Ingresa la cantidad");
+                                                    } else {
+                                                        document.getElementById("Productos").style.borderColor = "";
+                                                        document.getElementById("cantidad").style.borderColor = "";
+                                                        bool = true;
+                                                        return bool;
+                                                    }
+                                                }
+                                            }
+                                            function AddDataTable(){
+                                                const bool = Validate();
+                                                if (bool){
+                                                    const datos = document.getElementById("Productos").value;
+                                                    const dato = datos.split("|");
+                                                    const cantidad = document.getElementById("cantidad").value;
+                                                    console.log(cantidad);
+                                                    var tabla = document.getElementById("tablapro");
+                                                    var row = tabla.insertRow(1);
+                                                    var celda1 = row.insertCell(0);
+                                                    var celda2 = row.insertCell(1);
+                                                    var celda3 = row.insertCell(2);
+                                                    var celda4 = row.insertCell(3);
+
+                                                    celda1.innerText = dato[1];
+                                                    celda2.innerText = cantidad;
+                                                    celda3.innerText = dato[2];
+                                                    celda4.innerHTML = '<button class="btn btn-danger" onclick="DeleteRow(this);">Eliminar</button>';
+
+                                                    var btntxt = document.getElementById("confirmar").value;
+                                                    if (btntxt !== "|"){
+                                                        document.getElementById("confirmar").value = `${dato[0]}/${cantidad}|${btntxt}`;
+                                                    }else{
+                                                        document.getElementById("confirmar").value = `${dato[0]}/${cantidad}`;
+                                                    }
+                                                    Total();
+                                                }
+                                            }
+                                            function DeleteRow(boton){
+                                                var tabla = boton.parentNode.parentNode.parentNode;
+                                                var fila = boton.parentNode.parentNode;
+                                                var indice = fila.rowIndex;
+                                                tabla.removeChild(fila);
+
+                                                var btntxt = document.getElementById("confirmar").value;
+                                                var indiceReal = parseInt(indice) - 1;
+                                                var arraytxt = btntxt.split("|");
+                                                console.log(arraytxt);
+                                                console.log(`Indice en array ${indiceReal}`);
+                                                var newtxt = "";
+                                                var ind = document.getElementById("tablapro").rows.length;
+
+                                                if (ind == 1){
+                                                    document.getElementById("confirmar").value = "|";
+                                                } else{
+                                                    for (let i in arraytxt){
+                                                        if (indiceReal == i){
+                                                            arraytxt.splice(indiceReal,1);
+                                                            console.log(arraytxt[0]);
+                                                        }
+                                                    }
+                                                    for (let i in arraytxt){
+                                                        if (newtxt == ""){
+                                                            newtxt =`${arraytxt[i]}`;
+                                                        } else {
+                                                            newtxt = `${newtxt}|${arraytxt[i]}`;
+                                                        }
+                                                    }
+                                                    document.getElementById("confirmar").value = newtxt;
+                                                }
+
+                                                Total();
+                                            }
+                                            function Total(){
+                                                var tabla = document.getElementById("tablapro");
+                                                var tablesize = tabla.rows.length;
+                                                var operacion = 0.0;
+                                                if (tablesize !== 1){
+                                                    for (let x = 0; x < tablesize; x++){
+                                                        if (x !== 0){
+                                                            var fila = tabla.rows[x];
+                                                            var celda = fila.cells[2];
+                                                            var celda2 = fila.cells[1];
+                                                            var dato = celda.innerHTML;
+                                                            var dato2 = celda2.innerHTML;
+                                                            operacion = operacion + (parseInt(dato) * parseInt(dato2));
+                                                        }
+                                                    }
+                                                    if (operacion !== 0.0){
+                                                        var txt = document.getElementById("Total");
+                                                        txt.innerText = `$${operacion}`;
+                                                        const bt = document.getElementById("confirmar");
+                                                        bt.disabled = false;
+                                                    }
+                                                } else{
+                                                    var txt = document.getElementById("Total");
+                                                    txt.innerText = `$0.00`;
+                                                    const bt = document.getElementById("confirmar");
+                                                    bt.disabled = true;
+                                                }
+                                            }
+                                        </script>
                                     </div>
                                     <div class="col-md"></div>
                                 </div>

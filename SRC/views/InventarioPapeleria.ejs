@@ -88,19 +88,95 @@
                         </tr>
                         </thead>
                         <tbody id="tbody" class="align-middle">
+                        <%
+                        for (let i in product){
+                            %>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><%=product[i].idprodu%></td>
+                                <td><%=product[i].nom_produ%></td>
+                                <td><%=product[i].unidades_disp%></td>
+                                <td><%=product[i].padq_produ%></td>
+                                <td><%=product[i].pvent_produ%></td>
                                 <td>
-                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFormMod">Modificar</button>
-                                    <form action="">
-                                        <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFormMod<%=i%>">Modificar</button>
+                                    <div class="modal fade"  id="modalFormMod<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content rounded-4">
+                                                <div class="modal-header" id="popupHeader">
+                                                    <h4>Modificar producto</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row text-center">
+                                                            <i class="bi bi-clipboard-plus-fill icon"></i>
+                                                            <form action="/Operis/InventPape/EditProduct" method="post">
+                                                                <h5>ID</h5>
+                                                                <div class="row">
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <input type="text" value="<%=product[i].idprodu%>" class="form-control" disabled>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                                <h5 class="mt-2">Nombre del producto</h5>
+                                                                <div class="row">
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <% console.log(product[i].nom_produ); %>
+                                                                        <input type="text" value="<%=product[i].nom_produ%>" name="EditName" class="form-control" disabled>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                                <h5 class="mt-2">Unidades disponibles</h5>
+                                                                <div class="row">
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <input type="number" value="<%=product[i].unidades_disp%>" name="EditStack" class="form-control">
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                                <h5 class="mt-2">Precio base</h5>
+                                                                <div class="row">
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <input value="<%=product[i].padq_produ%>" name="EditBasePrize" type="text" class="form-control">
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                                <h5 class="mt-2">Precio de venta</h5>
+                                                                <div class="row">
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <input value="<%=product[i].pvent_produ%>" name="EditSellPrize" type="text" class="form-control">
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                                <div class="row mt-3">
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <button class="btn btn-outline-secondary" value="<%=product[i].idprodu%>" name="EditID">Registrar</button>
+                                                            </form>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                    <div class="col">
+                                                                        <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form action="/Operis/InventPape/DeleteProduct" method="post">
+                                        <button value="<%=product[i].idprodu%>" class="btn btn-danger" name="DeleteId">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
+                        <%
+                        }
+                        %>
                         </tbody>
                     </table>
                 </div>
@@ -121,12 +197,12 @@
                         <div class="container-fluid">
                             <div class="row text-center">
                                 <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <form action="">
+                                <form action="/Operis/InventPape/AddProduct"  method="post">
                                     <h5>Nombre del producto</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control">
+                                            <input name="ProductName" type="text" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -134,7 +210,7 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="number" class="form-control">
+                                            <input type="number" name="ProductStack" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -142,7 +218,7 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control">
+                                            <input type="text" name="BasePrize" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -150,91 +226,22 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control">
+                                            <input type="text" name="SellPrize" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col">
                                             <button class="btn btn-outline-secondary">Registrar</button>
                                         </div>
-                                        <div class="col"></div>
-                                    </div>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade"  id="modalFormMod" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-4">
-                    <div class="modal-header" id="popupHeader">
-                        <h4>Modificar producto</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row text-center">
-                                <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <form action="">
-                                    <h5>ID</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" disabled>
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Nombre del producto</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Unidades disponibles</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="number" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Precio base</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Precio de venta</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <div class="row mt-3">
                                         <div class="col"></div>
                                         <div class="col">
                                             <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
                                         </div>
                                         <div class="col"></div>
-                                        <div class="col">
-                                            <button class="btn btn-outline-secondary">Registrar</button>
-                                        </div>
-                                        <div class="col"></div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
