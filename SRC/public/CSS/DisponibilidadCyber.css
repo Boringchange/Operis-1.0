@@ -163,6 +163,10 @@ body{
     max-height: 70vh;
 }
 
+.container-fluid .table-responsive{
+    max-height: 70vh;
+}
+
 .container-fluid .modal input{
     width: 200px;
     background-color: #EDEDED;

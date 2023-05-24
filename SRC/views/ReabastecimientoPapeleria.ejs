@@ -107,21 +107,22 @@
                                                     <div class="row text-center">
                                                         <i class="bi bi-clipboard-plus-fill icon"></i>
                                                         <h5>Productos</h5>
-                                                        <table class="table text-center" id="tableProduct">
-                                                            <thead class="table-dark">
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Producto</th>
-                                                                <th>Eliminar</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody class="table-secondary">
-                                                            <%
-                                                            for (let y in proab){
+                                                        <div class="table-responsive">
+                                                            <table class="table text-center" id="tableProduct">
+                                                                <thead class="table-dark">
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>Producto</th>
+                                                                    <th>Eliminar</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody class="table-secondary">
+                                                                <%
+                                                                for (let y in proab){
                                                                 if (abas[i].idabast == proab[y].idabast){
-                                                                    for (let u in pro){
-                                                                        if (proab[y].idprodu == pro[u].idprodu){
-                                                                            %>
+                                                                        for (let u in pro){
+                                                                if (proab[y].idprodu == pro[u].idprodu){
+                                                                %>
                                                                 <tr>
                                                                     <form action="/Operis/ReabastPape/DelAbaPro" method="post">
                                                                         <td><%=pro[u].idprodu%></td>
@@ -131,14 +132,15 @@
                                                                         </td>
                                                                     </form>
                                                                 </tr>
-                                                            <%
-                                                                        }
-                                                                    }
-                                                                 }
-                                                            }
-                                                            %>
-                                                            </tbody>
-                                                        </table>
+                                                                <%
+                                                                }
+                                                                }
+                                                                }
+                                                                }
+                                                                %>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                         <div class="row">
                                                             <div class="col"></div>
                                                             <div class="col">

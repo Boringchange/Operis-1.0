@@ -157,7 +157,11 @@ body{
 }
 
 .container-fluid table{
-    height: 50vh;
+    height: 70vh;
+}
+
+.container-fluid .table-responsive{
+    max-height: 70vh;
 }
 
 #theader{
@@ -215,4 +219,17 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
