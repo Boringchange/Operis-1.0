@@ -238,3 +238,7 @@ input::-webkit-inner-spin-button {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+#responsiveProduct{
+    max-height: 40vh;
+}
