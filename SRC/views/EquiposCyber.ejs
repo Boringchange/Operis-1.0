@@ -65,78 +65,80 @@
                     <div class="card-body">
                         <i class="bi bi-pc-display icon mb-2"></i>
                         <h4 class="card-title">Equipos Registrados</h4>
-                        <table class="table overflow-y-scroll overflow-x-hidden">
-                            <thead class="table-black">
-                            <tr>
-                                <th>ID</th>
-                                <th>Tarifa</th>
-                                <th>Accion</th>
-                            </tr>
-                            </thead>
-                            <tbody class="table-secondary">
-                            <%
-                            for (let i in comp){
-                                %>
+                        <div class="table-responsive">
+                            <table class="table overflow-y-scroll overflow-x-hidden">
+                                <thead class="table-black">
                                 <tr>
-                                    <td><%=comp[i].idcomp%></td>
-                                    <td><%=comp[i].hr_compu%></td>
-                                    <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#modalForm<%=i%>" id="openmodal" class="btn btn-secondary mb-1">Modificar</button>
-                                        <div class="modal fade"  id="modalForm<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content rounded-4">
-                                                    <div class="modal-header" id="popupHeader">
-                                                        <h4>Modificar equipo</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="container">
-                                                            <div class="row text-center">
-                                                                <i class="bi bi-pc-horizontal icon"></i>
-                                                                <h5>ID</h5>
-                                                                <div class="row my-2">
-                                                                    <div class="col-md"></div>
-                                                                    <div class="col-md">
-                                                                        <% console.log(comp[i].idcomp);%>
-                                                                        <input name="idmod" value="<%=comp[i].idcomp%>" type="text" class="form-control" disabled><!--Aqui va ir el id para que lo puedan visualizar-->
+                                    <th>ID</th>
+                                    <th>Tarifa</th>
+                                    <th>Accion</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-secondary">
+                                <%
+                                for (let i in comp){
+                                    %>
+                                    <tr>
+                                        <td><%=comp[i].idcomp%></td>
+                                        <td><%=comp[i].hr_compu%></td>
+                                        <td>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#modalForm<%=i%>" id="openmodal" class="btn btn-secondary mb-1">Modificar</button>
+                                            <div class="modal fade"  id="modalForm<%=i%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content rounded-4">
+                                                        <div class="modal-header" id="popupHeader">
+                                                            <h4>Modificar equipo</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <div class="row text-center">
+                                                                    <i class="bi bi-pc-horizontal icon"></i>
+                                                                    <h5>ID</h5>
+                                                                    <div class="row my-2">
+                                                                        <div class="col-md"></div>
+                                                                        <div class="col-md">
+                                                                            <% console.log(comp[i].idcomp);%>
+                                                                            <input name="idmod" value="<%=comp[i].idcomp%>" type="text" class="form-control" disabled><!--Aqui va ir el id para que lo puedan visualizar-->
+                                                                        </div>
+                                                                        <div class="col-md"></div>
                                                                     </div>
-                                                                    <div class="col-md"></div>
-                                                                </div>
-                                                                <h5>Tarifa</h5>
-                                                                <div class="row my-2">
-                                                                    <div class="col-md"></div>
-                                                                    <div class="col-md">
-                                                                        <form action="/Operis/CyberDisp/GestionEquipos/ModEqui" method="post">
-                                                                        <input value="<%=comp[i].hr_compu%>" name="hrnew" type="text" class="form-control">
+                                                                    <h5>Tarifa</h5>
+                                                                    <div class="row my-2">
+                                                                        <div class="col-md"></div>
+                                                                        <div class="col-md">
+                                                                            <form action="/Operis/CyberDisp/GestionEquipos/ModEqui" method="post">
+                                                                            <input value="<%=comp[i].hr_compu%>" name="hrnew" type="text" class="form-control">
+                                                                        </div>
+                                                                        <div class="col-md"></div>
                                                                     </div>
-                                                                    <div class="col-md"></div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md"></div>
-                                                                    <div class="col-md ms-2">
-                                                                        <button name="idmod" value="<%=comp[i].idcomp%>" class="btn btn-outline-secondary">Guardar</button>
+                                                                    <div class="row">
+                                                                        <div class="col-md"></div>
+                                                                        <div class="col-md ms-2">
+                                                                            <button name="idmod" value="<%=comp[i].idcomp%>" class="btn btn-outline-secondary">Guardar</button>
+                                                                        </div>
+                                                                            </form>
+                                                                        <div class="col-md me-2">
+                                                                            <button id="closemodal" class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</button>
+                                                                        </div>
+                                                                        <div class="col-md"></div>
                                                                     </div>
-                                                                        </form>
-                                                                    <div class="col-md me-2">
-                                                                        <button id="closemodal" class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</button>
-                                                                    </div>
-                                                                    <div class="col-md"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <form action="/Operis/CyberDisp/GestionEquipos/DelEqui" method="post">
-                                            <button value="<%=comp[i].idcomp%>" name="iddel" class="btn btn-danger">Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <%
-                            }
-                            %>
-                            </tbody>
-                        </table>
+                                            <form action="/Operis/CyberDisp/GestionEquipos/DelEqui" method="post">
+                                                <button value="<%=comp[i].idcomp%>" name="iddel" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <%
+                                }
+                                %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

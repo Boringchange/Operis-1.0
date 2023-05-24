@@ -158,6 +158,11 @@ body{
     color: white;
 }
 
+.container-fluid table{
+    min-height: 70vh;
+    max-height: 70vh;
+}
+
 .container-fluid .modal input{
     width: 200px;
     background-color: #EDEDED;
