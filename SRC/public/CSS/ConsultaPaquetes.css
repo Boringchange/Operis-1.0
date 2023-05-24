@@ -21,14 +21,66 @@ body{
     background: #023f58;
     padding: 6px 14px;
     transition: all 0.5s ease;
+    z-index: 8;
+}
+
+@media only screen and (max-width: 768px){
+    .sidebar{
+        background: white;
+
+    }
+
+    /*
+    .sidebar.active{
+        background: #cbcbcb;
+    }su funciona, solo hay que cambiar el color*/
+
+    .sidebar .logo_content .logo{
+        color: #023f58;
+    }
+
+    .sidebar #btn{
+        color: #023f58;
+    }
+
+    .sidebar .active #btn{
+        color: white;
+    }
+
+    .sidebar .active{
+        background: #023f58;
+    }
+
+    .sidebar ul li a {
+        color: white;
+    }
+
+    .sidebar.active ul li a {
+        color: #023f58;
+    }
 }
 
 .sidebar.active{
     width: 260px;
+    z-index: 10;
+}
+
+@media only screen and (min-width: 768px){
+    .sidebar .logo_content .logo{
+        color: white;
+    }
+
+    .sidebar #btn{
+        color: white;
+    }
+
+    .sidebar ul li a {
+        color: white;
+    }
+
 }
 
 .sidebar .logo_content .logo{
-    color: white;
     display: flex;
     height: 50px;
     width: 100%;
@@ -55,7 +107,6 @@ body{
 
 .sidebar #btn{
     position: absolute;
-    color: white;
     left: 50%;
     top: 6px;
     font-size: 20px;
@@ -72,7 +123,12 @@ body{
 
 .sidebar ul{
     margin-top: 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 .sidebar ul li{
     position: relative;
@@ -112,7 +168,6 @@ body{
 }
 
 .sidebar ul li a{
-    color: white;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -122,7 +177,7 @@ body{
 }
 
 .sidebar ul li a:hover{
-    color: #0ca789;
+    color: #023f58;
     background: white;
 }
 
@@ -143,6 +198,7 @@ body{
     opacity: 1;
     pointer-events: auto;
 }
+
 
 .container-fluid{
     max-width: 80vw;
@@ -169,6 +225,7 @@ body{
 
 .container-fluid .table-responsive{
     max-height: 80vh;
+    z-index: 9;
 }
 
 .container-fluid table{
