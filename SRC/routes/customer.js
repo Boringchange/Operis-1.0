@@ -38,6 +38,8 @@ router.post('/Operis/InventPape/EditProduct', customerController.EditProduct);
 router.post('/Operis/InventPape/DeleteProduct', customerController.DeleteProduct);
 router.get('/Operis/ReabastPape', customerController.ReabastPape);
 router.post('/Operis/ReabastPape/AddAbast', customerController.AddAbast);
+router.post('/Operis/ReabastPape/EditAbast', customerController.EditAbast);
+router.post('/Operis/ReabastPape/DeleteAbast', customerController.DelteAbast);
 router.post('/Operis/ReabastPape/AddAbaPro', customerController.AltaAbasPro);
 router.post('/Operis/ReabastPape/DelAbaPro', customerController.BajaAbasPro);
 router.get('/Operis/PresupuestoDiario', customerController.PresDia);
