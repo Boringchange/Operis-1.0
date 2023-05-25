@@ -248,15 +248,19 @@ body{
 }
 
 .container-fluid .card .card-body input{
-    width: 300px;
+    width: 20rem;
     background-color: #EDEDED;
     border-color: #c9c9c9;
 }
 
 .modal input{
-    width: 200px;
+    width: 100%;
     background-color: #EDEDED;
     border-color: #c9c9c9;
+}
+
+.modal button{
+    width: 100%;
 }
 
 .container-fluid .card .card-body table button{
@@ -272,4 +276,8 @@ body{
 #popupHeader{
     background-color: #026873;
     color: white;
+}
+
+#inputProblem{
+    width: 100%;
 }

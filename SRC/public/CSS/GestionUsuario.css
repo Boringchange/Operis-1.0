@@ -8,18 +8,18 @@ body{
     color: #808080;
 }
 
-.container input{
+.container-fluid input{
     width: 300px;
     border-radius: 5px;
     align-content: center;
 }
 
-.container .card select{
+.container-fluid .card select{
     width: 300px;
     border-radius: 5px;
 }
 
-.container .botonAgregar{
+.container-fluid .botonAgregar{
     width: 300px;
     border: none;
     color: white;
@@ -38,12 +38,16 @@ body{
     height: 10vh;
 }
 
-.container .card{
+#return{
+
+}
+
+.container-fluid .card{
     height: 100%;
     border-radius: 75px;
 }
 
-.container table{
+.container-fluid table{
     background-color: #EDEDED;
 }
 
@@ -52,8 +56,12 @@ body{
 }
 
 
-.container .card .table button{
+.container-fluid .card .table button{
     font-size: 10px;
+}
+
+.container-fluid .card table{
+    border-radius: 20px;
 }
 
 ::-webkit-scrollbar {
@@ -68,3 +76,4 @@ body{
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
