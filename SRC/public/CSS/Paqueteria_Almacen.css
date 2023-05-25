@@ -158,6 +158,10 @@ body{
     height: 60vh;
 }
 
+.container-fluid .table-responsive{
+    max-height: 60vh;
+}
+
 #theader{
     height: 5%;
     background-color: #9daec0;
@@ -178,4 +182,17 @@ body{
     border: none;
     background-color: #0ca688;
     color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

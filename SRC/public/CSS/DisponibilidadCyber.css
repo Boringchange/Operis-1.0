@@ -163,6 +163,10 @@ body{
     max-height: 70vh;
 }
 
+.container-fluid .table-responsive{
+    max-height: 70vh;
+}
+
 .container-fluid .modal input{
     width: 200px;
     background-color: #EDEDED;
@@ -172,4 +176,20 @@ body{
  .container-fluid .modal .icon{
     color: #026671;
     font-size: 40px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
