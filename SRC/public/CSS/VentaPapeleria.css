@@ -213,6 +213,10 @@ body{
     pointer-events: auto;
 }
 
+.nueve{
+    z-index: 9;
+}
+
 .container-fluid{
     min-width: 100vw;
     min-height: 100vh;
@@ -286,9 +290,7 @@ body{
     font-size: 40px;
 }
 
-.nueve{
-    z-index: 9;
-}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
