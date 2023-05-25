@@ -30,7 +30,7 @@ foreign key(idper) references Personal (idper) on update cascade on delete casca
 );
 
 create table Presupuesto(
-idpres int primary key not null,
+idpres int primary key not null auto_increment,
 dia_pres varchar(10),
 gan_pres int,
 ingreso_pres int,

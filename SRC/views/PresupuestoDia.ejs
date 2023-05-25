@@ -66,10 +66,26 @@
                                     <i class="bi bi-pencil-square icon"></i>
                                     <h3><b>Papeleria</b></h3>
                                     <h4>Ingresos</h4>
-                                    <h5>$$</h5>
-                                    <h4>Gastos</h4>
-                                    <h5>$</h5>
-                                    <input class="form-control rowFirst" type="number" min="1">
+                                    <%
+                                        var totalpap = 0;
+                                        var gantot = 0;
+                                        const date = new Date();
+                                        const fecha = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+                                        for (let i in ven){
+                                            console.log(fecha);
+                                            console.log(ven[i].dia_vent);
+                                            if (ven[i].dia_vent == fecha){
+                                                for (let x in pro){
+                                                    if (ven[i].idprodu == pro[x].idprodu){
+                                                        totalpap = totalpap + (ven[i].nopiezas_vent * pro[x].pvent_produ);
+                                                        gantot = gantot + ((ven[i].nopiezas_vent * pro[x].pvent_produ)-(ven[i].nopiezas_vent * pro[x].padq_produ));
+x                                                    }
+                                                }
+                                            }
+                                        }
+                                        console.log(gantot);
+                                    %>
+                                    <h5>$<%=totalpap%></h5>
                                 </div>
                                 <div class="col"></div>
                             </div>
@@ -80,10 +96,15 @@
                                     <i class="bi bi-pc-display icon"></i>
                                     <h3><b>Cyber</b></h3>
                                     <h4>Ingresos</h4>
-                                    <h5>$$</h5>
-                                    <h4>Gastos</h4>
-                                    <h5>$</h5>
-                                    <input class="form-control rowFirst" type="number" min="1">
+                                    <%
+                                        var totalcyber = 0;
+                                        for (let x in ren){
+                                            if (ren[x].dia_rent == fecha){
+                                                totalcyber = totalcyber + ren[x].cost_tot;
+                                            }
+                                        }
+                                    %>
+                                    <h5>$<%=totalcyber%></h5>
                                 </div>
                                 <div class="col"></div>
                             </div>
@@ -99,15 +120,41 @@
                                     <i class="bi bi-cash-stack icon"></i>
                                     <h3>Presupuesto</h3>
                                     <h4>Día</h4>
-                                    <input type="date" class="form-control" disabled>
-                                    <h4 class="mt-2">Gastos adicionales</h4>
-                                    <input class="form-control" type="number" min="1">
-                                    <h4 class="mt-2">Gastos totales</h4>
-                                    <input class="form-control" type="number" disabled>
+                                    <%
+                                    var currentTime = new Date();
+                                    let diaif = `${currentTime.getDate()}`;
+                                    let monthif = `${currentTime.getMonth() + 1}`;
+                                    if (parseInt(diaif)<10){
+                                        diaif = `0`+`${diaif}`;
+                                    } else{}
+                                    if (parseInt(monthif)<10){
+                                        monthif = `0`+`${monthif}`;
+                                    }
+                                    const fechades = `${currentTime.getFullYear()}-${monthif}-${diaif}`;
+
+                                    for (let z in pre){
+                                        if (fechades == pre[z].dia_pres){
+                                            totalpap = 0;
+                                            totalcyber = 0;
+                                            gantot = 0;
+                                        }
+                                    }
+                                    %>
+                                    <input type="date" class="form-control" value="<%=fechades%>" >
+                                    <h4 class="mt-2">Gastos Totales</h4>
+                                    <input class="form-control" value="<%=totalpap - gantot%>" type="number" min="1">
                                     <h4 class="mt-2">Ganancias</h4>
-                                    <input class="form-control" type="number" min="1" disabled>
-                                    <form action="">
-                                        <button class="btn mt-4" id="closePres">Cerrar presupuesto</button>
+                                    <input class="form-control" type="number" value="<%= gantot + totalcyber%>" min="1" disabled>
+                                    <form action="/Operis/PresupuestoDiario/ClosePres" method="post">
+                                        <%
+                                        var deshabilitar;
+                                        if (totalpap+totalcyber === 0){
+                                            deshabilitar = "disabled";
+                                        } else{
+                                            deshabilitar = "";
+                                        }
+                                        %>
+                                        <button name="datos" value="<%=fechades%>|<%=gantot + totalcyber%>|<%= totalcyber + totalpap%>|<%= totalpap - gantot%>" class="btn mt-4" id="closePres" <%=deshabilitar%>>Cerrar presupuesto</button>
                                     </form>
                                 </div>
                                 <div class="col"></div>

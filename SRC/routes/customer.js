@@ -43,6 +43,10 @@ router.post('/Operis/ReabastPape/DeleteAbast', customerController.DelteAbast);
 router.post('/Operis/ReabastPape/AddAbaPro', customerController.AltaAbasPro);
 router.post('/Operis/ReabastPape/DelAbaPro', customerController.BajaAbasPro);
 router.get('/Operis/PresupuestoDiario', customerController.PresDia);
+router.post('/Operis/PresupuestoDiario/ClosePres', customerController.ClosePresupuesto);
 router.get('/Operis/ConsultaPresupuesto', customerController.ConsPres);
+router.post('/Operis/ConsultaPresupuesto/EditPre', customerController.EditPre);
+router.post('/Operis/ConsultaPresupuesto/DelPre', customerController.DelPre);
+router.post('/Operis/ConsultaPresupuesto/AddPre', customerController.AddPre);
 
 module.exports = router;

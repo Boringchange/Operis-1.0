@@ -81,19 +81,86 @@
                         </tr>
                         </thead>
                         <tbody id="tbody" class="align-middle">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <%
+                        for (let x in pre){
+                            %>
+                            <tr>
+                            <td><%=pre[x].idpres%></td>
+                            <td><%=pre[x].dia_pres%></td>
+                            <td><%=pre[x].ingreso_pres%></td>
+                            <td><%=pre[x].gastos_pres%></td>
+                            <td><%=pre[x].gan_pres%></td>
                             <td>
-                                <button class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#modalFormMod">Modificar</button>
-                                <form action="">
-                                    <button class="btn btn-danger">Eliminar</button>
+                                <button class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#modalFormMod<%=x%>">Modificar</button>
+                                <div class="modal fade"  id="modalFormMod<%=x%>" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content rounded-4">
+                                            <div class="modal-header" id="popupHeader">
+                                                <h4>Modificar producto</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row text-center">
+                                                        <i class="bi bi-clipboard-plus-fill icon"></i>
+                                                        <form action="/Operis/ConsultaPresupuesto/EditPre" method="post">
+                                                            <h5>ID</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input value="<%=pre[x].idpres%>" type="text" class="form-control" disabled>
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <h5 class="mt-2">Ingresos</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input name="ingresos" value="<%=pre[x].ingreso_pres%>" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <h5 class="mt-2">Gastos</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input name="gastos" value="<%=pre[x].gastos_pres%>" type="number" class="form-control">
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <h5 class="mt-2">Ganancias</h5>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <input name="ganancias" value="<%=pre[x].gan_pres%>" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <button name="idpres" value="<%=pre[x].idpres%>" class="btn btn-outline-secondary">Registrar</button>
+                                                        </form>
+                                                                </div>
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="/Operis/ConsultaPresupuesto/DelPre" method="post">
+                                    <button name="idpres" value="<%=pre[x].idpres%>" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
+                        <%
+                        }
+                        %>
                         </tbody>
                     </table>
                 </div>
@@ -114,12 +181,12 @@
                         <div class="container-fluid">
                             <div class="row text-center">
                                 <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <form action="">
+                                <form action="/Operis/ConsultaPresupuesto/AddPre" method="post">
                                     <h5>Día</h5>
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input class="form-control" type="date">
+                                            <input name="dia" class="form-control" type="date">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -127,7 +194,7 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control">
+                                            <input name="ingreso" type="text" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -135,7 +202,7 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="number" class="form-control">
+                                            <input name="gastos" type="number" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
@@ -143,83 +210,22 @@
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control" disabled>
+                                            <input name="gan" type="text" class="form-control">
                                         </div>
                                         <div class="col"></div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col"></div>
                                         <div class="col">
-                                            <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col">
                                             <button class="btn btn-outline-secondary">Registrar</button>
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade"  id="modalFormMod" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-4">
-                    <div class="modal-header" id="popupHeader">
-                        <h4>Modificar producto</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row text-center">
-                                <i class="bi bi-clipboard-plus-fill icon"></i>
-                                <form action="">
-                                    <h5>ID</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" disabled>
                                         </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Ingresos</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Gastos</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="number" class="form-control">
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <h5 class="mt-2">Ganancias</h5>
-                                    <div class="row">
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" disabled>
-                                        </div>
-                                        <div class="col"></div>
-                                    </div>
-                                    <div class="row mt-3">
                                         <div class="col"></div>
                                         <div class="col">
                                             <Button class="btn btn-outline-danger" data-bs-dismiss="modal">Salir</Button>
                                         </div>
                                         <div class="col"></div>
-                                        <div class="col">
-                                            <button class="btn btn-outline-secondary">Registrar</button>
-                                        </div>
-                                        <div class="col"></div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>

@@ -235,7 +235,6 @@ controller.EditUser = async (req, res) => {
     controller.startRent = async (req, res) => {
         const conn = validar.DataBaseConnection(req, res);
         var currentTime = new Date();
-        console.log(req.body);
         let horif = `${currentTime.getHours()}`;
         let minif = `${currentTime.getMinutes()}`;
         if (parseInt(horif)<10){
@@ -244,7 +243,7 @@ controller.EditUser = async (req, res) => {
         if (parseInt(minif)<10){
             minif = `0`+`${minif}`;
         }
-        conn.query(`INSERT INTO Renta VALUES (default, '${horif}:${minif}', DEFAULT, DEFAULT, '${currentTime.getDate()}/${currentTime.getMonth()}/${currentTime.getFullYear()}')`);
+        conn.query(`INSERT INTO Renta VALUES (default, '${horif}:${minif}', DEFAULT, DEFAULT, '${currentTime.getDate()}/${currentTime.getMonth()+1}/${currentTime.getFullYear()}')`);
         await conn.query(`SELECT * FROM Renta`, (err, renta) => {
             let idrenta;
             for (let i in renta){
@@ -286,9 +285,11 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
-    controller.CompleteSell = async (req, res) => {
-        var conn = await validar.DataBaseConnection(req, res);
-        const date = new Date();
+    controller.CompleteSell = (req, res) => {
+        var conn = validar.DataBaseConnection(req, res);
+        var date = new Date();
+        var fecha    = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        console.log(fecha);
         conn.query(`SELECT * FROM Vender`, async (err, ventas) => {
             console.log(ventas.length);
             var num = ventas.length;
@@ -300,7 +301,7 @@ controller.EditUser = async (req, res) => {
                 console.log(Producto);
                 console.log(`${Producto[0]}, el otro dato ,${Producto[1]}`);
                 console.log(num);
-                const a = await validar.AddVenta(req, res, num, req.session.ID, Producto[0], Producto[1], `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
+                const a = await validar.AddVenta(req, res, num, req.session.ID, Producto[0], Producto[1], `${fecha}`);
             }
             res.redirect("/Operis/VentaPape");
         });
@@ -418,10 +419,84 @@ controller.EditUser = async (req, res) => {
             }
         });
     }
-    controller.PresDia = (req, res) =>{
-        res.render('PresupuestoDia.ejs');
+    controller.PresDia = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Vender`, (err, vender) => {
+            if (err){
+                res.send(err);
+            } else {
+                conn.query(`SELECT * FROM Producto`, (err, producto) => {
+                    if (err){
+                        res.send(err);
+                    } else {
+                        conn.query(`SELECT * FROM Renta`, (err, renta) => {
+                            if (err){
+                                res.send(err);
+                            } else{
+                                conn.query(`SELECT * FROM Presupuesto`, (err, presupuesto) => {
+                                    if (err){
+                                        res.send(err);
+                                    } else {
+                                        res.render('PresupuestoDia.ejs', {ven:vender, pro:producto, ren:renta, pre:presupuesto});
+                                    }
+                                });
+                            }
+                        })
+                    }
+                });
+            }
+        });
+
     }
-    controller.ConsPres = (req, res) =>{
-        res.render('ConsultaPresupuestos.ejs');
+    controller.ClosePresupuesto = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        const datos = req.body.datos.split("|");
+        conn.query(`INSERT INTO Presupuesto VALUES (DEFAULT, '${datos[0]}', ${datos[1]}, ${datos[2]}, ${datos[3]})`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/PresupuestoDiario");
+            }
+        });
+    }
+    controller.ConsPres = async (req, res) =>{
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`SELECT * FROM Presupuesto`, (err, presupuesto) => {
+            if (err){
+                res.send(err);
+            } else {
+                res.render('ConsultaPresupuestos.ejs', {pre:presupuesto});
+            }
+        });
+    }
+    controller.EditPre = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req,res);
+        conn.query(`UPDATE Presupuesto SET gan_pres = ${req.body.ganancias}, ingreso_pres = ${req.body.ingresos}, gastos_pres = ${req.body.gastos} WHERE idpres = ${req.body.idpres}`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/ConsultaPresupuesto");
+            }
+        });
+    }
+    controller.DelPre = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`DELETE FROM Presupuesto WHERE idpres = ${req.body.idpres}`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/ConsultaPresupuesto");
+            }
+        });
+    }
+    controller.AddPre = async (req, res) => {
+        const conn = await validar.DataBaseConnection(req, res);
+        conn.query(`INSERT INTO Presupuesto VALUES (DEFAULT, '${req.body.dia}', ${req.body.gan}, ${req.body.ingreso}, ${req.body.gastos})`, err => {
+            if (err){
+                res.send(err);
+            } else {
+                res.redirect("/Operis/ConsultaPresupuesto");
+            }
+        });
     }
 module.exports = controller;
