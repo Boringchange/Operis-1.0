@@ -2,7 +2,7 @@ body{
     position: relative;
     min-height: 100vh;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .container-fluid{
@@ -22,32 +22,56 @@ body{
     background: #026671;
     padding: 6px 14px;
     transition: all 0.5s ease;
-    display: flex;
-    flex-direction: column;
 }
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 768px){
     .sidebar{
-        height: 10vh;
-        top: 0;
-        display: inline;
+        background: white;
+
     }
 
-    .sidebar ul{
-        display: inline;
-    }
-    .sidebar li{
-        display: inline;
+    .sidebar .logo_content .logo{
+        color: #026671;
     }
 
+    .sidebar #btn{
+        color: #026671;
+    }
+
+    .sidebar .active #btn{
+        color: white;
+    }
+
+    .sidebar .active{
+        background: #026671;
+    }
+
+    .sidebar ul li a {
+        color: #026671;
+    }
 }
 
 .sidebar.active{
     width: 260px;
+    z-index: 10;
+}
+
+@media only screen and (min-width: 768px){
+    .sidebar .logo_content .logo{
+        color: white;
+    }
+
+    .sidebar #btn{
+        color: white;
+    }
+
+    .sidebar ul li a {
+        color: white;
+    }
+
 }
 
 .sidebar .logo_content .logo{
-    color: white;
     display: flex;
     height: 50px;
     width: 100%;
@@ -74,7 +98,6 @@ body{
 
 .sidebar #btn{
     position: absolute;
-    color: white;
     left: 50%;
     top: 6px;
     font-size: 20px;
@@ -91,7 +114,12 @@ body{
 
 .sidebar ul{
     margin-top: 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 .sidebar ul li{
     position: relative;
@@ -131,7 +159,6 @@ body{
 }
 
 .sidebar ul li a{
-    color: white;
     display: flex;
     align-items: center;
     text-decoration: none;
