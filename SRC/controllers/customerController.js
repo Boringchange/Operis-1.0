@@ -184,7 +184,7 @@ controller.EditUser = async (req, res) => {
     }
     controller.EditPaq = async (req, res) => {
         const conn = validar.DataBaseConnection(req, res);
-        conn.query(`UPDATE Paquete SET indate = '${req.body.NewComeDay}', outdate = '${req.body.NewExitDay}', desc_paq = '${req.body.des}' where idpaq = ${req.body.IdPaq}`, err => {
+        conn.query(`UPDATE Paquete SET tipo_paq = '${req.body.tipo_paq}', direc_paq = '${req.body.dir}', indate = '${req.body.NewComeDay}', outdate = '${req.body.NewExitDay}', desc_paq = '${req.body.des}' where idpaq = ${req.body.IdPaq}`, err => {
             if (err){
                 res.send(err);
             } else{
