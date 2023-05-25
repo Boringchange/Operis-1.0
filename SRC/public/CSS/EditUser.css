@@ -87,3 +87,7 @@
     width: 50%;
     height: 70px;
 }
+
+.modal-backdrop.show.fade{
+    display: none !important;
+}

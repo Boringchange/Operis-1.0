@@ -315,3 +315,7 @@ input::-webkit-inner-spin-button {
 .nueve{
     z-index: 9;
 }
+
+.modal-backdrop.show.fade{
+    display: none !important;
+}

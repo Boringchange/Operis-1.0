@@ -315,3 +315,7 @@ input::-webkit-inner-spin-button {
 #responsiveProduct{
     max-height: 40vh;
 }
+
+.modal-backdrop.show.fade{
+    display: none !important;
+}

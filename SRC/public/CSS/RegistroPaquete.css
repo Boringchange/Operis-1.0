@@ -26,6 +26,10 @@
     background-color: #95abc3;
 }
 
+#inputespecial input{
+    width: 100%;
+}
+
 .container select{
     width: 350px;
     background-color: #95abc3;
@@ -72,4 +76,31 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+@media only screen and (max-width: 768px){
+
+    .container .card{
+        border-radius: 70px;
+        width: 80vw;
+        background-color: #d6dfe8;
+    }
+
+}
+
+
+@media only screen and (min-width: 768px){
+
+    .container .card{
+        border-radius: 70px;
+        width: 50vw;
+        background-color: #d6dfe8;
+    }
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

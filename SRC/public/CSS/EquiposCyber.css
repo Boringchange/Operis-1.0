@@ -281,3 +281,7 @@ body{
 #inputProblem{
     width: 100%;
 }
+
+.modal-backdrop.show.fade{
+    display: none !important;
+}

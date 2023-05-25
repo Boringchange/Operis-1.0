@@ -330,3 +330,7 @@ input::-webkit-inner-spin-button {
     max-height: 30%;
     width: 100%;
 }
+
+.modal-backdrop.show.fade{
+    display: none !important;
+}
