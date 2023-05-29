@@ -12,6 +12,7 @@ const customerRout = require('./routes/customer');
 const {static, urlencoded} = require("express");
 
 const PUERTO = 3000;
+const IP = '192.168.1.67';
 
 // settings
 app.set('view engine', 'ejs'); //motor de plantillas
@@ -48,6 +49,6 @@ app.use('/', customerRout);
 //Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PUERTO, () => {
+app.listen(PUERTO, IP,() => {
    console.log(`El server ha sido abierto en el puerto: ${PUERTO}`);
 });
