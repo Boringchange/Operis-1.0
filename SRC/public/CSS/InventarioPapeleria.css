@@ -316,6 +316,10 @@ input::-webkit-inner-spin-button {
     z-index: 9;
 }
 
+.ocho{
+    z-index: 8;
+}
+
 .modal-backdrop.show.fade{
     display: none !important;
 }
