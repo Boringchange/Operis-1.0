@@ -86,6 +86,10 @@
         background-color: #d6dfe8;
     }
 
+    .container input, .container select, .container textarea{
+        width: 10rem;
+    }
+
 }
 
 
